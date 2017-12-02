@@ -25,3 +25,17 @@ C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\SchWeb\
 C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\SchWeb\obj\Debug\SchWeb.csprojResolveAssemblyReference.cache
 C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\SchWeb\obj\Debug\SchWeb.dll
 C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\SchWeb\obj\Debug\SchWeb.pdb
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\SchWeb.dll.config
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\SchWeb.dll
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\SchWeb.pdb
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Bll.dll
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Common.dll
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Model.dll
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Dal.dll
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Bll.pdb
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Common.pdb
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Model.pdb
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\bin\Dal.pdb
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\obj\Debug\SchWeb.csprojResolveAssemblyReference.cache
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\obj\Debug\SchWeb.dll
+D:\我的资料库\Documents\GitHub\SchManagerInfoSystem\SchWeb\obj\Debug\SchWeb.pdb
