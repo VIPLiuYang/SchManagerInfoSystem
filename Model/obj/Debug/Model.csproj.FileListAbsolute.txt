@@ -1,9 +1,0 @@
-H:\SchManagerInfoSystem\Model\bin\Debug\Model.dll
-H:\SchManagerInfoSystem\Model\bin\Debug\Model.pdb
-H:\SchManagerInfoSystem\Model\obj\Debug\Model.dll
-H:\SchManagerInfoSystem\Model\obj\Debug\Model.pdb
-H:\SchManagerInfoSystem\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\Model\bin\Debug\Model.dll
-C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\Model\bin\Debug\Model.pdb
-C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\Model\obj\Debug\Model.dll
-C:\Users\Administrator\Desktop\SchManagerInfoSystem\SchManagerInfoSystem\Model\obj\Debug\Model.pdb
