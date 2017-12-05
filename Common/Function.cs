@@ -9,6 +9,20 @@ namespace SchManagerInfoSystem.Common
 {
     public class Function
     {
+        public static string DatSetToJSON2(DataSet ds,string key)
+        {
+            StringBuilder json = new StringBuilder();
+            foreach (DataTable dt in ds.Tables)
+            {
+                json.Append("\"");
+                json.Append(key);
+                json.Append("\"");
+                json.Append(":[");
+                json.Append(DataTableToJson(dt));
+                json.Append("]");
+            }
+            return json.ToString();
+        }
         /// <summary> 
         /// DataSet转换成Json格式 
         /// </summary> 

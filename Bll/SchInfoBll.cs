@@ -6,7 +6,7 @@ using SchSystem.Model;
 namespace SchSystem.Bll
 {
 	/// <summary>
-	/// SchInfo
+	/// SchInfo：学校信息BLL
 	/// </summary>
 	public partial class SchInfoBll
 	{

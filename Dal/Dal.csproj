@@ -40,8 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SchClassInfo.cs" />
-    <Compile Include="SchDepartInfo.cs" />
+    <Compile Include="SchClassInfoDal.cs" />
+    <Compile Include="SchDepartInfoDal.cs" />
     <Compile Include="SchFuncInfoDal.cs" />
     <Compile Include="SchGenInfoDal.cs" />
     <Compile Include="SchGradeInfoDal.cs" />

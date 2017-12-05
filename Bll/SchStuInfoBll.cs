@@ -62,7 +62,15 @@ namespace SchSystem.Bll
 		{
 			return dal.DeleteList(StuIdlist );
 		}
-
+        /// <summary>
+        /// 软删除记录
+        /// </summary>
+        /// <param name="ClassId"></param>
+        /// <returns></returns>
+        public bool DeleteRec(int id)
+        {
+            return dal.DeleteRec(id);
+        }
 		/// <summary>
 		/// 得到一个对象实体
 		/// </summary>

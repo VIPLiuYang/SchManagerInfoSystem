@@ -39,13 +39,20 @@ namespace SchSystem.Bll
 			return dal.Add(model);
 		}
 
-		/// <summary>
-		/// 更新一条数据
-		/// </summary>
-		public bool Update(SchSystem.Model.SchUserRole model)
-		{
-			return dal.Update(model);
-		}
+        /// <summary>
+        /// 更新一条数据
+        /// </summary>
+        public bool Update(SchSystem.Model.SchUserRole model)
+        {
+            return dal.Update(model);
+        }
+        /// <summary>
+        /// 更新一条角色的权限
+        /// </summary>
+        public bool UpdatePurview(SchSystem.Model.SchUserRole model)
+        {
+            return dal.UpdatePurview(model);
+        }
 
 		/// <summary>
 		/// 删除一条数据
@@ -169,7 +176,22 @@ namespace SchSystem.Bll
 		//{
 			//return dal.GetList(PageSize,PageIndex,strWhere);
 		//}
-
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="cols">所查询的列</param>
+        /// <param name="strWhere">所查询的条件</param>
+        /// <param name="ordercols">排序列</param>
+        /// <param name="orderby">降序或升序</param>
+        /// <param name="PageIndex">当前页数</param>
+        /// <param name="PageSize">每页条数</param>
+        /// <param name="RowCount">记录总数</param>
+        /// <param name="PageCount">总页数</param>
+        /// <returns></returns>
+        public DataSet GetListCols(string cols, string strWhere, string ordercols, string orderby, int PageIndex, int PageSize, ref int RowCount, ref int PageCount)
+        {
+            return dal.GetListCols(cols, strWhere, ordercols, orderby, PageIndex, PageSize, ref RowCount, ref PageCount);
+        }
 		#endregion  BasicMethod
 		#region  ExtensionMethod
 

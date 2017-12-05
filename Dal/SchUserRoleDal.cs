@@ -77,37 +77,28 @@ namespace SchSystem.Dal
 			}
 		}
 		/// <summary>
-		/// 更新一条数据
+        /// 更新一条数据
 		/// </summary>
 		public bool Update(SchSystem.Model.SchUserRole model)
 		{
 			StringBuilder strSql=new StringBuilder();
 			strSql.Append("update SchUserRole set ");
 			strSql.Append("RoleName=@RoleName,");
-			strSql.Append("RoleStr=@RoleStr,");
 			strSql.Append("Stat=@Stat,");
-			strSql.Append("RecTime=@RecTime,");
-			strSql.Append("RecUser=@RecUser,");
 			strSql.Append("LastRecTime=@LastRecTime,");
 			strSql.Append("LastRecUser=@LastRecUser");
 			strSql.Append(" where RoleId=@RoleId");
 			SqlParameter[] parameters = {
 					new SqlParameter("@RoleName", SqlDbType.VarChar,50),
-					new SqlParameter("@RoleStr", SqlDbType.VarChar,2000),
 					new SqlParameter("@Stat", SqlDbType.TinyInt,1),
-					new SqlParameter("@RecTime", SqlDbType.SmallDateTime),
-					new SqlParameter("@RecUser", SqlDbType.VarChar,50),
 					new SqlParameter("@LastRecTime", SqlDbType.DateTime),
 					new SqlParameter("@LastRecUser", SqlDbType.VarChar,20),
 					new SqlParameter("@RoleId", SqlDbType.Int,4)};
 			parameters[0].Value = model.RoleName;
-			parameters[1].Value = model.RoleStr;
-			parameters[2].Value = model.Stat;
-			parameters[3].Value = model.RecTime;
-			parameters[4].Value = model.RecUser;
-			parameters[5].Value = model.LastRecTime;
-			parameters[6].Value = model.LastRecUser;
-			parameters[7].Value = model.RoleId;
+			parameters[1].Value = model.Stat;
+			parameters[2].Value = model.LastRecTime;
+			parameters[3].Value = model.LastRecUser;
+			parameters[4].Value = model.RoleId;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -119,7 +110,37 @@ namespace SchSystem.Dal
 				return false;
 			}
 		}
+        /// <summary>
+        /// 更新一条角色的权限
+        /// </summary>
+        public bool UpdatePurview(SchSystem.Model.SchUserRole model)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update SchUserRole set ");
+            strSql.Append("RoleStr=@RoleStr,");
+            strSql.Append("LastRecTime=@LastRecTime,");
+            strSql.Append("LastRecUser=@LastRecUser");
+            strSql.Append(" where RoleId=@RoleId");
+            SqlParameter[] parameters = {
+					new SqlParameter("@RoleStr", SqlDbType.VarChar,2000),
+					new SqlParameter("@LastRecTime", SqlDbType.DateTime),
+					new SqlParameter("@LastRecUser", SqlDbType.VarChar,20),
+					new SqlParameter("@RoleId", SqlDbType.Int,4)};
+            parameters[0].Value = model.RoleStr;
+            parameters[1].Value = model.LastRecTime;
+            parameters[2].Value = model.LastRecUser;
+            parameters[3].Value = model.RoleId;
 
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 		/// <summary>
 		/// 删除一条数据
 		/// </summary>
@@ -317,7 +338,60 @@ namespace SchSystem.Dal
 			strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", startIndex, endIndex);
 			return DbHelperSQL.Query(strSql.ToString());
 		}
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="cols">所查询的列</param>
+        /// <param name="strWhere">所查询的条件</param>
+        /// <param name="ordercols">排序列</param>
+        /// <param name="orderby">降序或升序</param>
+        /// <param name="PageIndex">当前页数</param>
+        /// <param name="PageSize">每页条数</param>
+        /// <param name="RowCount">记录总数</param>
+        /// <param name="PageCount">总页数</param>
+        /// <returns></returns>
+        public DataSet GetListCols(string cols, string strWhere, string ordercols, string orderby, int PageIndex, int PageSize, ref int RowCount, ref int PageCount)
+        {
+            string procname = "XiaoZhengGe";
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select " + cols);
+            strSql.Append(" FROM SchUserRole  ");
+            //strSql.Append(" RIGHT JOIN SchGradeInfo sgi ON sci.GradeId = sgi.GradeId ");
+            //strSql.Append(" RIGHT JOIN SchInfo si ON sgi.SchId = si.SchId ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            if (ordercols.Trim() != "")
+                strSql.Append(" order by " + ordercols + " " + orderby);
+            //  @sqlstr nvarchar(4000), --查询字符串
+            //  @currentpage int, --第N页
+            //  @pagesize int, --每页行数
+            //  @pagecount int output ,
+            //  @rowcount int output 
+            SqlParameter[] parameters = {
+					new SqlParameter("@sqlstr", SqlDbType.NVarChar, 4000),
+					new SqlParameter("@currentpage", SqlDbType.Int),
+					new SqlParameter("@pagesize", SqlDbType.Int),
+					new SqlParameter("@pagecount", SqlDbType.Int),
+					new SqlParameter("@rowcount", SqlDbType.Int),
+					};
+            parameters[0].Value = strSql.ToString();
+            parameters[1].Value = PageIndex;
+            parameters[2].Value = PageSize;
+            parameters[3].Direction = ParameterDirection.Output;
+            parameters[4].Direction = ParameterDirection.Output;
+            string table1 = "WFListV";
+            DataSet myds1 = DbHelperSQL.RunProcedure(procname, parameters, table1);
+            DataTable dt = new DataTable();
+            dt = myds1.Tables["WFListV1"].Copy();
+            DataSet myds = new DataSet();
+            myds.Tables.Add(dt);
 
+            PageCount = (int)parameters[3].Value;
+            RowCount = (int)parameters[4].Value;
+            return myds;
+        }
 		/*
 		/// <summary>
 		/// 分页获取数据列表

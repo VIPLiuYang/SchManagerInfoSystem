@@ -98,11 +98,11 @@ namespace SchSystem.Dal
 			strSql.Append("GenName=@GenName,");
 			strSql.Append("Mobile=@Mobile,");
 			strSql.Append("Sex=@Sex,");
-			strSql.Append("ImgUrl=@ImgUrl,");
-			strSql.Append("Stat=@Stat,");
-			strSql.Append("LoginTime=@LoginTime,");
-			strSql.Append("RecTime=@RecTime,");
-			strSql.Append("RecUser=@RecUser,");
+			//strSql.Append("ImgUrl=@ImgUrl,");
+			//strSql.Append("Stat=@Stat,");
+			//strSql.Append("LoginTime=@LoginTime,");
+			//strSql.Append("RecTime=@RecTime,");
+			//strSql.Append("RecUser=@RecUser,");
 			strSql.Append("LastRecTime=@LastRecTime,");
 			strSql.Append("LastRecUser=@LastRecUser");
 			strSql.Append(" where GenId=@GenId");
@@ -112,11 +112,11 @@ namespace SchSystem.Dal
 					new SqlParameter("@GenName", SqlDbType.VarChar,20),
 					new SqlParameter("@Mobile", SqlDbType.VarChar,15),
 					new SqlParameter("@Sex", SqlDbType.TinyInt,1),
-					new SqlParameter("@ImgUrl", SqlDbType.VarChar,200),
-					new SqlParameter("@Stat", SqlDbType.TinyInt,1),
-					new SqlParameter("@LoginTime", SqlDbType.DateTime),
-					new SqlParameter("@RecTime", SqlDbType.SmallDateTime),
-					new SqlParameter("@RecUser", SqlDbType.VarChar,50),
+					//new SqlParameter("@ImgUrl", SqlDbType.VarChar,200),
+					//new SqlParameter("@Stat", SqlDbType.TinyInt,1),
+					//new SqlParameter("@LoginTime", SqlDbType.DateTime),
+					//new SqlParameter("@RecTime", SqlDbType.SmallDateTime),
+					//new SqlParameter("@RecUser", SqlDbType.VarChar,50),
 					new SqlParameter("@LastRecTime", SqlDbType.DateTime),
 					new SqlParameter("@LastRecUser", SqlDbType.VarChar,20),
 					new SqlParameter("@GenId", SqlDbType.Int,4)};
@@ -125,14 +125,14 @@ namespace SchSystem.Dal
 			parameters[2].Value = model.GenName;
 			parameters[3].Value = model.Mobile;
 			parameters[4].Value = model.Sex;
-			parameters[5].Value = model.ImgUrl;
-			parameters[6].Value = model.Stat;
-			parameters[7].Value = model.LoginTime;
-			parameters[8].Value = model.RecTime;
-			parameters[9].Value = model.RecUser;
-			parameters[10].Value = model.LastRecTime;
-			parameters[11].Value = model.LastRecUser;
-			parameters[12].Value = model.GenId;
+			//parameters[5].Value = model.ImgUrl;
+			//parameters[6].Value = model.Stat;
+			//parameters[7].Value = model.LoginTime;
+			//parameters[8].Value = model.RecTime;
+			//parameters[9].Value = model.RecUser;
+			parameters[5].Value = model.LastRecTime;
+			parameters[6].Value = model.LastRecUser;
+			parameters[7].Value = model.GenId;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -187,7 +187,31 @@ namespace SchSystem.Dal
 				return false;
 			}
 		}
+        /// <summary>
+        /// 软删除一条数据记录
+        /// </summary>
+        /// <param name="GradeID">年级编号（自动）</param>
+        /// <returns></returns>
+        public bool DeleteRec(int GradeId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update SchGenInfo set ");
+            strSql.Append("Stat=0");
+            strSql.Append(" where GenId=@id");
+            SqlParameter[] parameters = {
+					new SqlParameter("@id", SqlDbType.Int,4)};
+            parameters[0].Value = GradeId;
 
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 		/// <summary>
 		/// 得到一个对象实体
@@ -362,7 +386,58 @@ namespace SchSystem.Dal
 			strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", startIndex, endIndex);
 			return DbHelperSQL.Query(strSql.ToString());
 		}
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="cols">所查询的列</param>
+        /// <param name="strWhere">所查询的条件</param>
+        /// <param name="ordercols">排序列</param>
+        /// <param name="orderby">降序或升序</param>
+        /// <param name="PageIndex">当前页数</param>
+        /// <param name="PageSize">每页条数</param>
+        /// <param name="RowCount">记录总数</param>
+        /// <param name="PageCount">总页数</param>
+        /// <returns></returns>
+        public DataSet GetListCols(string cols, string strWhere, string ordercols, string orderby, int PageIndex, int PageSize, ref int RowCount, ref int PageCount)
+        {
+            string procname = "XiaoZhengGe";
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select " + cols);
+            strSql.Append(" FROM SchGenInfo ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            if (ordercols.Trim() != "")
+                strSql.Append(" order by " + ordercols + " " + orderby);
+            //  @sqlstr nvarchar(4000), --查询字符串
+            //  @currentpage int, --第N页
+            //  @pagesize int, --每页行数
+            //  @pagecount int output ,
+            //  @rowcount int output 
+            SqlParameter[] parameters = {
+					new SqlParameter("@sqlstr", SqlDbType.NVarChar, 4000),
+					new SqlParameter("@currentpage", SqlDbType.Int),
+					new SqlParameter("@pagesize", SqlDbType.Int),
+					new SqlParameter("@pagecount", SqlDbType.Int),
+					new SqlParameter("@rowcount", SqlDbType.Int),
+					};
+            parameters[0].Value = strSql.ToString();
+            parameters[1].Value = PageIndex;
+            parameters[2].Value = PageSize;
+            parameters[3].Direction = ParameterDirection.Output;
+            parameters[4].Direction = ParameterDirection.Output;
+            string table1 = "WFListV";
+            DataSet myds1 = DbHelperSQL.RunProcedure(procname, parameters, table1);
+            DataTable dt = new DataTable();
+            dt = myds1.Tables["WFListV1"].Copy();
+            DataSet myds = new DataSet();
+            myds.Tables.Add(dt);
 
+            PageCount = (int)parameters[3].Value;
+            RowCount = (int)parameters[4].Value;
+            return myds;
+        }
 		/*
 		/// <summary>
 		/// 分页获取数据列表

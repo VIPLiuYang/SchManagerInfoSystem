@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.SqlClient;
 using SchSystem.Model;
 using SchManagerInfoSystem.Common;
+using Common;
 
 namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
 {
@@ -57,13 +58,13 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
             #region 查询
             else if (action == "Search")
             {
-                string strWhere = "";
+                string strWhere = " Postion='教师' ";
                 string UserTname = Convert.ToString(context.Request["UserTname"]);
                 if (!string.IsNullOrEmpty(UserTname))
                 {
-                    strWhere += "a.UserTname LIKE '%" + UserTname + "%'";
+                    strWhere += " and UserTname LIKE '%" + UserTname + "%'";
                 }
-               
+
                 ////如果Session为空，停止运行
                 //if (string.IsNullOrEmpty(userid))
                 //{
@@ -74,33 +75,42 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
                 //int rows = Convert.ToInt32(HttpContext.Current.Request["rows"]);
                 ////当前页码
                 //int page = Convert.ToInt32(HttpContext.Current.Request["page"]);
-                DataTable dt = bll_userinfo.GetList(strWhere).Tables[0];
-                
-                string json = dttojson.DataTableToJson(dt);
-                if (json=="")
+                int PageSize = int.Parse(context.Request.Form["PageSize"]);//页数
+                int PageIndex = 1;//当前页面
+                if (!string.IsNullOrEmpty(context.Request.Form["PageIndex"]))
                 {
-                    context.Response.Write("22");
+                    PageIndex = int.Parse(context.Request.Form["PageIndex"]);
                 }
-                context.Response.Write(json);
+                int RowCount = 0; int PageCount = 0;
+                string sql = " * ";
+                DataSet ds = bll_userinfo.GetListCols(sql, strWhere, "", "", PageIndex, PageSize, ref RowCount, ref PageCount);
+                // SchManagerInfoSystem.Common.DttoJson dttojson = new SchManagerInfoSystem.Common.DttoJson();
+                // string json = dttojson.DataTableToJson(dt);
+                // context.Response.Write(json); 
+                Paging pa = new Paging(PageSize, RowCount, "TeacherList.aspx", PageIndex);
+                string pages = pa.GetPageing();
+                context.Response.Write(SchManagerInfoSystem.Common.Function.DatasetToJson(ds, -1, pages, PageCount, RowCount, PageIndex));//将返回的DataSet集合转换为JSON对象
+
+               
             }
             #endregion
             #region 添加
             else if (action == "Add")
             {
                 SchUserInfo Sch = new SchUserInfo();
-                Sch.UserName = "默认值";
-                Sch.PassWord = "默认值";
+                Sch.UserName = context.Request["UserName"];
+                Sch.PassWord = context.Request["PassWord"]; ;
                 Sch.UserTname = context.Request["UserTname"];
                 Sch.Mobile = context.Request["Mobile"];
                 Sch.SchId = 1;
                 Sch.OrderId = 1;
-                Sch.Stat = 1;
+                Sch.Stat = Convert.ToInt32(context.Request["Stat"]);
                 Sch.UserLv = 1;
                 Sch.Telno = "123";
                 Sch.Postion = "教师";
                 Sch.ImgUrl = "www";
-                Sch.LoginTime = Convert.ToDateTime("2010-09-12");
-                Sch.RecTime = Convert.ToDateTime("2010-09-12");
+                Sch.LoginTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
+                Sch.RecTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.ClassMs= Convert.ToString(context.Request["ClassMs"]);
                 Sch.RecUser = " sw";
                 Sch.DepartIds = Convert.ToString(context.Request["DepartIds"]);
@@ -120,24 +130,24 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
             else if (action=="Edit")
             {
                 SchUserInfo Sch = new SchUserInfo();
-                Sch.UserId = Convert.ToInt32(context.Request["UserId"]);
-                Sch.UserName = "默认值";
-                Sch.PassWord = "默认值";
+                Sch.UserId = Convert.ToInt32(context.Request["PriUserId"]);
+                Sch.UserName = context.Request["UserName"];
+                Sch.PassWord = context.Request["PassWord"]; ;
                 Sch.UserTname = context.Request["UserTname"];
                 Sch.Mobile = context.Request["Mobile"];
                 Sch.SchId = 1;
                 Sch.OrderId = 1;
-                Sch.Stat = 1;
+                Sch.Stat = Convert.ToInt32(context.Request["Stat"]);
                 Sch.UserLv = 1;
                 Sch.Telno = "123";
                 Sch.Postion = "教师";
                 Sch.ImgUrl = "www";
-                Sch.LoginTime = Convert.ToDateTime("2010-09-12");
-                Sch.RecTime = Convert.ToDateTime("2010-09-12");
-                Sch.ClassMs = Convert.ToString(context.Request["ClassMs"]);
+                Sch.LoginTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
+                Sch.RecTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
+                Sch.ClassMs = "1";// Convert.ToString(context.Request["ClassMs"]);
                 Sch.RecUser = " sw";
-                Sch.DepartIds = Convert.ToString(context.Request["DepartIds"]);
-                Sch.LastRecTime = Convert.ToDateTime("2011-02-11");
+                Sch.DepartIds = "1"; //Convert.ToString(context.Request["DepartIds"]);
+                Sch.LastRecTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.LastRecUser = "liuyang";
                 Sch.CopeId = 1;
                 Sch.RoleId = 1;

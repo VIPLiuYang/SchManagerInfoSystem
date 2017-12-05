@@ -1,6 +1,7 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DepartList.aspx.cs" Inherits="SchWeb.SchoolBaxicInfo.Department.DepartList" %> 
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="DepartList.aspx.cs" Inherits="SchWeb.SchoolBaxicInfo.Department.DepartList" %>
+
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>部门信息</title>
@@ -10,13 +11,37 @@
     <link rel="stylesheet" href="../../assets/css/ace.min.css" />
     <link rel="stylesheet" href="../../assets/css/ace-rtl.min.css" />
     <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="../../assets/css/laypage.css" />
     <script src="js/vue.js" type="text/javascript"></script>
     <script src="../../assets/js/ace-extra.min.js"></script>
     <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
-<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
-<script src="../../assets/js/Pager/extendPagination.js"></script>
-</head> 
-<body> 
+    <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>
+    <script src="../../assets/js/Pager/extendPagination.js"></script>
+    <script>
+        function getPar(par) {
+            //获取当前URL
+            var local_url = document.location.href;
+            //获取要取得的get参数位置
+            var get = local_url.indexOf(par + "=");
+            if (get == -1) {
+                return false;
+            }
+            //截取字符串
+            var get_par = local_url.slice(par.length + get + 1);
+            //判断截取后的字符串是否还有其他get参数
+            var nextPar = get_par.indexOf("&");
+            if (nextPar != -1) {
+                get_par = get_par.slice(0, nextPar);
+            }
+            return get_par;
+        }
+        var pageI = getPar("page");
+        if (pageI == "") {
+            pageI = 1;
+        }
+    </script>
+</head>
+<body>
     <div class="main-container" id="main-container">
         <div class="main-container-inner">
             <div class="main-content" style="margin-left: 0px">
@@ -24,53 +49,45 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="icon-home home-icon"></i>
-                            <a href="#">首页</a>
-                        </li> 
+                            <a href="DepartList.aspx">首页</a>
+                        </li>
                         <li>
                             <a href="#">部门信息</a>
-                        </li> 
-                    </ul> 
+                        </li>
+                    </ul>
                 </div>
-                <br />   
+                <br />
                 <div class="page-content">
-                       
                     <div class="row">
-                        <div class="col-xs-12" id="demo"> 
-                           <%-- <button class="btn btn-info" v-on:click="sel">
-                                <i class="icon-search"></i>
-                                查询
-                            </button>
-                            <button class="btn btn-info" v-on:click="add">
-                                <i class="icon-plus"></i>
-                                添加
-                            </button>
-                            <button class="btn btn-info" id="edit">
-                                <i class="icon-pencil"></i>
-                                修改
-                            </button>
-                            <button class="btn btn-info" id="del">
-                                <i class="icon-trash "></i>
-                                删除
-                            </button>
+                        <div class="col-xs-12" id="demo">
+                            &nbsp &nbsp &nbsp;&nbsp;<input type="text" id="Depname" style="width: 200px; height: 25px" placeholder="部门名称">
+                            <button type="button" class="btn-info " v-on:click="sel"><i class="icon-search"></i>查询</button>
+                            <button type="button" class="btn-info" v-on:click="add"><i class="icon-plus"></i>添加部门</button>
                             <h3 class="header smaller lighter blue"></h3>
-                                <div class="table-header">
-                                    部门信息
-                                </div>--%>
-                              &nbsp &nbsp &nbsp;&nbsp;<input type="text" id="Depname" style="width: 200px; height: 25px" placeholder="部门名称">
-                                <button type="button" class="btn-info " v-on:click="sel"><i class="icon-search"></i>查询</button>
-                                <button type="button" class="btn-info" v-on:click="add"><i class="icon-plus"></i>添加部门</button>
-                                <h3 class="header smaller lighter blue"></h3>
-                                <div class="table-header">
-                                    部门信息
-                                </div>
+                            <div class="table-header">
+                                部门信息
+                            </div>
                             <mytest v-bind:value="arraylist"></mytest>
+                            <!--数据分页--开始-->
+                            <div class="modal-footer no-margin-top">
+                                <div class="pull-left">Showing 1 to <i id="PageIndex"></i>of <i id="RowCount"></i>entries</div>
+                                <ul class="pagination pull-right no-margin" id="pages">
+                                    <li class="prev disabled">
+                                        <a href="#"><i class="icon-double-angle-left"></i></a>
+                                    </li>
+                                    <li class="active"><a href="#">1</a></li>
+                                    <li><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li class="next">
+                                        <a href="#"><i class="icon-double-angle-right"></i></a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!--数据分页--结束-->
                         </div>
-                    </div>
-
-
+                    </div> 
                     <div class="row" style="height: 450px">
-                        <div class="col-xs-12">
-
+                        <div class="col-xs-12"> 
                             <template id="table">
 									<div  >
 										<div>
@@ -111,7 +128,7 @@
 															<td>{{item.LastRecTime}}</td>
                                                             <td>{{item.LastRecUser}}</td>
                                                             <td> 
-                                                                <span v-if="item.Stat==1" style="color:	#007500">有效</span>
+                                                                <span v-if="item.Stat==0" style="color:	#007500">有效</span>
 							                                    <span v-else style="color:#EA0000" >无效</span>
 															</td>
                                                             <td>
@@ -127,9 +144,7 @@
                                                             <div class="inline position-relative">
                                                                 <button class="btn btn-minier btn-yellow dropdown-toggle" data-toggle="dropdown">
                                                                     <i class="icon-caret-down icon-only bigger-120"></i>
-                                                                </button>
-
-                                                               
+                                                                </button> 
                                                             </div>
                                                         </div>
                                                     </td>
@@ -141,259 +156,122 @@
 										</div>
 									</div>
 								</template>
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="PriModalLabel">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content"> 
-                                        <div class="modal-header">         
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>           
-                                            <h4 class="modal-title" id="PriModalLabel"></h4>
-                                        </div>
-                                        <div class="modal-body">
-                                            <div class="form-group">       
-                                                <label for="txt_departmentname">部门名称</label>         
-                                                <input type="text" name="txt_departmentname" v-model="DepartName"  class="form-control" id="txt_departmentname" placeholder="部门名称">    
-                                            </div>      
-                                            
-                                            <div class="form-group">             
-                                                <label for="txt_parentdepartment">上级部门</label>             
-                                                 <input v-model="type"  style="display:none" />
-                                                 <input v-model="DepartId"  style="display:none" />
-                                                <select class="form-control" id="select" v-model="Pid"> 
-                                                               <option id="selectDropdown" :value='item.DepartId' v-for="item in Depar">{{item.DepartName}}</option> 
-                                                            </select>  
-                                            </div>    
-                                            <div class="form-group">        
-                                                <label for="txt_departmentlevel">学校</label>
-                                               
-                                                <select class="form-control" id="select1" v-model="SchId"> 
-                                                               <option id="selectDropdown1" :value='item1.SchId' v-for="item1 in Sch">{{item1.SchName}}</option> 
-                                                            </select> 
-                                            </div>       
-                                        </div>    
-                                        <div class="modal-footer">               
-                                            <button type="button" class="btn btn-default" data-dismiss="modal"><img src="../../assets/images/删除筛选项.png" width="15px" height="15px" />关闭</button>            
-                                            <button type="button" id="btn_submit" v-on:click="save(type)"  class="btn btn-primary" data-dismiss="modal"><img src="../../assets/images/保存.png" width="15px" height="15px" /></span>保存</button>
-                                        </div>          
-                                    </div>     
-                                </div>
-                            </div>
-
-
-
                         </div>
-                        <!-- /.col -->
                     </div>
-            <!-- /.row -->
-        </div>
-        <!-- /.page-content -->
-    </div>
-    <!-- /.main-content -->
-
-    <!-- /#ace-settings-container -->
-    </div>
-        <!-- /.main-container-inner -->
-    </div>
-    <!-- /.main-container -->
-
-    <script type="text/javascript">
-        window.jQuery || document.write("<script src='../../assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
-    </script>
-    <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='../../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
-    </script>
-    <script src="../../assets/js/bootstrap.min.js"></script>
-    <script src="../../assets/js/typeahead-bs2.min.js"></script>
-    <script src="../../assets/js/jquery.dataTables.min.js"></script>
-    <script src="../../assets/js/jquery.dataTables.bootstrap.js"></script>
-    <script src="../../assets/js/ace-elements.min.js"></script>
-    <script src="../../assets/js/bootbox.min.js"></script>
-    <script src="../../assets/js/ace.min.js"></script> 
-    <%--<script src="../../assets/js/DelDialog.js" type="text/javascript"></script>--%>
-    <script type="text/javascript">
-        var PriDepList;
-        var PriSch;
-        window.onload = function () {
-
-            $.ajax({
-                type: "POST",
-                url: "ashx/Depart.ashx?action=Search",
-                dataType: "json",
-                data: "",
-                success: function (data) {
-                    dt.arraylist = data;
-                    var totalCount = dt.arraylist.length, showCount = 10, limit = 10;
-                    $('#callBackPager').extendPagination({
-                        totalCount: totalCount,
-                        showCount: showCount,
-                        limit: limit,
-                        callback: function (curr, limit, totalCount) {
-
+                </div>
+            </div>
+        </div> 
+        <script type="text/javascript">
+            window.jQuery || document.write("<script src='../../assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+        </script>
+        <script type="text/javascript">
+            if ("ontouchend" in document) document.write("<script src='../../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+        </script>
+        <script src="../../assets/js/bootstrap.min.js"></script>
+        <script src="../../assets/js/laypage.js" type="text/javascript"></script>
+        <script src="../../assets/js/typeahead-bs2.min.js"></script>
+        <script src="../../assets/js/jquery.dataTables.min.js"></script>
+        <script src="../../assets/js/jquery.dataTables.bootstrap.js"></script>
+        <script src="../../assets/js/ace-elements.min.js"></script>
+        <script src="../../assets/js/bootbox.min.js"></script>
+        <script src="../../assets/js/ace.min.js"></script>
+        <%--<script src="../../assets/js/DelDialog.js" type="text/javascript"></script>--%>
+        <script type="text/javascript">
+            var PriDepList;
+            var PriSch;
+            var startIndex = 0;
+            var endIndex = 10;
+            window.onload = function () {
+                //页面初始化获取数据
+                Getlist();
+            }
+            function Getlist() {
+                $.ajax({
+                    type: "POST",
+                    url: "ashx/Depart.ashx?action=Search",
+                    dataType: "json",
+                    data: { PageCount: 20, PageSize: 10, PageIndex: pageI },
+                    success: function (data) {
+                        dt.arraylist = data.rows;
+                        $("#pages").html(data.pages);//显示数字分页格式
+                        $("#RowCount").html(data.RowCount);//显示总条数
+                        $("#PageIndex").html(data.PageIndex);//显示当前页 
+                    }
+                });
+            }
+            Vue.component('mytest', {
+                props: ['value'],
+                template: '#table',
+                methods: {
+                    //编辑弹出并绑定数据方法
+                    edit: function (item) {
+                        var depid = item.DepartId
+                        self.location.href = "DeppartEdit.aspx?depid=" + depid;
+                    },
+                    //删除一行数据方法
+                    del: function (item) {
+                        var msg = "您真的确定要删除吗？\n\n请确认！";
+                        if (confirm(msg) == true) {
+                            $.ajax({
+                                type: "POST",
+                                url: "ashx/Depart.ashx?action=Delete",
+                                dataType: "json",
+                                data: { "DepartId": item.DepartId }, success: function (data) {
+                                    alert(data);
+                                }
+                            });
+                            for (var i = dt.arraylist.length - 1; i >= 0; i--) {
+                                if (dt.arraylist[i].DepartId == item.DepartId)
+                                    dt.arraylist.splice(i, 1);
+                            }
+                        } else {
+                            return false;
                         }
-                    });
+                    }
                 }
-            });
-
-            $.ajax({
-                type: "POST",
-                url: "ashx/Depart.ashx?action=Getdep",
-                dataType: "json",
-                data: "",
-                success: function (data) {
-                    PriDepList = data;
-                }
-            });
-            $.ajax({
-                type: "POST",
-                url: "ashx/Depart.ashx?action=GetSch",
-                dataType: "json",
-                data: "",
-                success: function (data) {
-                    PriSch = data;
-                }
-            });
-        }
-        Vue.component('mytest', {
-            props: ['value'],
-            template: '#table',
-            methods: {
-                //编辑弹出并绑定数据方法
-                edit: function (item) {
-                    list.type = "E";
-                    $("#PriModalLabel").text("编辑部门信息");
-                    $('#myModal').modal();
-                    list.DepartName = item.DepartName;
-                    //$("#PriDep option:selected").text(item.Departname);
-                    //$("#PriDep option:selected").val(item.DepartIds);
-                  //  list.Pid = item.Pid;
-                    list.SchId = item.SchId;
-                    list.Depar = PriDepList;
-                    list.DepartId = item.DepartId;
+            })
+            //显示数据列表
+            var dt = new Vue({
+                el: '#demo',
+                data: {
+                    arraylist: []
                 },
-                //删除一行数据方法
-                del: function (item) {
-                    var msg = "您真的确定要删除吗？\n\n请确认！";
-                    if (confirm(msg) == true) {
+                methods: {
+                    //查询数据
+                    sel: function () {
+                        var Depname = $("#Depname").val();
                         $.ajax({
                             type: "POST",
-                            url: "ashx/Depart.ashx?action=Delete",
+                            url: "ashx/Depart.ashx?action=Search",
                             dataType: "json",
-                            data: { "DepartId": item.DepartId }, success: function (data) {
-                                alert(data);
+                            data: { Depname: Depname, PageCount: 20, PageSize: 10, PageIndex: pageI },
+                            success: function (data) {
+                                dt.arraylist = data.rows;
+                                $("#pages").html(data.pages);//显示数字分页格式
+                                $("#RowCount").html(data.RowCount);//显示总条数
+                                $("#PageIndex").html(data.PageIndex);//显示当前页
                             }
                         });
-
-                        for (var i = dt.arraylist.length - 1; i >= 0; i--) {
-                            if (dt.arraylist[i].DepartId == item.DepartId)
-                                dt.arraylist.splice(i, 1);
+                    },
+                    //添加跳转
+                    add: function () {
+                        self.location.href = "DeppartEdit.aspx";
+                    }
+                }
+            })
+            //弹出框提示
+            function Pridialog(mc) {
+                bootbox.dialog({
+                    message: mc,
+                    buttons: {
+                        "success": {
+                            "label": "确定",
+                            "className": "btn-sm btn-primary"
                         }
-                    } else {
-                        return false;
                     }
-
-
-                }
+                });
             }
-        })
-        var list = new Vue({
-            el: '#myModal',
-            data: {
-                type: '',
-                DepartId:'',
-                DepartName: '',
-                Pid: '',
-                SchId: '',
-                Depar: [],
-                Sch:[]
-            }, methods: {
-                save: function (type) {
-                    if (type == 'A') {
-                        if (list.DepartName == "")
-                            return
-                        else if (list.Pid == "")
-                            return
-                        else if (list.SchId == "")
-                            return 
-                        $.ajax({
-                            type: "POST",
-                            url: "ashx/Depart.ashx?action=Add",
-                            dataType: "json",
-                            data: { "DepartName": list.DepartName, "Pid": list.Pid, "SchId": list.SchId },
-                            success: function (data) {  }
-                        });
-                        Pridialog("添加成功！");
-                        window.onload();
-                        list.DepartName = "";
-                        list.SchId = "";
-                        list.Pid = ""; 
-                    } else { 
-                        if (list.DepartName == "")
-                            return
-                        else if (list.Pid == "")
-                            return
-                        else if (list.SchId == "")
-                            return
-                        $.ajax({
-                            type: "POST",
-                            url: "ashx/Depart.ashx?action=Edit",
-                            dataType: "json",
-                            data: { "DepartName": list.DepartName, "Pid": list.Pid, "SchId": list.SchId,"DepartId":list.DepartId },
-                            success: function (data) { }
-                        });
-                        Pridialog("修改成功！"); 
-                        list.DepartName = "";
-                        list.SchId = "";
-                        list.Pid = "";
-                    }
-                }
-            }
-        })
-        var dt = new Vue({
-            el: '#demo',
-            data: {
-                arraylist: []
-            },
-            methods: {
-                sel: function () {
-                    var Depname = $("#Depname").val();
-                    $.ajax({
-                        type: "POST",
-                        url: "ashx/Depart.ashx?action=Search",
-                        dataType: "json",
-                        data: { "Depname": Depname },
-                        success: function (data) {
-                            dt.arraylist = data;
-                        }
-                    });
-                },
-                add: function () {
-                    list.type = "A";
-                    $("#PriModalLabel").text("添加部门信息");
-                    $('#myModal').modal();
-                    list.Depar = PriDepList;
-                    list.Sch = PriSch;
-                },
-                edit: function () {
-                    $("#PriModalLabel").text("编辑部门信息");
-                    $('#myModal').modal();
-                    alert(list.type);
-                },
-                del: function () {
-
-                }
-            }
-        })
-        function Pridialog(mc) {
-            bootbox.dialog({
-                message: mc,
-                buttons: {
-                    "success": {
-                        "label": "确定",
-                        "className": "btn-sm btn-primary"
-                    }
-                }
-            });
-        }
-    </script> 
+        </script>
 </body>
 
 </html>

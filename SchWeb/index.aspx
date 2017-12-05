@@ -377,24 +377,59 @@
                             <span class="menu-text">首页 </span>
                         </a>
                     </li>
-                    <li class="atg">
-                        <a href="index.html" target="iframe0">
-                            <i class="icon-dashboard"></i>
-                            <span class="menu-text">控制台 </span>
-                        </a>
-                    </li>
+                    <li>
+                        <a href="#" class="dropdown-toggle">
+                            <i class="icon-desktop"></i>
+                            <span class="menu-text">单位管理</span>
 
-                    <li class="atg">
-                        <a href="jsytypography.html" target="iframe0">
-                            <i class="icon-text-width"></i>
-                            <span class="menu-text">文字排版 </span>
+                            <b class="arrow icon-angle-down"></b>
                         </a>
+
+                        <ul class="submenu">
+                            <li class="atg">
+                                <a href="/SchoolBaxicInfo/Student/StudentList.aspx" target="iframe0">
+                                    <i class="icon-double-angle-right"></i>
+                                    学生信息管理
+                                </a>
+                            </li>
+                            <li class="atg">
+                                <a href="treeview.html" target="iframe0">
+                                    <i class="icon-double-angle-right"></i>
+                                    学生与家长关系
+                                </a>
+                            </li>
+                            <li class="atg">
+                                <a href="/SchoolBaxicInfo/Teacher/TeacherList.aspx" target="iframe0">
+                                    <i class="icon-double-angle-right"></i>
+                                    教师信息管理
+                                </a>
+                            </li>
+
+                            <li class="atg">
+                                <a href="/SchoolBaxicInfo/Parents/ParentsList.aspx" target="iframe0">
+                                    <i class="icon-double-angle-right"></i>
+                                    家长信息管理
+                                </a>
+                            </li>
+                            <li class="atg">
+                                <a href="/SchoolBaxicInfo/Grade/GradeList.aspx" target="iframe0">
+                                    <i class="icon-double-angle-right"></i>
+                                    年级信息管理
+                                </a>
+                            </li>
+                            <li class="atg">
+                                <a href="/SchoolBaxicInfo/Grade/Class/ClassList.aspx" target="iframe0">
+                                    <i class="icon-double-angle-right"></i>
+                                    班级信息管理
+                                </a>
+                            </li>
+                        </ul>
                     </li>
 
                     <li>
                         <a href="#" class="dropdown-toggle">
-                            <i class="icon-desktop"></i>
-                            <span class="menu-text">学校基础信息管理</span>
+                            <i class="icon-list"></i>
+                            <span class="menu-text">部门管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -403,101 +438,14 @@
                             <li class="atg">
                                 <a href="/SchoolBaxicInfo/Department/DepartList.aspx" target="iframe0">
                                     <i class="icon-double-angle-right"></i>
-                                    部门信息
+                                    部门管理
                                 </a>
                             </li>
 
                             <li class="atg">
-                                <a href="/SchoolBaxicInfo/Student/StudentList.aspx" target="iframe0">
+                                <a href="/SchoolBaxicInfo/Users/UsersList.aspx" target="iframe0">
                                     <i class="icon-double-angle-right"></i>
-                                    学生信息
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Teacher/TeacherList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    教师信息
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="jquery-ui.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    家长信息
-                                </a>
-                            </li>
-                            <!--
-                            <li class="atg">
-                                <a href="nestable-list.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    可拖拽列表
-                                </a>
-                            </li>
-                            -->
-                            <li>
-                                <a href="#" class="dropdown-toggle">
-                                    <i class="icon-double-angle-right"></i>
-                                    年级信息
-										<b class="arrow icon-angle-down"></b>
-                                </a>
-
-                                <ul class="submenu">
-                                    <li class="atg">
-                                        <a href="#">
-                                            <i class="icon-leaf"></i>
-                                            年级信息列表
-                                        </a>
-                                    </li>
-
-                                    <li>
-                                        <a href="#" class="dropdown-toggle">
-                                            <i class="icon-pencil"></i>
-                                            班级信息
-												<b class="arrow icon-angle-down"></b>
-                                        </a>
-
-                                        <ul class="submenu">
-                                            <li class="atg">
-                                                <a href="#">
-                                                    <i class="icon-plus"></i>
-                                                    添加班级
-                                                </a>
-                                            </li>
-
-                                            <li class="atg">
-                                                <a href="#">
-                                                    <i class="icon-eye-open"></i>
-                                                    查看班级
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text">表格 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li class="atg">
-                                <a href="tables.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    简单 &amp; 动态
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="jqgrid.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    jqGrid plugin
+                                    人员管理
                                 </a>
                             </li>
                         </ul>
@@ -506,72 +454,24 @@
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-edit"></i>
-                            <span class="menu-text">表单 </span>
+                            <span class="menu-text">角色管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
 
                         <ul class="submenu">
                             <li class="atg">
-                                <a href="form-elements.html" target="iframe0">
+                                <a href="/SchoolBaxicInfo/Role/RoleList.aspx" target="iframe0">
                                     <i class="icon-double-angle-right"></i>
-                                    表单组件
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="form-wizard.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    向导提示 &amp; 验证
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="wysiwyg.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    编辑器
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="dropzone.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    文件上传
+                                    角色管理
                                 </a>
                             </li>
                         </ul>
                     </li>
-
-                    <li class="atg">
-                        <a href="widgets.html" target="iframe0">
-                            <i class="icon-list-alt"></i>
-                            <span class="menu-text">插件 </span>
-                        </a>
-                    </li>
-
-                    <li class="atg">
-                        <a href="calendar.html" target="iframe0">
-                            <i class="icon-calendar"></i>
-
-                            <span class="menu-text">日历
-									<span class="badge badge-transparent tooltip-error" title="2&nbsp;Important&nbsp;Events">
-                                        <i class="icon-warning-sign red bigger-130"></i>
-                                    </span>
-                            </span>
-                        </a>
-                    </li>
-
-                    <li class="atg">
-                        <a href="gallery.html" target="iframe0">
-                            <i class="icon-picture"></i>
-                            <span class="menu-text">相册 </span>
-                        </a>
-                    </li>
-
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-tag"></i>
-                            <span class="menu-text">更多页面 </span>
+                            <span class="menu-text">科目管理 </span>
 
                             <b class="arrow icon-angle-down"></b>
                         </a>
@@ -580,52 +480,17 @@
                             <li class="atg">
                                 <a href="profile.html" target="iframe0">
                                     <i class="icon-double-angle-right"></i>
-                                    用户信息
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="inbox.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    收件箱
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="pricing.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    售价单
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="invoice.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    购物车
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="timeline.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    时间轴
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="login.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    登录 &amp; 注册
+                                    科目管理
                                 </a>
                             </li>
                         </ul>
                     </li>
-
+                    <!--
                     <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-file-alt"></i>
 
-                            <span class="menu-text">其他页面
+                            <span class="menu-text">系统帮助
 									<span class="badge badge-primary ">5</span>
                             </span>
 
@@ -668,7 +533,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li>-->
                 </ul>
                 <!-- /.nav-list -->
 

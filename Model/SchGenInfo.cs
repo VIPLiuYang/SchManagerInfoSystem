@@ -2,7 +2,7 @@
 namespace SchSystem.Model
 {
 	/// <summary>
-    /// SchGenInfo:实体类(学生表)
+    /// SchGenInfo:实体类(家长信息表)
 	/// </summary>
 	[Serializable]
 	public partial class SchGenInfo
@@ -24,7 +24,7 @@ namespace SchSystem.Model
 		private DateTime _lastrectime;
 		private string _lastrecuser;
 		/// <summary>
-		/// 学生表
+		/// 家长信息表
 		/// </summary>
 		public int GenId
 		{
@@ -48,7 +48,7 @@ namespace SchSystem.Model
 			get{return _pwd;}
 		}
 		/// <summary>
-		/// 学生姓名
+		/// 家长姓名
 		/// </summary>
 		public string GenName
 		{

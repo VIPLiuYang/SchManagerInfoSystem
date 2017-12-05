@@ -86,6 +86,7 @@
     <Content Include="assets\css\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="assets\css\jquery-ui-1.10.3.full.min.css" />
     <Content Include="assets\css\jquery.gritter.css" />
+    <Content Include="assets\css\laypage.css" />
     <Content Include="assets\css\select2.css" />
     <Content Include="assets\css\ui.jqgrid.css" />
     <Content Include="assets\images\gallery\image-1.jpg" />
@@ -143,34 +144,56 @@
     <Content Include="assets\js\jquery.inputlimiter.1.3.1.min.js" />
     <Content Include="assets\js\jquery.knob.min.js" />
     <Content Include="assets\js\jquery.maskedinput.min.js" />
+    <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\jquery.mobile.custom.min.js" />
     <Content Include="assets\js\jquery.nestable.min.js" />
     <Content Include="assets\js\jquery.slimscroll.min.js" />
     <Content Include="assets\js\jquery.sparkline.min.js" />
     <Content Include="assets\js\jquery.ui.touch-punch.min.js" />
     <Content Include="assets\js\jquery.validate.min.js" />
+    <Content Include="assets\js\laypage.js" />
     <Content Include="assets\js\markdown\bootstrap-markdown.min.js" />
     <Content Include="assets\js\markdown\markdown.min.js" />
-    <Content Include="assets\js\Pager\bootstrap.js" />
-    <Content Include="assets\js\Pager\extendPagination.js" />
-    <Content Include="assets\js\Pager\jquery-1.11.1.min.js" />
     <Content Include="assets\js\respond.min.js" />
     <Content Include="assets\js\select2.min.js" />
     <Content Include="assets\js\typeahead-bs2.min.js" />
+    <Content Include="assets\js\uploadify\cancel.png" />
+    <Content Include="assets\js\uploadify\expressInstall.swf" />
+    <Content Include="assets\js\uploadify\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="assets\js\uploadify\jquery.uploadify.v2.1.4.min.js" />
+    <Content Include="assets\js\uploadify\swfobject.js" />
+    <Content Include="assets\js\uploadify\upload.gif" />
+    <Content Include="assets\js\uploadify\uploadify.allglyphs.swf" />
+    <Content Include="assets\js\uploadify\uploadify.css" />
+    <Content Include="assets\js\uploadify\uploadify.swf" />
     <Content Include="assets\js\x-editable\ace-editable.min.js" />
     <Content Include="assets\js\x-editable\bootstrap-editable.min.js" />
     <Content Include="index.aspx" />
     <Content Include="SchoolBaxicInfo\Department\DepartList.aspx" />
+    <Content Include="SchoolBaxicInfo\Department\DeppartEdit.aspx" />
     <Content Include="SchoolBaxicInfo\Department\js\jquery.min.js" />
     <Content Include="SchoolBaxicInfo\Department\js\Pager.js" />
     <Content Include="SchoolBaxicInfo\Department\js\vue.js" />
+    <Content Include="SchoolBaxicInfo\Grade\Class\ClassEdit.aspx" />
+    <Content Include="SchoolBaxicInfo\Grade\Class\ClassList.aspx" />
+    <Content Include="SchoolBaxicInfo\Grade\GradeEdit.aspx" />
+    <Content Include="SchoolBaxicInfo\Grade\GradeList.aspx" />
+    <Content Include="SchoolBaxicInfo\Parents\ParentsEdit.aspx" />
+    <Content Include="SchoolBaxicInfo\Parents\ParentsList.aspx" />
     <Content Include="SchoolBaxicInfo\School\SchType.aspx" />
     <Content Include="SchoolBaxicInfo\School\SchTypeAdd.aspx" />
     <Content Include="SchoolBaxicInfo\Student\StudentEdit.aspx" />
     <Content Include="SchoolBaxicInfo\Student\StudentList.aspx" />
     <Content Include="SchoolBaxicInfo\Teacher\js\jquery.min.js" />
+    <Content Include="SchoolBaxicInfo\Teacher\js\uploadify.js" />
     <Content Include="SchoolBaxicInfo\Teacher\js\vue.js" />
+    <Content Include="SchoolBaxicInfo\Teacher\TeacherEdit.aspx" />
     <Content Include="SchoolBaxicInfo\Teacher\TeacherList.aspx" />
+    <Content Include="SchoolBaxicInfo\Users\js\jquery.min.js" />
+    <Content Include="SchoolBaxicInfo\Users\js\uploadify.js" />
+    <Content Include="SchoolBaxicInfo\Users\js\vue.js" />
+    <Content Include="SchoolBaxicInfo\Users\UsersEdit.aspx" />
+    <Content Include="SchoolBaxicInfo\Users\UsersList.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -193,6 +216,64 @@
     </Compile>
     <Compile Include="SchoolBaxicInfo\Department\DepartList.aspx.designer.cs">
       <DependentUpon>DepartList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Department\DeppartEdit.aspx.cs">
+      <DependentUpon>DeppartEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Department\DeppartEdit.aspx.designer.cs">
+      <DependentUpon>DeppartEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\ashx\Grade.ashx.cs">
+      <DependentUpon>Grade.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\Class\ashx\Class.ashx.cs">
+      <DependentUpon>Class.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassEdit.aspx.cs">
+      <DependentUpon>ClassEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassEdit.aspx.designer.cs">
+      <DependentUpon>ClassEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassList.aspx.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassList.aspx.designer.cs">
+      <DependentUpon>ClassList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\GradeEdit.aspx.cs">
+      <DependentUpon>GradeEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\GradeEdit.aspx.designer.cs">
+      <DependentUpon>GradeEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\GradeList.aspx.cs">
+      <DependentUpon>GradeList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Grade\GradeList.aspx.designer.cs">
+      <DependentUpon>GradeList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Parents\ashx\Parents.ashx.cs">
+      <DependentUpon>Parents.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Parents\ParentsEdit.aspx.cs">
+      <DependentUpon>ParentsEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Parents\ParentsEdit.aspx.designer.cs">
+      <DependentUpon>ParentsEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Parents\ParentsList.aspx.cs">
+      <DependentUpon>ParentsList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Parents\ParentsList.aspx.designer.cs">
+      <DependentUpon>ParentsList.aspx</DependentUpon>
     </Compile>
     <Compile Include="SchoolBaxicInfo\School\ashx\SchType.ashx.cs">
       <DependentUpon>SchType.ashx</DependentUpon>
@@ -231,6 +312,16 @@
     <Compile Include="SchoolBaxicInfo\Teacher\ashx\Teacher.ashx.cs">
       <DependentUpon>Teacher.ashx</DependentUpon>
     </Compile>
+    <Compile Include="SchoolBaxicInfo\Teacher\ashx\UploadFile.ashx.cs">
+      <DependentUpon>UploadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Teacher\TeacherEdit.aspx.cs">
+      <DependentUpon>TeacherEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Teacher\TeacherEdit.aspx.designer.cs">
+      <DependentUpon>TeacherEdit.aspx</DependentUpon>
+    </Compile>
     <Compile Include="SchoolBaxicInfo\Teacher\TeacherList.aspx.cs">
       <DependentUpon>TeacherList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -238,13 +329,36 @@
     <Compile Include="SchoolBaxicInfo\Teacher\TeacherList.aspx.designer.cs">
       <DependentUpon>TeacherList.aspx</DependentUpon>
     </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\ashx\Users.ashx.cs">
+      <DependentUpon>Users.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\UsersEdit.aspx.cs">
+      <DependentUpon>UsersEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\UsersEdit.aspx.designer.cs">
+      <DependentUpon>UsersEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\UsersList.aspx.cs">
+      <DependentUpon>UsersList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\UsersList.aspx.designer.cs">
+      <DependentUpon>UsersList.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\font\fontawesome-webfont.woff" />
     <Content Include="SchoolBaxicInfo\School\ashx\SchType.ashx" />
     <Content Include="SchoolBaxicInfo\Student\ashx\Student.ashx" />
+    <Content Include="SchoolBaxicInfo\Parents\ashx\Parents.ashx" />
+    <Content Include="SchoolBaxicInfo\Grade\ashx\Grade.ashx" />
+    <Content Include="SchoolBaxicInfo\Grade\Class\ashx\Class.ashx" />
     <Content Include="SchoolBaxicInfo\Department\ashx\Depart.ashx" />
     <Content Include="SchoolBaxicInfo\Teacher\ashx\Teacher.ashx" />
+    <Content Include="assets\js\uploadify\uploadify.fla" />
+    <Content Include="SchoolBaxicInfo\Teacher\ashx\UploadFile.ashx" />
+    <Content Include="SchoolBaxicInfo\Users\ashx\Users.ashx" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -268,13 +382,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="SchoolBaxicInfo\Grade\Class\" />
-    <Folder Include="SchoolBaxicInfo\Parents\" />
     <Folder Include="SchoolBaxicInfo\School\css\" />
     <Folder Include="SchoolBaxicInfo\School\images\" />
     <Folder Include="SchoolBaxicInfo\School\js\" />
     <Folder Include="SchoolBaxicInfo\Student\css\" />
     <Folder Include="SchoolBaxicInfo\Student\images\" />
+    <Folder Include="UploadFileDir\Teacher\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -287,9 +400,9 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>27461</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:3886/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

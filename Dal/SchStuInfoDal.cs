@@ -3,7 +3,7 @@ using System.Data;
 using System.Text;
 using System.Data.SqlClient;
 using SchManagerInfoSystem.Common;
-using SchManagerInfoSystem;
+using Common;
 namespace SchSystem.Dal
 {
 	/// <summary>
@@ -115,10 +115,10 @@ namespace SchSystem.Dal
 			strSql.Append("Birth=@Birth,");
 			strSql.Append("ImgUrl=@ImgUrl,");
 			strSql.Append("StudyType=@StudyType,");
-			strSql.Append("Stat=@Stat,");
-			strSql.Append("LoginTime=@LoginTime,");
-			strSql.Append("RecTime=@RecTime,");
-			strSql.Append("RecUser=@RecUser,");
+			//strSql.Append("Stat=@Stat,");
+			//strSql.Append("LoginTime=@LoginTime,");
+			//strSql.Append("RecTime=@RecTime,");
+			//strSql.Append("RecUser=@RecUser,");
 			strSql.Append("LastRecTime=@LastRecTime,");
 			strSql.Append("LastRecUser=@LastRecUser");
 			strSql.Append(" where StuId=@StuId");
@@ -134,10 +134,10 @@ namespace SchSystem.Dal
 					new SqlParameter("@Birth", SqlDbType.DateTime),
 					new SqlParameter("@ImgUrl", SqlDbType.VarChar,200),
 					new SqlParameter("@StudyType", SqlDbType.TinyInt,1),
-					new SqlParameter("@Stat", SqlDbType.TinyInt,1),
-					new SqlParameter("@LoginTime", SqlDbType.DateTime),
-					new SqlParameter("@RecTime", SqlDbType.SmallDateTime),
-					new SqlParameter("@RecUser", SqlDbType.VarChar,50),
+					//new SqlParameter("@Stat", SqlDbType.TinyInt,1),
+					//new SqlParameter("@LoginTime", SqlDbType.DateTime),
+					//new SqlParameter("@RecTime", SqlDbType.SmallDateTime),
+					//new SqlParameter("@RecUser", SqlDbType.VarChar,50),
 					new SqlParameter("@LastRecTime", SqlDbType.DateTime),
 					new SqlParameter("@LastRecUser", SqlDbType.VarChar,20),
 					new SqlParameter("@StuId", SqlDbType.Int,4)};
@@ -152,13 +152,13 @@ namespace SchSystem.Dal
 			parameters[8].Value = model.Birth;
 			parameters[9].Value = model.ImgUrl;
 			parameters[10].Value = model.StudyType;
-			parameters[11].Value = model.Stat;
-			parameters[12].Value = model.LoginTime;
-			parameters[13].Value = model.RecTime;
-			parameters[14].Value = model.RecUser;
-			parameters[15].Value = model.LastRecTime;
-			parameters[16].Value = model.LastRecUser;
-			parameters[17].Value = model.StuId;
+			//parameters[11].Value = model.Stat;
+			//parameters[12].Value = model.LoginTime;
+			//parameters[13].Value = model.RecTime;
+			//parameters[14].Value = model.RecUser;
+			parameters[11].Value = model.LastRecTime;
+			parameters[12].Value = model.LastRecUser;
+			parameters[13].Value = model.StuId;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -213,7 +213,31 @@ namespace SchSystem.Dal
 				return false;
 			}
 		}
+        /// <summary>
+        /// 软删除一条数据记录
+        /// </summary>
+        /// <param name="GradeID">年级编号（自动）</param>
+        /// <returns></returns>
+        public bool DeleteRec(int id)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update SchStuInfo set ");
+            strSql.Append("Stat=0");
+            strSql.Append(" where StuId=@id");
+            SqlParameter[] parameters = {
+					new SqlParameter("@id", SqlDbType.Int,4)};
+            parameters[0].Value = id;
 
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 		/// <summary>
 		/// 得到一个对象实体

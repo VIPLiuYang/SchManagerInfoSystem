@@ -358,9 +358,8 @@ namespace SchSystem.Dal
 		public DataSet GetList(string strWhere)
 		{
 			StringBuilder strSql=new StringBuilder();
-			strSql.Append(" select a.UserId,a.UserName,a.UserTname,a.PassWord,a.SchId,a.OrderId,a.Stat,a.DepartIds,b.Departname,a.UserLv,a.Mobile,a.Telno,a.Postion, ");
-            strSql.Append(" a.ImgUrl,a.LoginTime,a.ClassMs,a.RecTime,a.RecUser,a.LastRecTime,a.LastRecUser,a.CopeId,a.RoleId FROM SchUserInfo as a ");
-            strSql.Append(" left join SchDepartInfo as b on a.DepartIds=b.DepartId	 ");
+			strSql.Append("select UserId,UserName,UserTname,PassWord,SchId,OrderId,Stat,DepartIds,UserLv,Mobile,Telno,Postion,ImgUrl,LoginTime,ClassMs,RecTime,RecUser,LastRecTime,LastRecUser,CopeId,RoleId ");
+			strSql.Append(" FROM SchUserInfo ");
 			if(strWhere.Trim()!="")
 			{
 				strSql.Append(" where "+strWhere);
@@ -436,7 +435,67 @@ namespace SchSystem.Dal
 			return DbHelperSQL.Query(strSql.ToString());
 		}
 
-		/*
+
+
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="cols">所查询的列</param>
+        /// <param name="strWhere">所查询的条件</param>
+        /// <param name="ordercols">排序列</param>
+        /// <param name="orderby">降序或升序</param>
+        /// <param name="PageIndex">当前页数</param>
+        /// <param name="PageSize">每页条数</param>
+        /// <param name="RowCount">记录总数</param>
+        /// <param name="PageCount">总页数</param>
+        /// <returns></returns>
+        public DataSet GetListCols(string cols, string strWhere, string ordercols, string orderby, int PageIndex, int PageSize, ref int RowCount, ref int PageCount)
+        {
+            string procname = "XiaoZhengGe";
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select " + cols);
+            strSql.Append(" FROM SchUserInfo  ");
+            //strSql.Append(" left join SchInfo as b on a.SchId=b.SchId	 ");
+            //strSql.Append(" left join SchDepartInfo as c on c.Pid=a.DepartId	 ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            if (ordercols.Trim() != "")
+                strSql.Append(" order by " + ordercols + " " + orderby);
+            //  @sqlstr nvarchar(4000), --查询字符串
+            //  @currentpage int, --第N页
+            //  @pagesize int, --每页行数
+            //  @pagecount int output ,
+            //  @rowcount int output 
+            SqlParameter[] parameters = {
+                    new SqlParameter("@sqlstr", SqlDbType.NVarChar, 4000),
+                    new SqlParameter("@currentpage", SqlDbType.Int),
+                    new SqlParameter("@pagesize", SqlDbType.Int),
+                    new SqlParameter("@pagecount", SqlDbType.Int),
+                    new SqlParameter("@rowcount", SqlDbType.Int),
+                    };
+            parameters[0].Value = strSql.ToString();
+            parameters[1].Value = PageIndex;
+            parameters[2].Value = PageSize;
+            parameters[3].Direction = ParameterDirection.Output;
+            parameters[4].Direction = ParameterDirection.Output;
+            string table1 = "WFListV";
+            DataSet myds1 = DbHelperSQL.RunProcedure(procname, parameters, table1);
+            DataTable dt = new DataTable();
+            dt = myds1.Tables["WFListV1"].Copy();
+            DataSet myds = new DataSet();
+            myds.Tables.Add(dt);
+
+            PageCount = (int)parameters[3].Value;
+            RowCount = (int)parameters[4].Value;
+            return myds;
+        }
+
+
+
+
+        /*
 		/// <summary>
 		/// 分页获取数据列表
 		/// </summary>
@@ -461,10 +520,10 @@ namespace SchSystem.Dal
 			return DbHelperSQL.RunProcedure("UP_GetRecordByPage",parameters,"ds");
 		}*/
 
-		#endregion  BasicMethod
-		#region  ExtensionMethod
+        #endregion  BasicMethod
+        #region  ExtensionMethod
 
-		#endregion  ExtensionMethod
-	}
+        #endregion  ExtensionMethod
+    }
 }
 

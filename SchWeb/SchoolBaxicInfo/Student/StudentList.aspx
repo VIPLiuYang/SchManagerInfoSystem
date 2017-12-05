@@ -115,7 +115,7 @@
 								
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">学生基本数据</h3>
+										<h3 class="header smaller lighter blue">学生基本数据&nbsp;&nbsp;<div id="add" class="btn btn-minier btn-yellow">添加</div></h3>
 										<div class="table-header">
 											学生基本信息管理
 										</div>
@@ -144,7 +144,7 @@
                                                             url: "ashx/Student.ashx",
                                                             type: "POST",//或GET
                                                             async: true,//或false,是否异步
-                                                            data: { Action: "List", PageCount: 20,PageSize:1, PageIndex: pageI },
+                                                            data: { Action: "List", PageSize:5, PageIndex: pageI },
                                                             dataType: "json",//返回的数据格式：json/xml/html/script/jsonp/text
                                                             timeout: 5000,    //超时时间
                                                             success: function (data, textStatus) {
@@ -167,11 +167,11 @@
                                                                     text += "	        <a class=\"blue\" href=\"#\">";
                                                                     text += "		        <i class=\"icon-zoom-in bigger-130\"></i>";
                                                                     text += "	        </a>";
-                                                                    text += "	        <a class=\"green\ href=\"#\" style=\"cursor:pointer;\">";
+                                                                    text += "	        <a class=\"green\" href=\"StudentEdit.aspx?id=" + content.StuId + "\">";
                                                                     text += "		        <i class=\"icon-pencil bigger-130\"></i>";
                                                                     text += "	        </a>";
                                                                     text += "	        <a class=\"red\" href=\"#\">";
-                                                                    text += "		        <i class=\"icon-trash bigger-130\"></i>";
+                                                                    text += "		        <i class=\"icon-trash bigger-130\" onclick=\"StudentDelete(" + content.StuId + ")\"></i>";
                                                                     text += "	        </a>";
                                                                     text += "       </div>";
                                                                     text += "   </td>";
@@ -230,13 +230,7 @@
     <!-- inline scripts related to this page -->
     <script type="text/javascript">
 		    jQuery(function ($) {
-		        var oTable1 = $('#sample-table-2').dataTable({
-		            "aoColumns": [
-                      { "bSortable": false },
-                      null, null, null, null, null,
-                      { "bSortable": false }
-		            ]
-		        });
+		        
                 //数据列表顶部复选框控制师傅全选或反选
 		        $('table th input:checkbox').on('click', function () {
 		            var that = this;
@@ -247,22 +241,37 @@
 					});
 
 		        });
-                /*
-		        $('[data-rel="tooltip"]').tooltip({ placement: tooltip_placement });
-		        function tooltip_placement(context, source) {
-		            var $source = $(source);
-		            var $parent = $source.closest('table')
-		            var off1 = $parent.offset();
-		            var w1 = $parent.width();
-
-		            var off2 = $source.offset();
-		            var w2 = $source.width();
-
-		            if (parseInt(off2.left) < parseInt(off1.left) + parseInt(w1 / 2)) return 'right';
-		            return 'left';
-		        }
-		        */
+		        //进入添加页面
+		        $("#add").click(function () {
+		            self.location.href = "StudentEdit.aspx";
+		        })
 		    })
     </script>
 </body>
 </html>
+<script type="text/javascript">
+    //软删除数据
+    function StudentDelete(id) {
+        if (confirm("确定删除该学生信息吗?")) {
+            $.ajax({
+                url: "ashx/Student.ashx",
+                type: "POST",//或GET
+                async: true,//或false,是否异步
+                data: { Action: "Delete", StudentId: id },
+                dataType: "text",//返回的数据格式：json/xml/html/script/jsonp/text
+                //timeout: 5000,    //超时时间
+                contentType: "application/x-www-form-urlencoded; charset=utf-8",
+                success: function (data, textStatus) {
+                    if (data == "True") {
+                        alert("删除成功啦");
+                        self.location = "/SchoolBaxicInfo/Student/StudentList.aspx";
+                    } else {
+                        alert("删除失败了");
+                    }
+                }
+            });
+        } else {
+            alert("取消删除");
+        }
+    }
+</script>

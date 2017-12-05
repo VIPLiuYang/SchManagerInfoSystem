@@ -90,10 +90,10 @@ namespace SchSystem.Dal
 			strSql.Append("GradeYear=@GradeYear,");
 			strSql.Append("GradeCode=@GradeCode,");
 			strSql.Append("GradeName=@GradeName,");
-			strSql.Append("SchId=@SchId,");
-			strSql.Append("IsFinish=@IsFinish,");
-			strSql.Append("RecTime=@RecTime,");
-			strSql.Append("RecUser=@RecUser,");
+			//strSql.Append("SchId=@SchId,");
+			//strSql.Append("IsFinish=@IsFinish,");
+			//strSql.Append("RecTime=@RecTime,");
+			//strSql.Append("RecUser=@RecUser,");
 			strSql.Append("LastRecTime=@LastRecTime,");
 			strSql.Append("LastRecUser=@LastRecUser");
 			strSql.Append(" where GradeId=@GradeId");
@@ -101,23 +101,23 @@ namespace SchSystem.Dal
 					new SqlParameter("@GradeYear", SqlDbType.VarChar,4),
 					new SqlParameter("@GradeCode", SqlDbType.VarChar,2),
 					new SqlParameter("@GradeName", SqlDbType.VarChar,40),
-					new SqlParameter("@SchId", SqlDbType.Int,4),
-					new SqlParameter("@IsFinish", SqlDbType.TinyInt,1),
-					new SqlParameter("@RecTime", SqlDbType.DateTime),
-					new SqlParameter("@RecUser", SqlDbType.VarChar,20),
+					//new SqlParameter("@SchId", SqlDbType.Int,4),
+					//new SqlParameter("@IsFinish", SqlDbType.TinyInt,1),
+					//new SqlParameter("@RecTime", SqlDbType.DateTime),
+					//new SqlParameter("@RecUser", SqlDbType.VarChar,20),
 					new SqlParameter("@LastRecTime", SqlDbType.DateTime),
 					new SqlParameter("@LastRecUser", SqlDbType.VarChar,20),
 					new SqlParameter("@GradeId", SqlDbType.Int,4)};
 			parameters[0].Value = model.GradeYear;
 			parameters[1].Value = model.GradeCode;
 			parameters[2].Value = model.GradeName;
-			parameters[3].Value = model.SchId;
-			parameters[4].Value = model.IsFinish;
-			parameters[5].Value = model.RecTime;
-			parameters[6].Value = model.RecUser;
-			parameters[7].Value = model.LastRecTime;
-			parameters[8].Value = model.LastRecUser;
-			parameters[9].Value = model.GradeId;
+			//parameters[3].Value = model.SchId;
+			//parameters[4].Value = model.IsFinish;
+			//parameters[5].Value = model.RecTime;
+			//parameters[6].Value = model.RecUser;
+			parameters[3].Value = model.LastRecTime;
+			parameters[4].Value = model.LastRecUser;
+			parameters[5].Value = model.GradeId;
 
 			int rows=DbHelperSQL.ExecuteSql(strSql.ToString(),parameters);
 			if (rows > 0)
@@ -154,6 +154,31 @@ namespace SchSystem.Dal
 				return false;
 			}
 		}
+        /// <summary>
+        /// 软删除一条数据记录
+        /// </summary>
+        /// <param name="GradeID">年级编号（自动）</param>
+        /// <returns></returns>
+        public bool DeleteRec(int GradeId)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("update SchGradeInfo set ");
+            strSql.Append("IsFinish=0");
+            strSql.Append(" where GradeId=@GradeID");
+            SqlParameter[] parameters = {
+					new SqlParameter("@GradeID", SqlDbType.Int,4)};
+            parameters[0].Value = GradeId;
+
+            int rows = DbHelperSQL.ExecuteSql(strSql.ToString(), parameters);
+            if (rows > 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
 		/// <summary>
 		/// 批量删除数据
 		/// </summary>
@@ -252,7 +277,22 @@ namespace SchSystem.Dal
 			}
 			return model;
 		}
-
+        public DataSet GetList(string cols, string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select  ");
+            if (cols.Trim() != "")
+            {
+                strSql.Append(cols);
+            }
+            strSql.Append(" FROM SchGradeInfo sgi ");
+            strSql.Append(" RIGHT JOIN SchInfo si ON sgi.SchId = si.SchId ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            return DbHelperSQL.Query(strSql.ToString());
+        }
 		/// <summary>
 		/// 获得数据列表
 		/// </summary>
@@ -335,7 +375,59 @@ namespace SchSystem.Dal
 			strSql.AppendFormat(" WHERE TT.Row between {0} and {1}", startIndex, endIndex);
 			return DbHelperSQL.Query(strSql.ToString());
 		}
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="cols">所查询的列</param>
+        /// <param name="strWhere">所查询的条件</param>
+        /// <param name="ordercols">排序列</param>
+        /// <param name="orderby">降序或升序</param>
+        /// <param name="PageIndex">当前页数</param>
+        /// <param name="PageSize">每页条数</param>
+        /// <param name="RowCount">记录总数</param>
+        /// <param name="PageCount">总页数</param>
+        /// <returns></returns>
+        public DataSet GetListCols(string cols, string strWhere, string ordercols, string orderby, int PageIndex, int PageSize, ref int RowCount, ref int PageCount)
+        {
+            string procname = "XiaoZhengGe";
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select " + cols);
+            strSql.Append(" FROM SchGradeInfo sgi ");
+            strSql.Append(" INNER join SchInfo si ON sgi.SchId=si.SchId ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            if (ordercols.Trim() != "")
+                strSql.Append(" order by " + ordercols + " " + orderby);
+            //  @sqlstr nvarchar(4000), --查询字符串
+            //  @currentpage int, --第N页
+            //  @pagesize int, --每页行数
+            //  @pagecount int output ,
+            //  @rowcount int output 
+            SqlParameter[] parameters = {
+					new SqlParameter("@sqlstr", SqlDbType.NVarChar, 4000),
+					new SqlParameter("@currentpage", SqlDbType.Int),
+					new SqlParameter("@pagesize", SqlDbType.Int),
+					new SqlParameter("@pagecount", SqlDbType.Int),
+					new SqlParameter("@rowcount", SqlDbType.Int),
+					};
+            parameters[0].Value = strSql.ToString();
+            parameters[1].Value = PageIndex;
+            parameters[2].Value = PageSize;
+            parameters[3].Direction = ParameterDirection.Output;
+            parameters[4].Direction = ParameterDirection.Output;
+            string table1 = "WFListV";
+            DataSet myds1 = DbHelperSQL.RunProcedure(procname, parameters, table1);
+            DataTable dt = new DataTable();
+            dt = myds1.Tables["WFListV1"].Copy();
+            DataSet myds = new DataSet();
+            myds.Tables.Add(dt);
 
+            PageCount = (int)parameters[3].Value;
+            RowCount = (int)parameters[4].Value;
+            return myds;
+        }
 		/*
 		/// <summary>
 		/// 分页获取数据列表
