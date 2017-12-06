@@ -54,7 +54,7 @@ namespace SchWeb.SchoolBaxicInfo.Role.ashx
                 SchUserRole sgi = new SchUserRole();
                 sgi.RoleName = context.Request.Form["RoleName"];
                 sgi.Stat = int.Parse(context.Request.Form["Stat"]);
-                sgi.RoleStr = context.Request.Form["RoleStr"];
+                //sgi.RoleStr = context.Request.Form["RoleStr"];
                 sgi.RecTime = DateTime.Now;
                 sgi.RecUser = "admin";
                 sgi.LastRecTime = DateTime.Now;
@@ -76,13 +76,20 @@ namespace SchWeb.SchoolBaxicInfo.Role.ashx
                 sgi.RoleId = int.Parse(context.Request.Form["sId"]);
                 sgi.RoleName = context.Request.Form["RoleName"];
                 sgi.Stat = int.Parse(context.Request.Form["Stat"]);
-                sgi.RoleStr = context.Request.Form["RoleStr"];
-                sgi.RecTime = DateTime.Now;
-                sgi.RecUser = "admin";
                 sgi.LastRecTime = DateTime.Now;
                 sgi.LastRecUser = "admin";
                 SchUserRoleBll ssiBll = new SchUserRoleBll();
                 context.Response.Write(ssiBll.Update(sgi));
+            }
+            else if (Action == "EditSavePurview")
+            {
+                SchUserRole sgi = new SchUserRole();
+                sgi.RoleId = int.Parse(context.Request.Form["sId"]);
+                sgi.RoleStr = context.Request.Form["RoleStr"];
+                sgi.LastRecTime = DateTime.Now;
+                sgi.LastRecUser = "admin";
+                SchUserRoleBll ssiBll = new SchUserRoleBll();
+                context.Response.Write(ssiBll.UpdatePurview(sgi));
             }
             else if (Action == "Delete")
             {

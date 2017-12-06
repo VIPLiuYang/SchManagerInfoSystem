@@ -38,6 +38,18 @@ namespace SchWeb.SchoolBaxicInfo.Parents.ashx
                 string pages = pa.GetPageing();
                 context.Response.Write(SchManagerInfoSystem.Common.Function.DatasetToJson(ds, -1, pages, PageCount, RowCount, PageIndex));//将返回的DataSet集合转换为JSON对象
             }
+            else if (Action == "null")//当没有参数时，即为添加操作
+            {
+                string StuId = context.Request.Form["StuId"];
+                SchStuInfoBll ssiBll = new SchStuInfoBll();
+                DataSet StuDs = ssiBll.GetList("Stat=1 and StuId=" + StuId);
+                string SchStuInfo = SchManagerInfoSystem.Common.Function.DatSetToJSON2(StuDs, "SchStuInfo");
+                StringBuilder json = new StringBuilder();
+                json.Append("{");
+                json.Append(SchStuInfo);
+                json.Append("}");
+                context.Response.Write(json);
+            }
             else if (Action == "Add")//保存添加操作时执行此方法
             {
                 SchGenInfo sgi = new SchGenInfo();
@@ -53,13 +65,22 @@ namespace SchWeb.SchoolBaxicInfo.Parents.ashx
                 sgi.LastRecUser = "admin";
                 SchGenInfoBll ssiBll = new SchGenInfoBll();
                 int resultid = ssiBll.Add(sgi);
-                context.Response.Write(resultid);
+                int resId = 0;
+                if (resultid > 0)
+                {
+                    SchStuGenUn ssgu = new SchStuGenUn();
+                    ssgu.StuId = int.Parse(context.Request.Form["StuId"]);
+                    ssgu.GenId = resultid;
+                    SchStuGenUnBll ssguBll = new SchStuGenUnBll();
+                    resId = ssguBll.Add(ssgu);
+                }
+                context.Response.Write(resId);
             }
             else if (Action == "Edit")//编辑方法
             {
                 int GenId = int.Parse(context.Request.Form["GenId"]);
                 SchGenInfoBll sciBll = new SchGenInfoBll();
-                DataSet ds = sciBll.GetList("Stat=1 and GenId="+GenId);
+                DataSet ds = sciBll.GetOnce("ssi.StuName,spi.*","spi.Stat=1 and spi.GenId=" + GenId);
                 context.Response.Write(SchManagerInfoSystem.Common.Function.DatasetToJson(ds));
             }
             else if (Action == "EditSave")

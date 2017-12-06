@@ -5,7 +5,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head id="Head1" runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>年级信息</title>
+    <title>角色信息</title>
     <meta name="keywords" content="金视野,教育,平台" />
 		<meta name="description" content="金视野开发部,模板,2017" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -151,15 +151,6 @@
 									        
                                         </div>
 									</div>
-
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-5">角色权限：</label>
-
-										<div class="col-sm-9" id="SchFuncList">
-											
-										</div>
-									</div>
-									
                                    
 									<div class="clearfix form-actions">
 										<div class="col-md-offset-3 col-md-9">
@@ -197,7 +188,7 @@
 		<!--[if lte IE 8]>
 		  <script src="/assets/js/excanvas.min.js"></script>
 		<![endif]-->
-
+    <!--
 		<script src="/assets/js/jquery-ui-1.10.3.custom.min.js"></script>
 		<script src="/assets/js/jquery.ui.touch-punch.min.js"></script>
 		<script src="/assets/js/chosen.jquery.min.js"></script>
@@ -213,45 +204,12 @@
 		<script src="/assets/js/jquery.maskedinput.min.js"></script>
 		<script src="/assets/js/bootstrap-tag.min.js"></script>
    
-		<!-- ace scripts -->
+		
 		<script src="/assets/js/ace-elements.min.js"></script>
-		<script src="/assets/js/ace.min.js"></script>
+		<script src="/assets/js/ace.min.js"></script>-->
 </body>
 </html>
 
-<script type="text/javascript">
-    //$(document).ready(function () {
-        $.ajax({
-            url: "ashx/Role.ashx",
-            type: "POST",//或GET
-            async: true,//或false,是否异步
-            data: { Action: "null" },
-            dataType: "json",//返回的数据格式：json/xml/html/script/jsonp/text
-            //timeout: 5000,    //超时时间
-            contentType: "application/x-www-form-urlencoded; charset=utf-8",
-            success: function (data, textStatus) {
-                var JsonData = data.FuncList;
-                var text = "<ul>";
-                $.each(JsonData, function (index, content) {
-                    if (content.Pid == 0) {
-                        text += "<li>";
-                        text += "<input type=\"checkbox\" name=\"FuncId[]\" value=\"" + content.FuncId + "\" />" + content.FuncName + "-" + content.FuncCode + "-" + content.FuncId + "-" + content.Pid;
-                        text += "<ul>";
-                        $.each(JsonData, function (indexs, contents) {
-                            if (contents.Pid == content.FuncId) {
-                                text += "<li><input type=\"checkbox\" name=\"FuncId[]\" value=\"" + contents.FuncId + "\" />" + contents.FuncName + " - " + contents.FuncCode + " - " + contents.FuncId + " - " + contents.Pid + "</li>";
-                            }
-                        });
-                        text += "</ul>";
-                        text += "</li>";
-                    }
-                });
-                text += "</ul>";
-                $("#SchFuncList").html(text);
-            }
-        });
-   // });
-</script>
 <script type="text/javascript">
 
     //添加保存数据方法
@@ -260,16 +218,16 @@
         if (cNo == "") {alert("角色名称不允许为空");return false;}
         var stat = $("input[name='form-field-radio']:checked").val();
         if (stat == "") { alert("状态不允许为空"); return false; }
-        var FuncId = "";//定义一个数组    
+        /*var FuncId = "";//定义一个数组    
         $('input[type="checkbox"][name="FuncId[]"]:checked').each(function () {
             FuncId += $(this).val() + ",";
         });
-        FuncId = FuncId.substring(0, FuncId.length - 1);
+        FuncId = FuncId.substring(0, FuncId.length - 1);*/
         $.ajax({
             url: "ashx/Role.ashx",
             type: "POST",//或GET
             async: true,//或false,是否异步
-            data: { Action: "Add", RoleName: cNo, Stat: stat, RoleStr: FuncId },
+            data: { Action: "Add", RoleName: cNo, Stat: stat },
             dataType: "text",//返回的数据格式：json/xml/html/script/jsonp/text
             //timeout: 5000,    //超时时间
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -298,11 +256,11 @@
                     $.each(data.rows, function (index, content) {
                         $("#form-field-1").val(content.RoleName);
                         $("input[name='form-field-radio'][value=" + content.Stat + "]").attr("checked", true);
-                        var RoleStr = content.RoleStr;
+                        /*var RoleStr = content.RoleStr;
                         var arr = RoleStr.split(',');//注split可以用字符或字符串分割  
                         for (var i = 0; i < arr.length; i++) {
                             $("input[name='FuncId[]'][value='" + arr[i] + "']").attr("checked", 'checked');
-                        }
+                        }*/
                     });
                 }
             });
@@ -317,17 +275,17 @@
         if (cNo == "") { alert("角色名称不允许为空"); return false; }
         var stat = $("input[name='form-field-radio']:checked").val();
         if (stat == "") { alert("状态不允许为空"); return false; }
-        var FuncId = "";//定义一个数组    
+        /*var FuncId = "";//定义一个数组    
         $('input[type="checkbox"][name="FuncId[]"]:checked').each(function () {
             FuncId += $(this).val() + ",";
         });
-        FuncId = FuncId.substring(0, FuncId.length - 1);
+        FuncId = FuncId.substring(0, FuncId.length - 1);*/
         if (confirm("确定保存该角色权限吗?")) {
             $.ajax({
                 url: "ashx/Role.ashx",
                 type: "POST",//或GET
                 async: true,//或false,是否异步
-                data: { Action: "EditSave", sId: id, RoleName: cNo, Stat: stat, RoleStr: FuncId },
+                data: { Action: "EditSave", sId: id, RoleName: cNo, Stat: stat },
                 dataType: "text",//返回的数据格式：json/xml/html/script/jsonp/text
                 timeout: 5000,    //超时时间
                 contentType: "application/x-www-form-urlencoded; charset=utf-8",
@@ -345,25 +303,8 @@
         }
     }
 </script>
+<script type="text/javascript" src="js/function.js"></script>
 <script type="text/javascript">
-    //获取GET参数方法
-    function getPar(par) {
-        //获取当前URL
-        var local_url = document.location.href;
-        //获取要取得的get参数位置
-        var get = local_url.indexOf(par + "=");
-        if (get == -1) {
-            return false;
-        }
-        //截取字符串
-        var get_par = local_url.slice(par.length + get + 1);
-        //判断截取后的字符串是否还有其他get参数
-        var nextPar = get_par.indexOf("&");
-        if (nextPar != -1) {
-            get_par = get_par.slice(0, nextPar);
-        }
-        return get_par;
-    }
     var cid = getPar("id");//获取get参数
     if (cid == false) {
         $(".icon-ok").html("添加");//如果没有ID，则说明是添加按钮

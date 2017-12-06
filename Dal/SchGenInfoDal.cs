@@ -318,7 +318,26 @@ namespace SchSystem.Dal
 			}
 			return DbHelperSQL.Query(strSql.ToString());
 		}
-
+        /// <summary>
+        /// 获得一条数据积累
+        /// </summary>
+        public DataSet GetOnce(string cols,string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select ");
+            if (cols != "")
+            {
+                strSql.Append(cols);
+            }
+            strSql.Append(" FROM SchGenInfo spi ");
+            strSql.Append(" INNER JOIN SchStuGenUn ssgu ON spi.GenId=ssgu.GenId ");
+            strSql.Append(" INNER JOIN SchStuInfo ssi ON ssi.StuId=ssgu.StuId ");
+            if (strWhere.Trim() != "")
+            {
+                strSql.Append(" where " + strWhere);
+            }
+            return DbHelperSQL.Query(strSql.ToString());
+        }
 		/// <summary>
 		/// 获得前几行数据
 		/// </summary>

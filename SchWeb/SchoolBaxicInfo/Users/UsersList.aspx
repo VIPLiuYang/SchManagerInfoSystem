@@ -138,15 +138,15 @@
                                                 </tr>
                                             </tbody>
                                         </table> 
-											</div>
-										</div>
 									</div>
-								</template>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+								</div>
+							</div>
+						</template>
+                      </div>
+                   </div>
+               </div>
+           </div>
+       </div>
     </div> 
     <script type="text/javascript">
         window.jQuery || document.write("<script src='../../assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
@@ -165,7 +165,7 @@
         var PriDepList;
         var PriGradeList;
         //初始化页面查询
-        window.onload = function () {
+        window.onload = function () { 
             $.ajax({
                 type: "POST",
                 url: "ashx/Users.ashx?action=Search",

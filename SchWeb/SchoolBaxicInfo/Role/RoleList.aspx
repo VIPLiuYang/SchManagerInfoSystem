@@ -165,8 +165,8 @@
                                                                     text += "   <td>" + RoleStat + "</td>";
                                                                     text += "   <td>";
                                                                     text += "       <div class=\"visible-md visible-lg hidden-sm hidden-xs action-buttons\">";
-                                                                    text += "	        <a class=\"blue\" href=\"RoleEdit.aspx?id=" + content.RoleId + "&show=1\" title=\"查看权限\">";
-                                                                    text += "		        <i class=\"icon-zoom-in bigger-130\"></i>";
+                                                                    text += "	        <a class=\"blue\" href=\"#\" title=\"设置权限\">";
+                                                                    text += "		        <i class=\"icon-zoom-in bigger-130\" onclick=\"winOpen(" + content.RoleId + ")\"></i>";
                                                                     text += "	        </a>";
                                                                     text += "	        <a class=\"green\" href=\"RoleEdit.aspx?id=" + content.RoleId + "\" title=\"编辑\">";
                                                                     text += "		        <i class=\"icon-pencil bigger-130\"></i>";
@@ -251,6 +251,9 @@
 </body>
 </html>
 <script type="text/javascript">
+    function winOpen(id) {
+        window.open("SetRolePurview.aspx?Id="+id, "SetRolePurvew", "width:300px,height:500px");
+    }
     //软删除数据
     function RoleDelete(id) {
         if (confirm("确定删除该角色吗?,如果删除了无法恢复了！")) {

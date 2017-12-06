@@ -114,7 +114,7 @@
 								
 								<div class="row">
 									<div class="col-xs-12">
-										<h3 class="header smaller lighter blue">家长基本数据&nbsp;&nbsp;<div id="add" class="btn btn-minier btn-yellow">添加</div></h3>
+										<h3 class="header smaller lighter blue">家长基本数据&nbsp;&nbsp;</h3>
 										<div class="table-header">
 											家长基本信息管理
 										</div>

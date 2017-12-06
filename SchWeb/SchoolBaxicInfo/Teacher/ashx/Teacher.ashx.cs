@@ -7,6 +7,7 @@ using System.Data.SqlClient;
 using SchSystem.Model;
 using SchManagerInfoSystem.Common;
 using Common;
+using System.IO;
 
 namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
 {
@@ -21,8 +22,7 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
-            string action = context.Request["action"];
-
+            string action = context.Request["action"];  
             #region 获取班级
             if (action == "Getgrade")
             {
@@ -40,7 +40,7 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
             }
             #endregion
             #region 获取部门
-            else if (action=="Getdep")
+            else if (action == "Getdep")
             {
                 try
                 {
@@ -55,6 +55,27 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
                 }
             }
             #endregion
+            #region 上传图片
+            else if (action == "upload")
+            {
+                HttpPostedFile file = context.Request.Files["Filedata"];
+                string uploadPath = HttpContext.Current.Server.MapPath(@context.Request["folder"]) + "\\"; 
+                if (file != null)
+                {
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+                    file.SaveAs(uploadPath + file.FileName);
+                    //下面这句代码缺少的话，上传成功后上传队列的显示不会自动消失
+                    context.Response.Write("1");
+                }
+                else
+                {
+                    context.Response.Write("0");
+                }
+            }
+            #endregion
             #region 查询
             else if (action == "Search")
             {
@@ -64,7 +85,11 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
                 {
                     strWhere += " and UserTname LIKE '%" + UserTname + "%'";
                 }
-
+                string PriUserId = Convert.ToString(context.Request["PriUserId"]);
+                if (!string.IsNullOrEmpty(PriUserId))
+                {
+                    strWhere += " and UserId="+ PriUserId;
+                }
                 ////如果Session为空，停止运行
                 //if (string.IsNullOrEmpty(userid))
                 //{
@@ -91,7 +116,7 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
                 string pages = pa.GetPageing();
                 context.Response.Write(SchManagerInfoSystem.Common.Function.DatasetToJson(ds, -1, pages, PageCount, RowCount, PageIndex));//将返回的DataSet集合转换为JSON对象
 
-               
+
             }
             #endregion
             #region 添加
@@ -108,10 +133,10 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
                 Sch.UserLv = 1;
                 Sch.Telno = "123";
                 Sch.Postion = "教师";
-                Sch.ImgUrl = "www";
+                Sch.ImgUrl = context.Request["imgurl"];
                 Sch.LoginTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.RecTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
-                Sch.ClassMs= Convert.ToString(context.Request["ClassMs"]);
+                Sch.ClassMs = Convert.ToString(context.Request["ClassMs"]);
                 Sch.RecUser = " sw";
                 Sch.DepartIds = Convert.ToString(context.Request["DepartIds"]);
                 Sch.LastRecTime = Convert.ToDateTime("2011-02-11");
@@ -127,7 +152,7 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
             }
             #endregion
             #region 编辑
-            else if (action=="Edit")
+            else if (action == "Edit")
             {
                 SchUserInfo Sch = new SchUserInfo();
                 Sch.UserId = Convert.ToInt32(context.Request["PriUserId"]);
@@ -141,7 +166,7 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
                 Sch.UserLv = 1;
                 Sch.Telno = "123";
                 Sch.Postion = "教师";
-                Sch.ImgUrl = "www";
+                Sch.ImgUrl = context.Request["imgurl"];
                 Sch.LoginTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.RecTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.ClassMs = "1";// Convert.ToString(context.Request["ClassMs"]);
@@ -161,7 +186,7 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
             }
             #endregion
             #region 删除
-            else if (action== "Delete")
+            else if (action == "Delete")
             {
                 int UserId = Convert.ToInt32(context.Request["UserId"]);
                 bool Prirow = bll_userinfo.Delete(UserId);
@@ -171,9 +196,8 @@ namespace SchWeb.SchoolBaxicInfo.Teacher.ashx
                 }
                 context.Response.Write("Success");
             }
-            #endregion
-        }
-
+            #endregion 
+        } 
         public bool IsReusable
         {
             get

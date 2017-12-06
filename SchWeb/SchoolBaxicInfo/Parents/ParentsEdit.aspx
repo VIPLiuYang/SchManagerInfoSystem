@@ -116,11 +116,14 @@
 								家长信息
 							</h1>
 						</div><!-- /.page-header -->
-
+                        <div class="row">
+                            <div class="col-sm-12">现在正在<span id="caozuo"></span><span id="StuName" style="color:red;"></span> 的家长信息：</div>
+                        </div>
 						<div class="row">
 							<div class="col-xs-12">
 
 								<form class="form-horizontal" role="form">
+                                    <input type="hidden" name="StuId" id="StuId" />
                                     <input type="hidden" id="Id" name="ClassId" value=""/>
 									<div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 登录名： </label>
@@ -238,47 +241,30 @@
 </body>
 </html>
 <script type="text/javascript">
-
     //添加保存数据方法
     function Add() {
         var ln = $("#form-field-1").val();
-        if (ln == "") {
-            alert("登录名不允许为空");
-            return false;
-        }
+        if (ln == "") {alert("登录名不允许为空");return false;}
         var pwd = $("#form-field-4").val();
-        if (pwd == "") {
-            alert("密码不允许为空");
-            return false;
-        }
+        if (pwd == "") {alert("密码不允许为空");return false;}
         var gn = $("#form-field-6").val();
-        if (gn == "") {
-            alert("家长姓名不允许为空");
-            return false;
-        }
+        if (gn == "") {alert("家长姓名不允许为空");return false;}
         var mo = $("#form-field-5").val();
-        if (mo == "") {
-            alert("手机号码不允许为空");
-            return false;
-        } 
+        if (mo == "") {alert("手机号码不允许为空");return false;} 
         var sex = $("input[name='form-field-radio']:checked").val();
-        if (sex == "") {
-            alert("性别不允许为空");
-            return false;
-        }
-        
+        if (sex == "") {alert("性别不允许为空");return false;}
+        var stuId = $("#StuId").val();
         $.ajax({
             url: "ashx/Parents.ashx",
-            type: "POST",//或GET
-            async: true,//或false,是否异步
-            data: { Action: "Add", LoginName: ln, Pwd: pwd, GenName: gn, Mobile: mo,Sex:sex },
-            dataType: "text",//返回的数据格式：json/xml/html/script/jsonp/text
-            //timeout: 5000,    //超时时间
+            type: "POST",
+            async: true,
+            data: { Action: "Add",StuId:stuId, LoginName: ln, Pwd: pwd, GenName: gn, Mobile: mo,Sex:sex },
+            dataType: "text",
             contentType: "application/x-www-form-urlencoded; charset=utf-8",
             success: function (data, textStatus) {
                 if (data > 0) {
                     alert("添加成功");
-                    self.location = "/SchoolBaxicInfo/Parents/ParentsList.aspx";
+                    self.location = "/SchoolBaxicInfo/Student/StudentList.aspx";
                 } else {
                     alert("添加失败");
                 }
@@ -302,6 +288,7 @@
                         $("#form-field-4").val(content.Pwd);
                         $("#form-field-6").val(content.GenName);
                         $("#form-field-5").val(content.Mobile);
+                        $("#StuName").html(content.StuName);
                         $("input[name='form-field-radio'][value="+content.Sex+"]").attr("checked", true);
                     });
                 }
@@ -381,10 +368,30 @@
         return get_par;
     }
     var cid = getPar("id");//获取get参数
+    var stuId = getPar("stuId");//获取get参数的学生ID
+    if (stuId != false) {
+        $("#StuId").val(stuId);
+        $.ajax({
+            url: "ashx/Parents.ashx",
+            type: "POST",//或GET
+            async: true,//或false,是否异步
+            data: { Action: "null", StuId: stuId},
+            dataType: "json",//返回的数据格式：json/xml/html/script/jsonp/text
+            timeout: 5000,    //超时时间
+            contentType: "application/x-www-form-urlencoded; charset=utf-8",
+            success: function (data, textStatus) {
+                $.each(data.SchStuInfo, function (index, content) {
+                    $("#StuName").html(content.StuName);
+                });
+            }
+        });
+    }
     if (cid == false) {
         $(".icon-ok").html("添加");//如果没有ID，则说明是添加按钮
+        $("#caozuo").html("添加");
     } else {
         $(".icon-ok").html("保存"); //如果有ID，则说明是修改按钮
+        $("#caozuo").html("修改");
         $("#Id").val(cid);
         Edit(cid);
     }

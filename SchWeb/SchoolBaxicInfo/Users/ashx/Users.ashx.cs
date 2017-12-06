@@ -4,6 +4,7 @@ using SchSystem.Model;
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Web;
 
@@ -54,6 +55,27 @@ namespace SchWeb.SchoolBaxicInfo.Users.ashx
                 }
             }
             #endregion
+            #region 上传图片
+            else if (action == "upload")
+            {
+                HttpPostedFile file = context.Request.Files["Filedata"];
+                string uploadPath = HttpContext.Current.Server.MapPath(@context.Request["folder"]) + "\\";
+                if (file != null)
+                {
+                    if (!Directory.Exists(uploadPath))
+                    {
+                        Directory.CreateDirectory(uploadPath);
+                    }
+                    file.SaveAs(uploadPath + file.FileName);
+                    //下面这句代码缺少的话，上传成功后上传队列的显示不会自动消失
+                    context.Response.Write("1");
+                }
+                else
+                {
+                    context.Response.Write("0");
+                }
+            }
+            #endregion
             #region 查询
             else if (action == "Search")
             {
@@ -63,7 +85,11 @@ namespace SchWeb.SchoolBaxicInfo.Users.ashx
                 {
                     strWhere += " and UserTname LIKE '%" + UserTname + "%'";
                 }
-
+                string PriUserId = Convert.ToString(context.Request["PriUserId"]);
+                if (!string.IsNullOrEmpty(PriUserId))
+                {
+                    strWhere += " and UserId=" + PriUserId;
+                }
                 ////如果Session为空，停止运行
                 //if (string.IsNullOrEmpty(userid))
                 //{
@@ -107,7 +133,7 @@ namespace SchWeb.SchoolBaxicInfo.Users.ashx
                 Sch.UserLv = 1;
                 Sch.Telno = "123";
                 Sch.Postion = "人员";
-                Sch.ImgUrl = "www";
+                Sch.ImgUrl = context.Request["imgurl"];
                 Sch.LoginTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.RecTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.ClassMs = "";
@@ -140,7 +166,7 @@ namespace SchWeb.SchoolBaxicInfo.Users.ashx
                 Sch.UserLv = 1;
                 Sch.Telno = "123";
                 Sch.Postion = "人员";
-                Sch.ImgUrl = "www";
+                Sch.ImgUrl = context.Request["imgurl"];
                 Sch.LoginTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.RecTime = Convert.ToDateTime(DateTime.Now.ToLocalTime().ToString());
                 Sch.ClassMs = "1";// Convert.ToString(context.Request["ClassMs"]);

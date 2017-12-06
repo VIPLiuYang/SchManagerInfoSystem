@@ -144,7 +144,7 @@
                                                             url: "ashx/Student.ashx",
                                                             type: "POST",//或GET
                                                             async: true,//或false,是否异步
-                                                            data: { Action: "List", PageSize:5, PageIndex: pageI },
+                                                            data: { Action: "List", PageSize:2, PageIndex: pageI },
                                                             dataType: "json",//返回的数据格式：json/xml/html/script/jsonp/text
                                                             timeout: 5000,    //超时时间
                                                             success: function (data, textStatus) {
@@ -172,6 +172,9 @@
                                                                     text += "	        </a>";
                                                                     text += "	        <a class=\"red\" href=\"#\">";
                                                                     text += "		        <i class=\"icon-trash bigger-130\" onclick=\"StudentDelete(" + content.StuId + ")\"></i>";
+                                                                    text += "	        </a>";
+                                                                    text += "	        <a class=\"blue\" href=\"/SchoolBaxicInfo/Parents/ParentsEdit.aspx?stuId=" + content.StuId + "\" title=\"添加学生家长\">";
+                                                                    text += "		        <i class=\"glyphicon glyphicon-plus bigger-130\"></i>";
                                                                     text += "	        </a>";
                                                                     text += "       </div>";
                                                                     text += "   </td>";
@@ -219,14 +222,14 @@
     <script type="text/javascript">
         if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/typeahead-bs2.min.js"></script>
+    <!--<script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/typeahead-bs2.min.js"></script>-->
     <!-- page specific plugin scripts -->
-    <!--<script src="/assets/js/jquery.dataTables.min.js"></script>//JS数字分页-->
-    <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>
+    <!--<script src="/assets/js/jquery.dataTables.min.js"></script>//JS数字分页
+    <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>-->
     <!-- ace scripts -->
-    <script src="/assets/js/ace-elements.min.js"></script>
-    <script src="/assets/js/ace.min.js"></script>
+    <!--<script src="/assets/js/ace-elements.min.js"></script>
+    <script src="/assets/js/ace.min.js"></script>-->
     <!-- inline scripts related to this page -->
     <script type="text/javascript">
 		    jQuery(function ($) {

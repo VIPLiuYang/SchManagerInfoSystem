@@ -111,6 +111,10 @@ namespace SchSystem.Bll
 		{
 			return dal.GetList(strWhere);
 		}
+        public DataSet GetOnce(string cols, string strWhere)
+        {
+            return dal.GetOnce(cols, strWhere);
+        }
 		/// <summary>
 		/// 获得前几行数据
 		/// </summary>

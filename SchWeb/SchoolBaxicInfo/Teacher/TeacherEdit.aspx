@@ -13,16 +13,48 @@
     <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
     <script src="js/vue.js" type="text/javascript"></script>
     <script src="../../assets/js/ace-extra.min.js"></script>
-    <script src="../../assets/js/jquery.min.js"></script>
-    <script type="text/javascript">
-        window.jQuery || document.write("<script src='../../assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
-    </script> 
-    <script src="../../assets/js/uploadify/jquery.uploadify.v2.1.4.min.js" type="text/javascript"></script>
-    <script src="../../assets/js/uploadify/swfobject.js" type="text/javascript"></script>
-    <link href="../../assets/js/uploadify/uploadify.css" rel="stylesheet" type="text/css" />
+    <%--<script src="../../assets/js/jquery.min.js"></script>--%>
 
-    <%--<script src="js/uploadify.js" type="text/javascript"></script>--%>
-    <script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>
+
+    <link href="../../assets/js/jquery.uploadify-v2.1.0/example/css/default.css"  rel="stylesheet" type="text/css" />
+    <link href="../../assets/js/jquery.uploadify-v2.1.0/uploadify.css" rel="stylesheet" type="text/css" /> 
+    <script type="text/javascript"   src="../../assets/js/jquery.uploadify-v2.1.0/jquery-1.3.2.min.js"></script> 
+    <script type="text/javascript"  src="../../assets/js/jquery.uploadify-v2.1.0/swfobject.js"></script> 
+    <script type="text/javascript"  src="../../assets/js/jquery.uploadify-v2.1.0/jquery.uploadify.v2.1.0.min.js"></script>
+     <script type="text/javascript">
+         var PriImgurl;
+         $(document).ready(function () {
+             $("#uploadify").uploadify({
+                 'uploader': '../../assets/js/jquery.uploadify-v2.1.0/uploadify.swf',//进度条，Uploadify里面含有
+                 'script': 'ashx/Teacher.ashx?action=upload',
+                 'cancelImg': '../../assets/js/jquery.uploadify-v2.1.0/cancel.png',
+                 'folder': '../../UploadFileDir/Teacher',
+                 'queueID': 'fileQueue',
+                 'auto': true,
+                 'multi': false,
+                 'fileExt': '*.jpg;*.jpeg;*.png',
+                 'fileDesc': '不超过2M的图片 (*.gif;*.jpg;*.png)',
+                 'sizeLimit': 2048000,  //允许上传的文件大小(kb)  此为2M
+                 'onSelectOnce': function (event, data) { //在单文件或多文件上传时，选择文件时触发 
+                 },
+                 'onComplete': function (event, queueID, fileObj, response, data) {//当单个文件上传完成后触发   
+                     $("#imgurl").attr("src", fileObj.filePath);
+                     PriImgurl = fileObj.filePath;
+                     $("#name").text("       图片名称：" + fileObj.name);
+                     $("#size").text("       图片大小：" + fileObj.size + "KB");
+                     $("#dz").text("       图片地址：" + fileObj.filePath);
+                 },
+                 'onError': function (event, queueID, fileObj) {//当单个文件上传出错时触发
+                     alert("文件:" + fileObj.name + " 上传失败！");
+                 },
+                 
+                 //'width': 60,//浏览按钮的宽和高
+                 //'height': 24 
+
+             });
+         });
+    </script>
+    <%--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>--%>
 <script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script> 
 </head> 
 <body> 
@@ -33,10 +65,10 @@
                     <ul class="breadcrumb">
                         <li>
                             <i class="icon-home home-icon"></i>
-                            <a href="DepartList.aspx">首页</a>
+                            <a href="TeacherList.aspx">首页</a>
                         </li> 
                         <li>
-                            <a href="#">信息</a>
+                            <a href="#">教师信息</a>
                         </li> 
                     </ul> 
                 </div>
@@ -103,9 +135,37 @@
                                     <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-10">头像：</label>
                                         
-										<div class="col-sm-9" style="text-align:center">
-                                            <input type="file" id="Uploadify_Nhxebz" name="Uploadify_Nhxebz" /> 
-										</div>
+										<div class="col-sm-9"> 
+                                            <table>
+                                                <tr>
+                                                    <td>
+                                                        <div style="width: 160px; height: 155px; border:dashed;text-align:center">
+                                                            <img  src="" style="width: 150px; height: 150px;" id="imgurl" border="0" />
+                                                        </div> 
+                                                    </td>
+                                                    <td style="text-align:left">
+                                                        <span id="name" style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;</span><br /><br />
+                                                        <span id="size" style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;</span> <br /><br />
+                                                         <span id="dz" style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
+                                                    </td>
+                                                   
+                                                </tr>
+                                                <tr>
+                                                    <td><input type="file" name="uploadify" id="uploadify" /> </td>
+                                                     
+                                                </tr>
+                                            </table>
+                                                 
+                                                <%--  <p>
+                                                     
+                                                     <%--<a href="javascript:$('#uploadify').uploadifyClearQueue()">取消上传</a>--%>
+                                                     <%--<button class="btn btn-sm btn-danger active " onclick="$('#uploadify').uploadifyClearQueue()" type="button">
+												      <i class="icon-ok bigger-110"></i>
+												        移除
+											             </button> 
+
+                                                  </p> --%>
+										</div> 
 									</div>
                                     <div class="form-group">
 										<label class="col-sm-3 control-label no-padding-right" for="form-field-6">状态：</label>
@@ -177,7 +237,7 @@
                 }
             });
             //判断是否为编辑
-            PriUserId = getDataFromUrl(document.location.href);
+            PriUserId = getDataFromUrl(document.location.href); 
             if (JSON.stringify(PriUserId) != undefined) {//编辑
                 form.type = 'E';
                 $("#title").text("编辑教师信息");
@@ -187,6 +247,7 @@
                     dataType: "json",
                     data: { "PriUserId": PriUserId, PageCount: 20, PageSize: 10, PageIndex: 1 },
                     success: function (data) { 
+                        $("#imgurl").attr("src", data.rows[0].ImgUrl);
                         form.UserName = data.rows[0].UserName;
                         form.UserTname = data.rows[0].UserTname;
                         form.PassWord = data.rows[0].PassWord;
@@ -197,17 +258,17 @@
                             url: "ashx/Teacher.ashx?action=Getdep",
                             dataType: "json",
                             data: { 'depid': data.rows[0].DepartIds },
-                            success: function (data1) { 
+                            success: function (data1) {
                                 $("#Pridep option:selected").text(data1[0].DepartName);
                             }
-                        }); 
+                        });
                         var Pri_shc = $("#Prishc option:selected").val(data.rows[0].SchId);
                         $.ajax({
                             type: "POST",
                             url: "ashx/Teacher.ashx?action=Getgrade",
                             dataType: "json",
                             data: { 'schid': data.rows[0].SchId },
-                            success: function (data1) { 
+                            success: function (data1) {
                                 $("#Prishc option:selected").text(data1[0].ClassMs);
                             }
                         });
@@ -219,7 +280,7 @@
                 form.type = 'A';
                 $("#title").text("添加教师信息");
             }
-        } 
+        }
         //form数据列表
         var form = new Vue({
             el: "form",
@@ -229,9 +290,9 @@
             methods: {
                 //添加保存和编辑保存
                 Save: function () {
-                    if (form.type == 'A') {//添加
-                        var Pridep = $("#Pridep option:selected").val(); 
-                        var Pri_shc = $("#Prishc option:selected").val(); 
+                    if (form.type == 'A') {//添加 
+                        var Pridep = $("#Pridep option:selected").val();
+                        var Pri_shc = $("#Prishc option:selected").val();
                         if (form.UserName == "") {
                             Pridialog("登录名不能为空");
                             return false;
@@ -262,7 +323,7 @@
                             type: "POST",
                             url: "ashx/Teacher.ashx?action=Add",
                             dataType: "json",
-                            data: { "UserName": form.UserName, "PassWord": form.PassWord, "UserTname": form.UserTname, "Mobile": form.Mobile, "DepartIds": Pridep, "ClassMs": Pri_shc, "Stat": form.Stat },
+                            data: { "UserName": form.UserName, "PassWord": form.PassWord, "UserTname": form.UserTname, "Mobile": form.Mobile, "DepartIds": Pridep, "ClassMs": Pri_shc, "Stat": form.Stat,"imgurl":PriImgurl },
                             success: function (data) { }
                         });
                         self.location = "/SchoolBaxicInfo/Teacher/TeacherList.aspx";
@@ -300,7 +361,7 @@
                             type: "POST",
                             url: "ashx/Teacher.ashx?action=Edit",
                             dataType: "json",
-                            data: {"PriUserId":PriUserId, "UserName": form.UserName, "PassWord": form.PassWord, "UserTname": form.UserTname, "Mobile": form.Mobile, "DepartIds": Pridep, "ClassMs": Pri_shc, "Stat": form.Stat },
+                            data: { "PriUserId": PriUserId, "UserName": form.UserName, "PassWord": form.PassWord, "UserTname": form.UserTname, "Mobile": form.Mobile, "DepartIds": Pridep, "ClassMs": Pri_shc, "Stat": form.Stat, "imgurl": PriImgurl },
                             success: function (data) { }
                         });
                         self.location = "/SchoolBaxicInfo/Teacher/TeacherList.aspx";
@@ -308,7 +369,7 @@
                     }
                 }
             }
-        }) 
+        })
         //获取id
         function getDataFromUrl(url) {
             var ret = url.split("=")[1];
