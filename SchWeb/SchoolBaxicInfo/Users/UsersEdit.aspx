@@ -1,7 +1,7 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="UsersEdit.aspx.cs" Inherits="SchWeb.SchoolBaxicInfo.Users.UsersEdit" %>
 
 <!DOCTYPE html>
-<html lang="en"> 
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <title>教师信息</title>
@@ -13,51 +13,53 @@
     <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
     <script src="js/vue.js" type="text/javascript"></script>
     <script src="../../assets/js/ace-extra.min.js"></script>
-    <%--<script src="../../assets/js/jquery.min.js"></script>--%>
-     
-    <!-- 图片上传控件-->
-    <link href="../../assets/js/jquery.uploadify-v2.1.0/example/css/default.css"  rel="stylesheet" type="text/css" />
-    <link href="../../assets/js/jquery.uploadify-v2.1.0/uploadify.css" rel="stylesheet" type="text/css" /> 
-    <script type="text/javascript"   src="../../assets/js/jquery.uploadify-v2.1.0/jquery-1.3.2.min.js"></script> 
-    <script type="text/javascript"  src="../../assets/js/jquery.uploadify-v2.1.0/swfobject.js"></script> 
-    <script type="text/javascript"  src="../../assets/js/jquery.uploadify-v2.1.0/jquery.uploadify.v2.1.0.min.js"></script>
-     <script type="text/javascript">
-         var PriImgurl;
-         $(document).ready(function () {
-             $("#uploadify").uploadify({
-                 'uploader': '../../assets/js/jquery.uploadify-v2.1.0/uploadify.swf',//进度条，Uploadify里面含有
-                 'script': 'ashx/Users.ashx?action=upload',
-                 'cancelImg': '../../assets/js/jquery.uploadify-v2.1.0/cancel.png',
-                 'folder': '../../UploadFileDir/Users',
-                 'queueID': 'fileQueue',
-                 'auto': true,
-                 'multi': false,
-                 'fileExt': '*.jpg;*.jpeg;*.png',
-                 'fileDesc': '不超过2M的图片 (*.gif;*.jpg;*.png)',
-                 'sizeLimit': 2048000,  //允许上传的文件大小(kb)  此为2M
-                 'onSelectOnce': function (event, data) { //在单文件或多文件上传时，选择文件时触发 
-                 },
-                 'onComplete': function (event, queueID, fileObj, response, data) {//当单个文件上传完成后触发   
-                     $("#imgurl").attr("src", fileObj.filePath);
-                     PriImgurl = fileObj.filePath;
-                     $("#name").text("       图片名称：" + fileObj.name);
-                     $("#size").text("       图片大小：" + fileObj.size + "KB");
-                     $("#dz").text("       图片地址：" + fileObj.filePath);
-                 },
-                 'onError': function (event, queueID, fileObj) {//当单个文件上传出错时触发
-                     alert("文件:" + fileObj.name + " 上传失败！");
-                 },
-                 
-                 //'width': 60,//浏览按钮的宽和高
-                 //'height': 24 
+    <script src="../../assets/js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css" />
+    <%--<script src="../../assets/js/bootstrap-treeview.min.js" type="text/javascript"></script>--%>
 
-             });
-         });
+    <!-- 图片上传控件-->
+    <link href="../../assets/js/jquery.uploadify-v2.1.0/example/css/default.css" rel="stylesheet" type="text/css" />
+    <link href="../../assets/js/jquery.uploadify-v2.1.0/uploadify.css" rel="stylesheet" type="text/css" />
+    <%--<script type="text/javascript"   src="../../assets/js/jquery.uploadify-v2.1.0/jquery-1.3.2.min.js"></script>--%>
+    <script type="text/javascript" src="../../assets/js/jquery.uploadify-v2.1.0/swfobject.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery.uploadify-v2.1.0/jquery.uploadify.v2.1.0.min.js"></script>
+    <script type="text/javascript">
+        var PriImgurl;
+        $(document).ready(function () {
+            $("#uploadify").uploadify({
+                'uploader': '../../assets/js/jquery.uploadify-v2.1.0/uploadify.swf',//进度条，Uploadify里面含有
+                'script': 'ashx/Users.ashx?action=upload',
+                'cancelImg': '../../assets/js/jquery.uploadify-v2.1.0/cancel.png',
+                'folder': '../../UploadFileDir/Users',
+                'queueID': 'fileQueue',
+                'auto': true,
+                'multi': false,
+                'fileExt': '*.jpg;*.jpeg;*.png',
+                'fileDesc': '不超过2M的图片 (*.gif;*.jpg;*.png)',
+                'sizeLimit': 2048000,  //允许上传的文件大小(kb)  此为2M
+                'onSelectOnce': function (event, data) { //在单文件或多文件上传时，选择文件时触发 
+                },
+                'onComplete': function (event, queueID, fileObj, response, data) {//当单个文件上传完成后触发   
+                    $("#imgurl").attr("src", fileObj.filePath);
+                    PriImgurl = fileObj.filePath;
+                    $("#name").text("       图片名称：" + fileObj.name);
+                    $("#size").text("       图片大小：" + fileObj.size + "KB");
+                    $("#dz").text("       图片地址：" + fileObj.filePath);
+                },
+                'onError': function (event, queueID, fileObj) {//当单个文件上传出错时触发
+                    alert("文件:" + fileObj.name + " 上传失败！");
+                },
+
+                //'width': 60,//浏览按钮的宽和高
+                //'height': 24 
+
+            });
+        });
     </script>
     <%--<script src="http://www.jq22.com/jquery/jquery-1.10.2.js"></script>--%>
-<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script> 
-</head> 
-<body> 
+    <%--<script src="http://www.jq22.com/jquery/bootstrap-3.3.4.js"></script>--%>
+</head>
+<body>
     <div class="main-container" id="main-container">
         <div class="main-container-inner">
             <div class="main-content" style="margin-left: 0px">
@@ -66,126 +68,152 @@
                         <li>
                             <i class="icon-home home-icon"></i>
                             <a href="UsersList.aspx">首页</a>
-                        </li> 
+                        </li>
                         <li>
                             <a href="#">人员信息</a>
-                        </li> 
-                    </ul> 
+                        </li>
+                    </ul>
                 </div>
-                <br />   
+                <br />
                 <div class="page-content">
-                       <div class="page-header">
-							<h1 id="title"> </h1>
-						</div><!-- /.page-header -->
+                    <div class="page-header">
+                        <h1 id="title"></h1>
+                    </div>
+                    <!-- /.page-header -->
                     <div class="row">
-							<div class="col-xs-12"> 
-								<form class="form-horizontal" role="form" id="form">
-                                    <input type="hidden" id="Id" name="ClassId" value=""/>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 登录名： </label> 
-										<div class="col-sm-9">
-											<input type="text"  v-model="UserName" placeholder="登录名" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 密码： </label> 
-										<div class="col-sm-9">
-											<input type="password"   v-model="PassWord" placeholder="密码" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 姓名： </label> 
-										<div class="col-sm-9">
-											<input type="text"   v-model="UserTname" placeholder="姓名" class="col-xs-10 col-sm-5" />
-										</div>
-									</div>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 手机号： </label> 
-										<div class="col-sm-9">
-											<input type="text"   v-model="Mobile" placeholder="手机号" class="col-xs-10 col-sm-5" />
-										</div>
-									</div> 
-									<div class="space-4"></div> 
-									<div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-4">所在部门：</label> 
-										<div class="col-sm-9"> 
-                                            <div id="Pridep">
+                        <div class="col-xs-12">
+                            <form class="form-horizontal" role="form" id="form">
+                                <input type="hidden" id="Id" name="ClassId" value="" />
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">登录名： </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" v-model="UserName" placeholder="登录名" class="col-xs-10 col-sm-5" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">密码： </label>
+                                    <div class="col-sm-9">
+                                        <input type="password" v-model="PassWord" placeholder="密码" class="col-xs-10 col-sm-5" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">姓名： </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" v-model="UserTname" placeholder="姓名" class="col-xs-10 col-sm-5" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-1">手机号： </label>
+                                    <div class="col-sm-9">
+                                        <input type="text" v-model="Mobile" placeholder="手机号" class="col-xs-10 col-sm-5" />
+                                    </div>
+                                </div>
+                                <div class="space-4"></div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-4">所在部门：</label>
+                                    <div class="col-sm-9">
+                                        <%--      <div id="Pridep">
                                             <select class="col-xs-10 col-sm-5"   > 
                                                   <option  value='0' selected="selected" >请选择所在部门...</option> 
                                                    <option id="selectDropdown" :value='item.DepartId' v-for="item in Depar">{{item.DepartName}}</option> 
                                             </select>  
-                                                </div>
-											<div class="space-2"></div> 
-											<div class="help-block" id="input-size-slider"></div>
-										</div>
-									</div> 
-                                    
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-10">头像：</label>
-                                        
-										<div class="col-sm-9"> 
-                                            <table>
-                                                <tr>
-                                                    <td>
-                                                        <div style="width: 160px; height: 155px; border:dashed;text-align:center">
-                                                            <img  src="" style="width: 150px; height: 150px;" id="imgurl" border="0" />
-                                                        </div> 
-                                                    </td>
-                                                    <td style="text-align:left">
-                                                        <span id="name" style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;</span><br /><br />
-                                                        <span id="size" style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;</span> <br /><br />
-                                                         <span id="dz" style="text-align:left">&nbsp;&nbsp;&nbsp;&nbsp;</span> 
-                                                    </td>
-                                                   
-                                                </tr>
-                                                <tr>
-                                                    <td><input type="file" name="uploadify" id="uploadify" /> </td>
-                                                     
-                                                </tr>
-                                            </table>
-                                                 
-                                                <%--  <p>
+                                                </div>--%>
+                                        <input type="text" onclick="getdep()" id="dep" data-toggle="modal" data-target="#person" class="col-xs-10 col-sm-5" />
+                                        <div class="space-2"></div>
+                                        <div class="help-block" id="input-size-slider"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-10">头像：</label>
+
+                                    <div class="col-sm-9">
+                                        <table>
+                                            <tr>
+                                                <td>
+                                                    <div style="width: 160px; height: 155px; border: dashed; text-align: center">
+                                                        <img src="" style="width: 150px; height: 150px;" id="imgurl" border="0" />
+                                                    </div>
+                                                </td>
+                                                <td style="text-align: left">
+                                                    <span id="name" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;</span><br />
+                                                    <br />
+                                                    <span id="size" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                    <br />
+                                                    <br />
+                                                    <span id="dz" style="text-align: left">&nbsp;&nbsp;&nbsp;&nbsp;</span>
+                                                </td>
+
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <input type="file" name="uploadify" id="uploadify" />
+                                                </td>
+
+                                            </tr>
+                                        </table>
+
+                                        <%--  <p>
                                                      
                                                      <%--<a href="javascript:$('#uploadify').uploadifyClearQueue()">取消上传</a>--%>
-                                                     <%--<button class="btn btn-sm btn-danger active " onclick="$('#uploadify').uploadifyClearQueue()" type="button">
+                                        <%--<button class="btn btn-sm btn-danger active " onclick="$('#uploadify').uploadifyClearQueue()" type="button">
 												      <i class="icon-ok bigger-110"></i>
 												        移除
 											             </button> 
 
                                                   </p> --%>
-										</div> 
-									</div>
-                                    <div class="form-group">
-										<label class="col-sm-3 control-label no-padding-right" for="form-field-6">状态：</label>
-                                         <div class="col-sm-9"> 
-                                             <select v-model="Stat" class="col-xs-10 col-sm-5" > 
-                                                   <option  value='0' selected="selected" >有效</option> 
-                                                   <option  value='1' >无效</option> 
-                                            </select> 
-										</div>
-									</div> 
-									<div class="clearfix form-actions">
-										<div class="col-md-offset-3 col-md-9">
-											<button class="btn btn-info " v-on:click="Save" type="button">
-												<i class="icon-ok bigger-110"></i>
-												保存
-											</button> 
-											&nbsp; &nbsp; &nbsp;
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-3 control-label no-padding-right" for="form-field-6">状态：</label>
+                                    <div class="col-sm-9">
+                                        <select v-model="Stat" class="col-xs-10 col-sm-5">
+                                            <option value='0' selected="selected">有效</option>
+                                            <option value='1'>无效</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix form-actions">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button class="btn btn-info " v-on:click="Save" type="button">
+                                            <i class="icon-ok bigger-110"></i>
+                                            保存
+                                        </button>
+                                        &nbsp; &nbsp; &nbsp;
 											<button class="btn" type="reset">
-												<i class="icon-undo bigger-110"></i>
-												重置
-											</button>
-										</div>
-									</div> 
-									<div class="hr hr-24"></div> 
-								</form> 
-							</div> 
-						</div> 
-                 </div> 
-             </div> 
-        </div> 
-    </div>  
-    
+                                                <i class="icon-undo bigger-110"></i>
+                                                重置
+                                            </button>
+                                    </div>
+                                </div>
+                                <div class="hr hr-24"></div>
+                            </form>
+                        </div>
+                    </div>
+                    <!--部门模态框开始处-->
+                    <div class="modal fade" id="person">
+                        <div class="modal-dialog ">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title">学校部门选择</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <iframe id="ifrdep" runat="server" border="0" src="" style="width: 100%; height: 400px;"></iframe>
+                             
+
+                    <!--部门模态框结束处-->
+
+
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+
     <script type="text/javascript">
         if ("ontouchend" in document) document.write("<script src='../../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
@@ -195,7 +223,7 @@
     <script src="../../assets/js/jquery.dataTables.bootstrap.js"></script>
     <script src="../../assets/js/ace-elements.min.js"></script>
     <script src="../../assets/js/bootbox.min.js"></script>
-    <script src="../../assets/js/ace.min.js"></script> 
+    <script src="../../assets/js/ace.min.js"></script>
     <%--<script src="../../assets/js/DelDialog.js" type="text/javascript"></script>--%>
     <script type="text/javascript">
         var PriDepList;
@@ -246,17 +274,17 @@
                             url: "ashx/Users.ashx?action=Getdep",
                             dataType: "json",
                             data: { 'depid': data.rows[0].DepartIds },
-                            success: function (data1) { 
+                            success: function (data1) {
                                 $("#Pridep option:selected").text(data1[0].DepartName);
                             }
-                        }); 
+                        });
                         var Pri_shc = $("#Prishc option:selected").val(data.rows[0].SchId);
                         $.ajax({
                             type: "POST",
                             url: "ashx/Users.ashx?action=Getgrade",
                             dataType: "json",
                             data: { 'schid': data.rows[0].SchId },
-                            success: function (data1) { 
+                            success: function (data1) {
                                 $("#Prishc option:selected").text(data1[0].ClassMs);
                             }
                         });
@@ -268,7 +296,7 @@
                 form.type = 'A';
                 $("#title").text("添加人员信息");
             }
-        } 
+        }
         //form数据列表
         var form = new Vue({
             el: "form",
@@ -279,8 +307,8 @@
                 //添加保存和编辑保存
                 Save: function () {
                     if (form.type == 'A') {//添加
-                        var Pridep = $("#Pridep option:selected").val(); 
-                        
+                        var Pridep = $("#Pridep option:selected").val();
+
                         if (form.UserName == "") {
                             Pridialog("登录名不能为空");
                             return false;
@@ -301,7 +329,7 @@
                             Pridialog("请选择所属部门");
                             return false;
                         }
-                        
+
                         var Pridep = $("#Pridep option:selected").val();
                         var Pri_shc = $("#Prishc option:selected").val();
                         $.ajax({
@@ -354,11 +382,18 @@
                     }
                 }
             }
-        }) 
+        })
         //获取id
         function getDataFromUrl(url) {
             var ret = url.split("=")[1];
             return ret;
+        }
+        function getdep() {
+            document.getElementById("ifrdep").src = "../../PublicPage/Department/Department.aspx?now=" + new Date().getTime();
+
+        }
+        function bindBoxdep(strRow) { 
+            $("#dep").val(strRow.split('|')[1]);
         }
         //弹框
         function Pridialog(mc) {
@@ -372,7 +407,7 @@
                 }
             });
         }
-    </script> 
+    </script>
 </body>
 
 </html>

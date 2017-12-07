@@ -1,4 +1,3 @@
-E:\项目\SchWeb\obj\Debug\SchWeb.csprojResolveAssemblyReference.cache
 E:\项目\SchWeb\bin\SchWeb.dll.config
 E:\项目\SchWeb\bin\SchWeb.dll
 E:\项目\SchWeb\bin\SchWeb.pdb
@@ -10,5 +9,6 @@ E:\项目\SchWeb\bin\Bll.pdb
 E:\项目\SchWeb\bin\Common.pdb
 E:\项目\SchWeb\bin\Model.pdb
 E:\项目\SchWeb\bin\Dal.pdb
+E:\项目\SchWeb\obj\Debug\SchWeb.csprojResolveAssemblyReference.cache
 E:\项目\SchWeb\obj\Debug\SchWeb.dll
 E:\项目\SchWeb\obj\Debug\SchWeb.pdb

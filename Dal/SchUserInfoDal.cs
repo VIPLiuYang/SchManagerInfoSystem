@@ -37,7 +37,19 @@ namespace SchSystem.Dal
 
 			return DbHelperSQL.Exists(strSql.ToString(),parameters);
 		}
-
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string strWhere)
+        {
+            StringBuilder strSql = new StringBuilder();
+            strSql.Append("select count(1) from SchUserInfo");
+            if (!string.IsNullOrEmpty(strWhere))
+            {
+                strSql.Append(" where "+strWhere);
+            }
+            return DbHelperSQL.Exists(strSql.ToString());
+        }
 
 		/// <summary>
 		/// 增加一条数据
