@@ -1,0 +1,152 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>用户订购信息列表</title>
+    <meta name="keywords" content="金视野,教育,平台" />
+    <meta name="description" content="金视野开发部,模板,2017" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
+
+    <!--[if IE 7]>
+		  <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css" />
+		<![endif]-->
+
+    <!-- page specific plugin styles -->
+
+
+    <!-- fonts -->
+
+
+    <!-- ace styles -->
+
+    <link rel="stylesheet" href="../../assets/css/ace.min.css" />
+    <link rel="stylesheet" href="../../assets/css/ace-rtl.min.css" />
+    <link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
+    <script src="../../assets/js/ace-extra.min.js"></script>
+    <style type="text/css">
+        
+    </style>
+</head>
+<body ontouchstart>
+    <div class="main-container" id="main-container">
+        <script type="text/javascript">
+            try { ace.settings.check('main-container', 'fixed') } catch (e) { }
+        </script>
+
+        <div class="main-container-inner">
+
+            <div class="main-content" style="margin-left: 0px">
+                <div class="page-content content_box ">
+                   
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">账号：</div>
+                        <div class="col-xs-3 text-left">
+                            <input  type="text" name="Account" id="Account" placeholder="请输入功能代码" maxlength="10" />
+                        </div>
+                        <div class="col-xs-3 text-right">姓名：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" name="UserTname" id="UserTname" placeholder="请输入功能代码" maxlength="10" /></div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">归属地：</div>
+                        <div class="col-xs-3 text-left">
+                            <select id="Province"><option value="shandong">山东</option></select>
+                            <select id="City"><option value="jinan">济南</option></select>
+                        </div>
+                        <div class="col-xs-3 text-right">用户类型：</div>
+                        <div class="col-xs-3 text-left"><select id="UserType"><option value="parents">家长</option><option value="student">学生</option></select></div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">用户来源：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="UserSource" id="UserSource" readonly="readonly" placeholder="手动" maxlength="250" /></div>
+                        <div class="col-xs-3 text-right">来源附加：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="Additional" id="Additional" readonly="readonly" placeholder="徐晓东" maxlength="250" /></div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">订购套餐：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="OrderPackage" id="OrderPackage" placeholder="请输入套餐名" maxlength="250" /></div>
+                        <div class="col-xs-3 text-right">状态：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="Stat" id="Stat" placeholder="正常" maxlength="250" /></div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">业务功能：</div>
+                        <div class="col-xs-9 text-left">
+                            <!--<select class="col-xs-9" id="TagsBusinessPlatfrom" name="TagsBusinessPlatfrom" multiple></select>-->
+                            <input type="text" id="TagsBusinessPlatfrom" name="TagsBusinessPlatfrom" placeholder="请选择业务功能" />&nbsp;&nbsp;&nbsp;&nbsp;<!--在添加程序时使用select标记-->
+                            <div class="btn-group">
+                                <button data-toggle="dropdown" class="btn btn-info btn-sm dropdown-toggle btn_size">
+                                    选择平台
+                                    <span class="icon-caret-down icon-on-right"></span>
+                                </button>
+                                <ul id="treebusplat" class="dropdown-menu ztree"></ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">缴费金额：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="PayAmount" id="PayAmount" placeholder="请输入缴费金额" maxlength="250" /></div>
+                        <div class="col-xs-3 text-right">订购时长：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="OrderLength" id="OrderLength" placeholder="只有试用套餐才可以输入" maxlength="250" /></div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">订购时间：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="OrderStartTime" id="OrderStartTime" readonly="readonly" placeholder="2018-06-08" maxlength="250" /></div>
+                        <div class="col-xs-3 text-right">结束时间：</div>
+                        <div class="col-xs-3 text-left"><input  type="text" class="col-xs-12" name="OrderEndTime" id="OrderEndTime" readonly="readonly" placeholder="" maxlength="250" /></div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-3 text-right">备注：</div>
+                        <div class="col-xs-9 text-left"><input  type="text" class="col-xs-12" name="Note" id="Note" placeholder="请输入备注" maxlength="250" /></div>
+                    </div>
+                    <div class="space-8"></div>
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <button class="btn btn-info btn-sm text_size" id="btndo" type="button" onclick="saveuser()">保存</button>&nbsp; &nbsp; &nbsp;
+                            <button class="btn btn-sm text_size" id="CancelBtn" type="button">取消</button>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <script type="text/javascript">
+        window.jQuery || document.write("<script src='../../assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+    </script>
+    <script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/typeahead-bs2.min.js"></script>
+    <script src="../../assets/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script src="../../assets/js/jquery.ui.touch-punch.min.js"></script>
+    <script src="../../assets/js/ace-elements.min.js"></script>
+    <script src="../../assets/js/ace.min.js"></script>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="../../assets/js/bootstrap-tagsinput.js"></script>
+    <script src="../../assets/js/jquery.ztree.all-3.5.min.js"></script>
+    <script type="text/javascript" src="../../assets/js/jquery.cookie.js"></script>
+    <!-- (Optional) Latest compiled and minified JavaScript translation files -->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#Account").mouseleave(function () {
+                alert("賬號123456已存在，請重新輸入");
+            });
+        });
+        //单击取消按钮时，关闭模态框
+        $(document).on("click", "#CancelBtn", function () {
+            window.parent.closeEditCfmmodel();
+        });
+    </script>
+
+</body>
+</html>

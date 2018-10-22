@@ -14,6 +14,7 @@ namespace SchSystem.Model
 		private string _classno;
 		private string _classname;
 		private int _gradeid;
+        private string _gradecode;
 		private int _schid;
 		private int _isfinish=0;
 		private DateTime _rectime;
@@ -47,11 +48,19 @@ namespace SchSystem.Model
 		/// <summary>
 		/// 年级编号
 		/// </summary>
-		public int GradeId
+        public int GradeId
 		{
-			set{ _gradeid=value;}
-			get{return _gradeid;}
+            set { _gradeid = value; }
+            get { return _gradeid; }
 		}
+        /// <summary>
+        /// 年级Code
+        /// </summary>
+        public string GradeCode
+        {
+            set { _gradecode = value; }
+            get { return _gradecode; }
+        }
 		/// <summary>
 		/// 学校编号
 		/// </summary>

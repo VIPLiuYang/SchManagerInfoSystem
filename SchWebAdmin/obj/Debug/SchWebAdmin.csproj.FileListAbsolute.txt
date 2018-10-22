@@ -1,0 +1,14 @@
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\SchWebAdmin.dll
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\SchWebAdmin.pdb
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Bll.dll
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Common.dll
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Model.dll
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Newtonsoft.Json.dll
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Dal.dll
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Bll.pdb
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Common.pdb
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Model.pdb
+F:\项目\SchManagerInfoSystem\SchWebAdmin\bin\Dal.pdb
+F:\项目\SchManagerInfoSystem\SchWebAdmin\obj\Debug\SchWebAdmin.csprojResolveAssemblyReference.cache
+F:\项目\SchManagerInfoSystem\SchWebAdmin\obj\Debug\SchWebAdmin.dll
+F:\项目\SchManagerInfoSystem\SchWebAdmin\obj\Debug\SchWebAdmin.pdb

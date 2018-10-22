@@ -1,0 +1,296 @@
+﻿.bootstrap-tagsinput {
+            border:0px;
+            box-shadow:none;
+        }
+        .label-info {
+            background-color:white!important;            
+        }
+        .label {
+            font-size:14px !important;
+            color:black;
+        }
+        .bootstrap-tagsinput .tag {
+            color:black;
+        }
+        .form-group input[disabled], .form-group input:disabled,.form-group select:disabled,input:disabled {
+            color: #999999!important;
+            background-color: #fff!important;
+            border-style: none;
+            font-size:12px;
+        }
+        .ztree li a.curSelectedNode {
+    background-color: #0cf31b;
+}
+        /**/
+        control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+            cursor: not-allowed;
+            background-color: #fffefe;
+            border-style: none;
+        }
+        /*定义字体*/
+        /** {
+            font-family: "微软雅黑" !important;
+        }
+        */
+        i {
+            font-family: FontAwesome !important;
+        }
+        /*字体*/
+         body { 
+       font-family: "微软雅黑" !important;
+         }
+        /*所在位置的提示高度*/
+        .breadcrumbs {
+            min-height:32px;
+            line-height:30px;
+        }
+        /*所在位置的背景边框*/
+        .breadcrumb_box {
+            background: white;
+            border-bottom: 1px solid #e4e4e4;
+           
+        }
+        /*坐在位置的坐边竖线*/
+        .breadcrumb_border {
+            border-left: 2px solid #63bbff;
+            margin-left: 0px;
+            padding-left: 12px;
+           
+        }
+        /*内容上边距*/
+        .content_box {
+            padding-top: 24px;
+        }
+
+        /*学校名称等左边标签的样式*/
+        /*
+        .text_style {
+            
+            line-height: 30px !important;
+            color: #000000 !important;
+        }
+       */
+
+        /*内容区域的字体大小颜色*/
+        .lbl {
+            font-size: 12px !important;
+            color: #999999;
+        }
+        /*学段，年级字体的大小颜色*/
+        .color {
+            font-size: 13px !important;
+            color: #666666 !important;
+        }
+        /*备注区域的最小高度*/
+        .note {
+            min-height: 100px;
+        }
+        /*年级右内边距*/
+        .nianji {
+            padding-right:0;
+        }
+        /*位置提示字体大小*/
+        .breadcrumb > li {
+            font-size:13px !important;
+            color:#666666 !important;
+        }
+        /*科目的颜色*/
+        .bootstrap-tagsinput .tag {
+            color:#999999 !important;
+            font-size:12px !important;
+        }
+        /*下拉选框 输入框的大小*/
+         select, input {
+            font-size:12px;
+            color:#999999;
+        }
+        input[type="text"] {
+            color:#999999 !important;
+            font-size:12px !important;
+        }
+        /*按钮中的字体大小*/
+        .text_size {
+            font-size:12px;
+        }
+        /*每一行的间距*/
+        .form-group {
+            margin-bottom:2px;
+        }
+        /*当屏幕大于768时联系方式和地址的最大宽度*/
+        @media (min-width:768px) {
+            .phone {
+                max-width: 150px;
+            }
+
+            .address {
+                max-width: 400px;
+            }
+        }
+
+        .button_bg {
+            margin-top: 10px !important;
+            margin-bottom: 10px !important;
+        }
+        /*当屏幕小于768时取消学段的浮动*/
+         @media (max-width:768px) {
+            .bianju {
+                text-align:initial !important;
+            }
+        }
+         /*input中placeholder的颜色*/
+       input::-webkit-input-placeholder, textarea::-webkit-input-placeholder { /* WebKit*/  
+            color:#999999;
+            font-size:12px;  
+        }  
+        input:-moz-placeholder, textarea:-moz-placeholder { /* Mozilla Firefox 4 to 18 */  
+            color:#999999; 
+            font-size:12px;  
+        }  
+        input::-moz-placeholder, textarea::-moz-placeholder { /* Mozilla Firefox 19+ */  
+            color:#999999; 
+            font-size:12px;  
+        }  
+        input:-ms-input-placeholder, textarea:-ms-input-placeholder { /* IE 10+ */  
+            color:#999999; 
+            font-size:12px;  
+        } 
+        /*科目下来框的颜色大小*/
+        .ztree li a span {
+            color:#666666; 
+            font-size:12px !important;
+            font-family: "微软雅黑";
+        }
+        .btn-sm { 
+             font-size:12px;
+           }
+        /*输入框所在的盒子上下边距*/
+        .input_box {
+            padding:3px 10px;
+        }
+        #schname {
+            /*margin-left: 10px;*/
+            margin-right: 10px;
+        }
+        #aprov, #acity, #acoty {
+            margin:4px 10px;
+        }
+        select {
+            height: 26px;
+        }
+        /*input {
+            height: 30px;
+        }*/
+        label {
+            height:30px;
+            line-height:30px;
+        }
+        /*
+        .input_box {
+            height: 30px;
+        }*/
+        #SchoolSection .row .col-sm-11 .col-sm-1 {
+            width: 9.3%;
+        }
+        .bootstrap-tagsinput .label-info {
+            padding: 0px;
+        }
+
+        #SonsysStat .Enable {
+            display:inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align:center;
+            background-color:#F3F3F3;
+            cursor:pointer;
+        }
+        #SourceServerStat .Enable {
+            display:inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align:center;
+            background-color:#F3F3F3;
+            cursor:pointer;
+        }
+         .biaoti { 
+            color: #000000;
+            font-size: 14px;
+            font-weight: bold;
+            letter-spacing: 1px
+        }
+
+          .file {
+            clear:both;
+            position: relative;background-color: #b32b1b;border: 1px solid #ddd;width: 68px;height: 25px;display: inline-block;text-decoration: none;text-indent: 0;
+    line-height: 25px;font-size: 12px;color: #fff;cursor: pointer;text-align: center;border: none;border-radius: 3px;   
+    margin:0px 5px;      
+}
+      
+.Resourcefile{
+    position: relative;background-color: #b32b1b;border: 1px solid #ddd;width: 68px;height: 25px;display: inline-block;text-decoration: none;text-indent: 0;
+    line-height: 25px;font-size: 12px;color: #fff;margin: 0 auto;cursor: pointer;text-align: center;border: none;border-radius: 3px;  margin:0px 5px;       
+}
+.file input,.Resourcefile input,.HomeSchoolingfile input{position: absolute;top: 0;left: -2px;opacity: 0;width: 10px;}
+
+.breadcrumb>li+li:before{content:none;}
+input[type=checkbox].ace:disabled+.lbl::before, input[type=radio].ace:disabled+.lbl::before, input[type=checkbox].ace[disabled]+.lbl::before, input[type=radio].ace[disabled]+.lbl::before, input[type=checkbox].ace.disabled+.lbl::before, input[type=radio].ace.disabled+.lbl::before{color:#32A3CF;}
+.HomeSchoolingfile{
+    position: relative;background-color: #b32b1b;border: 1px solid #ddd;width: 68px;height: 25px;display: inline-block;text-decoration: none;text-indent: 0;
+    line-height: 25px;font-size: 12px;color: #fff;margin: 0 auto;cursor: pointer;text-align: center;border: none;border-radius: 3px;   margin:0px 5px;      
+}
+
+#downdom1,#downdom2,#downdom3,#downdom4 {
+            /*display:none;
+            position:absolute;
+            z-index:99999;
+            margin-top:30px;
+            background-color:#fff;*/
+            width:290px;
+        }
+#downhomsch1, #downhomsch2, #downhomsch3, #downhomsch4 {
+    width: 290px;
+}
+#TreeEduVer1,#TreeEduVer2,#TreeEduVer3,#TreeEduVer4 {
+    width:144px;
+    border-right:#2E8964 solid 1px;
+    border-bottom:#2E8964 solid 1px;
+    min-height:356px;
+}
+#TreeSub1,#TreeSub2,#TreeSub3,#TreeSub4 {
+    width:144px;
+    border-left:#3C9BFF solid 1px;
+    border-bottom:#3C9BFF solid 1px;
+    border-right:#2E8964 solid 1px;
+}
+.EduVerTitle {
+    width:144px;
+    background-color: #3C9BFF;
+    color: #fff;
+    text-align:center;
+}
+.SelectEduTitle {
+    width:144px;
+    background-color: #2E8964;
+    color: #fff;
+    text-align:center;
+}
+
+#HomeSchoolBaxicStat .Enable {
+            display:inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align:center;
+            background-color:#F3F3F3;
+            cursor:pointer;
+        }
+#HomeSchoolServStat .Enable {
+            display:inline-block;
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align:center;
+            background-color:#F3F3F3;
+            cursor:pointer;
+        }

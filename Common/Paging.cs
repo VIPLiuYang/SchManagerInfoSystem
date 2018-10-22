@@ -26,10 +26,10 @@ namespace Common
             this.PageIndex = PageIndex;
         }
         //定义样式a标签第一个样式    
-        private readonly string csstagA = @"<a href='{0}?page={1}' >{2}</a>";            //{0}{1}{2}代表url和参数名，参数值，页码值    
+        private readonly string csstagA = @"<li><a href='{0}?page={1}' >{2}</a></li>";            //{0}{1}{2}代表url和参数名，参数值，页码值    
         //定义样式a标签第二个样式    
         //private readonly string csstagA1 = "<a style='font-size:13px;font-weight:bold;margin:0 4px 0 4px'>{0}</a>";
-        private readonly string csstagA1 = "<span class='pc'>{0}</span>";
+        private readonly string csstagA1 = "<li class='active'><span class='pc'>{0}</span></li>";
 
 
         public delegate int GetDelegate();
@@ -65,11 +65,11 @@ namespace Common
             numList[11] = "";      //“下一页”位置        
             if (pageIndex > 1)                                         //判断当前页    
             {
-                numList[0] = string.Format(csstagA, url, (pageIndex - 1), "<");//上一页
+                numList[0] = string.Format(csstagA, url, (pageIndex - 1), "上一页");//上一页
             }
             if (pageIndex < pageCount)
             {
-                numList[11] = string.Format(csstagA, url, (pageIndex + 1), ">");//下一页
+                numList[11] = string.Format(csstagA, url, (pageIndex + 1), "下一页");//下一页
             }
             if (pageIndex >= 10)    //当前页大于10页的状态    
             {
@@ -141,14 +141,14 @@ namespace Common
                     }
                 }
             }
-            sb.Append("<li class='page'>");
+            //sb.Append("<li class='page'>");
             for (int i = 0; i < numList.Length; i++)   //将字符串数组填入StringBulider中    
             {
                 sb.Append(numList[i]);
             }
 
             //sb.AppendFormat(" 共{0}/{1}条", pageIndex, pageCount);
-            sb.Append("</li>");
+            //sb.Append("</li>");
             return sb.ToString();   //返回，并在前台 <span id="pagedspan"><%=pagedNum %></span>    
         }
         

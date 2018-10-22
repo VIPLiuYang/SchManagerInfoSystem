@@ -40,6 +40,10 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -66,11 +70,17 @@
     <Content Include="assets\avatars\avatar5.png" />
     <Content Include="assets\avatars\profile-pic.jpg" />
     <Content Include="assets\avatars\user.jpg" />
+    <Content Include="assets\Crop\css\cropper.min.css" />
+    <Content Include="assets\Crop\css\ImgCropping.css" />
+    <Content Include="assets\Crop\js\cropper.min.js" />
+    <Content Include="assets\Crop\js\jquery.min.js" />
     <Content Include="assets\css\ace-ie.min.css" />
     <Content Include="assets\css\ace-rtl.min.css" />
     <Content Include="assets\css\ace-skins.min.css" />
     <Content Include="assets\css\ace.min.css" />
+    <Content Include="assets\css\bootstrap-dialog.css" />
     <Content Include="assets\css\bootstrap-editable.css" />
+    <Content Include="assets\css\bootstrap-select.css" />
     <Content Include="assets\css\bootstrap-timepicker.css" />
     <Content Include="assets\css\bootstrap.min.css" />
     <Content Include="assets\css\chosen.css" />
@@ -83,12 +93,35 @@
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\fullcalendar.css" />
     <Content Include="assets\css\Images\loading.gif" />
+    <Content Include="assets\css\img\diy\1_close.png" />
+    <Content Include="assets\css\img\diy\1_open.png" />
+    <Content Include="assets\css\img\diy\2.png" />
+    <Content Include="assets\css\img\diy\3.png" />
+    <Content Include="assets\css\img\diy\4.png" />
+    <Content Include="assets\css\img\diy\5.png" />
+    <Content Include="assets\css\img\diy\6.png" />
+    <Content Include="assets\css\img\diy\7.png" />
+    <Content Include="assets\css\img\diy\8.png" />
+    <Content Include="assets\css\img\diy\9.png" />
+    <Content Include="assets\css\img\line_conn.gif" />
+    <Content Include="assets\css\img\line_conn.png" />
+    <Content Include="assets\css\img\loading.gif" />
+    <Content Include="assets\css\img\metro.gif" />
+    <Content Include="assets\css\img\metro.png" />
     <Content Include="assets\css\jquery-ui-1.10.3.custom.min.css" />
     <Content Include="assets\css\jquery-ui-1.10.3.full.min.css" />
     <Content Include="assets\css\jquery.gritter.css" />
-    <Content Include="assets\css\laypage.css" />
+    <Content Include="assets\css\metro.css" />
+    <Content Include="assets\css\metrodpt.css" />
     <Content Include="assets\css\select2.css" />
     <Content Include="assets\css\ui.jqgrid.css" />
+    <Content Include="assets\css\zTreeStyle.css" />
+    <Content Include="assets\CustomFunction\DataVerification.js" />
+    <Content Include="assets\images\11.png" />
+    <Content Include="assets\images\az.png" />
+    <Content Include="assets\images\favicon.ico" />
+    <Content Include="assets\images\frontico.png" />
+    <Content Include="assets\images\frontloginimg.jpg" />
     <Content Include="assets\images\gallery\image-1.jpg" />
     <Content Include="assets\images\gallery\image-2.jpg" />
     <Content Include="assets\images\gallery\image-3.jpg" />
@@ -101,15 +134,38 @@
     <Content Include="assets\images\gallery\thumb-4.jpg" />
     <Content Include="assets\images\gallery\thumb-5.jpg" />
     <Content Include="assets\images\gallery\thumb-6.jpg" />
+    <Content Include="assets\images\ios.png" />
+    <Content Include="assets\images\JsyLogo.png" />
+    <Content Include="assets\images\JsyUser.png" />
+    <Content Include="assets\images\JysLogin.png" />
+    <Content Include="assets\images\loading.gif" />
+    <Content Include="assets\images\loginbg01.gif" />
+    <Content Include="assets\images\loginbg02.gif" />
+    <Content Include="assets\images\loginbg03.gif" />
+    <Content Include="assets\images\loginbg04.gif" />
+    <Content Include="assets\images\login_bg_01.png" />
+    <Content Include="assets\images\login_bg_02.png" />
+    <Content Include="assets\images\login_bg_03.png" />
+    <Content Include="assets\images\logo.png" />
+    <Content Include="assets\images\logofullbg.jpg" />
+    <Content Include="assets\images\p.png" />
+    <Content Include="assets\images\u.jpg" />
+    <Content Include="assets\images\u.png" />
     <Content Include="assets\images\保存.png" />
     <Content Include="assets\images\删除筛选项.png" />
     <Content Include="assets\js\ace-elements.min.js" />
     <Content Include="assets\js\ace-extra.min.js" />
     <Content Include="assets\js\ace.min.js" />
     <Content Include="assets\js\additional-methods.min.js" />
+    <Content Include="assets\js\ajaxfileupload.js" />
     <Content Include="assets\js\bootbox.min.js" />
     <Content Include="assets\js\bootstrap-colorpicker.min.js" />
+    <Content Include="assets\js\bootstrap-dialog.js" />
+    <Content Include="assets\js\bootstrap-paginator.js" />
+    <Content Include="assets\js\bootstrap-select.js" />
     <Content Include="assets\js\bootstrap-tag.min.js" />
+    <Content Include="assets\css\bootstrap-tagsinput.css" />
+    <Content Include="assets\js\bootstrap-tagsinput.js" />
     <Content Include="assets\js\bootstrap-treeview.min.js" />
     <Content Include="assets\js\bootstrap-wysiwyg.min.js" />
     <Content Include="assets\js\bootstrap.min.js" />
@@ -129,15 +185,88 @@
     <Content Include="assets\js\fuelux\fuelux.wizard.min.js" />
     <Content Include="assets\js\fullcalendar.min.js" />
     <Content Include="assets\js\html5shiv.js" />
+    <Content Include="assets\js\i18n\defaults-ar_AR.js" />
+    <Content Include="assets\js\i18n\defaults-ar_AR.min.js" />
+    <Content Include="assets\js\i18n\defaults-bg_BG.js" />
+    <Content Include="assets\js\i18n\defaults-bg_BG.min.js" />
+    <Content Include="assets\js\i18n\defaults-cro_CRO.js" />
+    <Content Include="assets\js\i18n\defaults-cro_CRO.min.js" />
+    <Content Include="assets\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="assets\js\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="assets\js\i18n\defaults-da_DK.js" />
+    <Content Include="assets\js\i18n\defaults-da_DK.min.js" />
+    <Content Include="assets\js\i18n\defaults-de_DE.js" />
+    <Content Include="assets\js\i18n\defaults-de_DE.min.js" />
+    <Content Include="assets\js\i18n\defaults-en_US.js" />
+    <Content Include="assets\js\i18n\defaults-en_US.min.js" />
+    <Content Include="assets\js\i18n\defaults-es_CL.js" />
+    <Content Include="assets\js\i18n\defaults-es_CL.min.js" />
+    <Content Include="assets\js\i18n\defaults-es_ES.js" />
+    <Content Include="assets\js\i18n\defaults-es_ES.min.js" />
+    <Content Include="assets\js\i18n\defaults-et_EE.js" />
+    <Content Include="assets\js\i18n\defaults-et_EE.min.js" />
+    <Content Include="assets\js\i18n\defaults-eu.js" />
+    <Content Include="assets\js\i18n\defaults-eu.min.js" />
+    <Content Include="assets\js\i18n\defaults-fa_IR.js" />
+    <Content Include="assets\js\i18n\defaults-fa_IR.min.js" />
+    <Content Include="assets\js\i18n\defaults-fi_FI.js" />
+    <Content Include="assets\js\i18n\defaults-fi_FI.min.js" />
+    <Content Include="assets\js\i18n\defaults-fr_FR.js" />
+    <Content Include="assets\js\i18n\defaults-fr_FR.min.js" />
+    <Content Include="assets\js\i18n\defaults-hu_HU.js" />
+    <Content Include="assets\js\i18n\defaults-hu_HU.min.js" />
+    <Content Include="assets\js\i18n\defaults-id_ID.js" />
+    <Content Include="assets\js\i18n\defaults-id_ID.min.js" />
+    <Content Include="assets\js\i18n\defaults-it_IT.js" />
+    <Content Include="assets\js\i18n\defaults-it_IT.min.js" />
+    <Content Include="assets\js\i18n\defaults-ja_JP.js" />
+    <Content Include="assets\js\i18n\defaults-ja_JP.min.js" />
+    <Content Include="assets\js\i18n\defaults-kh_KM.js" />
+    <Content Include="assets\js\i18n\defaults-kh_KM.min.js" />
+    <Content Include="assets\js\i18n\defaults-ko_KR.js" />
+    <Content Include="assets\js\i18n\defaults-ko_KR.min.js" />
+    <Content Include="assets\js\i18n\defaults-lt_LT.js" />
+    <Content Include="assets\js\i18n\defaults-lt_LT.min.js" />
+    <Content Include="assets\js\i18n\defaults-nb_NO.js" />
+    <Content Include="assets\js\i18n\defaults-nb_NO.min.js" />
+    <Content Include="assets\js\i18n\defaults-nl_NL.js" />
+    <Content Include="assets\js\i18n\defaults-nl_NL.min.js" />
+    <Content Include="assets\js\i18n\defaults-pl_PL.js" />
+    <Content Include="assets\js\i18n\defaults-pl_PL.min.js" />
+    <Content Include="assets\js\i18n\defaults-pt_BR.js" />
+    <Content Include="assets\js\i18n\defaults-pt_BR.min.js" />
+    <Content Include="assets\js\i18n\defaults-pt_PT.js" />
+    <Content Include="assets\js\i18n\defaults-pt_PT.min.js" />
+    <Content Include="assets\js\i18n\defaults-ro_RO.js" />
+    <Content Include="assets\js\i18n\defaults-ro_RO.min.js" />
+    <Content Include="assets\js\i18n\defaults-ru_RU.js" />
+    <Content Include="assets\js\i18n\defaults-ru_RU.min.js" />
+    <Content Include="assets\js\i18n\defaults-sk_SK.js" />
+    <Content Include="assets\js\i18n\defaults-sk_SK.min.js" />
+    <Content Include="assets\js\i18n\defaults-sl_SI.js" />
+    <Content Include="assets\js\i18n\defaults-sl_SI.min.js" />
+    <Content Include="assets\js\i18n\defaults-sv_SE.js" />
+    <Content Include="assets\js\i18n\defaults-sv_SE.min.js" />
+    <Content Include="assets\js\i18n\defaults-tr_TR.js" />
+    <Content Include="assets\js\i18n\defaults-tr_TR.min.js" />
+    <Content Include="assets\js\i18n\defaults-ua_UA.js" />
+    <Content Include="assets\js\i18n\defaults-ua_UA.min.js" />
+    <Content Include="assets\js\i18n\defaults-vi_VN.js" />
+    <Content Include="assets\js\i18n\defaults-vi_VN.min.js" />
+    <Content Include="assets\js\i18n\defaults-zh_CN.js" />
+    <Content Include="assets\js\i18n\defaults-zh_CN.min.js" />
+    <Content Include="assets\js\i18n\defaults-zh_TW.js" />
+    <Content Include="assets\js\i18n\defaults-zh_TW.min.js" />
     <Content Include="assets\js\jqGrid\i18n\grid.locale-en.js" />
     <Content Include="assets\js\jqGrid\jquery.jqGrid.min.js" />
     <Content Include="assets\js\jquery-1.10.2.min.js" />
+    <Content Include="assets\js\jquery-1.8.3.min.js" />
     <Content Include="assets\js\jquery-2.0.3.min.js" />
-    <Content Include="assets\js\jQuery-2.1.4.min.js" />
     <Content Include="assets\js\jquery-ui-1.10.3.custom.min.js" />
     <Content Include="assets\js\jquery-ui-1.10.3.full.min.js" />
     <Content Include="assets\js\jquery.autosize.min.js" />
     <Content Include="assets\js\jquery.colorbox-min.js" />
+    <Content Include="assets\js\jquery.cookie.js" />
     <Content Include="assets\js\jquery.dataTables.bootstrap.js" />
     <Content Include="assets\js\jquery.dataTables.min.js" />
     <Content Include="assets\js\jquery.easy-pie-chart.min.js" />
@@ -146,13 +275,20 @@
     <Content Include="assets\js\jquery.inputlimiter.1.3.1.min.js" />
     <Content Include="assets\js\jquery.knob.min.js" />
     <Content Include="assets\js\jquery.maskedinput.min.js" />
-    <Content Include="assets\js\jquery.min.js" />
     <Content Include="assets\js\jquery.mobile.custom.min.js" />
     <Content Include="assets\js\jquery.nestable.min.js" />
     <Content Include="assets\js\jquery.slimscroll.min.js" />
     <Content Include="assets\js\jquery.sparkline.min.js" />
     <Content Include="assets\js\jquery.ui.touch-punch.min.js" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\cancel.png" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\cancel.png" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\css\default.css" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\css\uploadify.css" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\expressInstall.swf" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\jquery-1.3.2.min.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\swfobject.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\uploadify.swf" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\expressInstall.swf" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\jquery-1.3.2.min.js" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\jquery.uploadify.v2.1.0.js" />
@@ -162,54 +298,99 @@
     <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.css" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.swf" />
     <Content Include="assets\js\jquery.validate.min.js" />
-    <Content Include="assets\js\laypage.js" />
+    <Content Include="assets\js\jquery.ztree.all-3.5.min.js" />
+    <Content Include="assets\js\jquery.ztree.core.js" />
+    <Content Include="assets\js\jsencrypt.min.js" />
+    <Content Include="assets\js\learunui-validator.js" />
     <Content Include="assets\js\markdown\bootstrap-markdown.min.js" />
     <Content Include="assets\js\markdown\markdown.min.js" />
     <Content Include="assets\js\respond.min.js" />
     <Content Include="assets\js\select2.min.js" />
     <Content Include="assets\js\typeahead-bs2.min.js" />
+    <Content Include="assets\js\vue.js" />
     <Content Include="assets\js\x-editable\ace-editable.min.js" />
     <Content Include="assets\js\x-editable\bootstrap-editable.min.js" />
+    <Content Include="assets\lib\plupload\moxie.js" />
+    <Content Include="assets\lib\plupload\moxie.min.js" />
+    <Content Include="assets\lib\plupload\Moxie.swf" />
+    <Content Include="assets\lib\plupload\plupload.dev.js" />
+    <Content Include="assets\lib\plupload\plupload.full.min.js" />
+    <Content Include="assets\lib\plupload\plupload.min.js" />
+    <Content Include="assets\lib\qiniu\qiniu.js" />
+    <Content Include="assets\lib\qiniu\qiniu.min.js" />
+    <Content Include="assets\utils\cloudutil.js" />
+    <Content Include="assets\utils\compress.js" />
+    <Content Include="assets\utils\consts.js" />
+    <Content Include="assets\utils\cryption.js" />
+    <Content Include="assets\utils\events.js" />
+    <Content Include="assets\utils\mui.pullToRefresh.js" />
+    <Content Include="assets\utils\mui.pullToRefresh.material.js" />
+    <Content Include="assets\utils\pluploadutil.js" />
+    <Content Include="assets\utils\request.js" />
+    <Content Include="assets\utils\storageutil.js" />
+    <Content Include="assets\utils\utils.js" />
+    <Content Include="assets\utils\wx-utils.js" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="Content\css\bootstrapStyle.css" />
+    <Content Include="Content\css\family.css" />
+    <Content Include="Content\images\bootstrap.gif" />
+    <Content Include="Content\images\bootstrap.png" />
+    <Content Include="Content\images\line_conn.png" />
+    <Content Include="Content\images\loading.gif" />
+    <Content Include="ImgCroppAndUpload.aspx" />
     <Content Include="index.aspx" />
-    <Content Include="PublicPage\Department\Department.aspx" />
-    <Content Include="SchoolBaxicInfo\Department\DepartList.aspx" />
-    <Content Include="SchoolBaxicInfo\Department\DeppartEdit.aspx" />
-    <Content Include="SchoolBaxicInfo\Department\js\jquery.min.js" />
-    <Content Include="SchoolBaxicInfo\Department\js\Pager.js" />
-    <Content Include="SchoolBaxicInfo\Department\js\vue.js" />
-    <Content Include="SchoolBaxicInfo\Grade\Class\ClassEdit.aspx" />
-    <Content Include="SchoolBaxicInfo\Grade\Class\ClassList.aspx" />
-    <Content Include="SchoolBaxicInfo\Grade\GradeEdit.aspx" />
-    <Content Include="SchoolBaxicInfo\Grade\GradeList.aspx" />
-    <Content Include="SchoolBaxicInfo\Parents\ParentsEdit.aspx" />
-    <Content Include="SchoolBaxicInfo\Parents\ParentsList.aspx" />
-    <Content Include="SchoolBaxicInfo\School\SchType.aspx" />
-    <Content Include="SchoolBaxicInfo\School\SchTypeAdd.aspx" />
-    <Content Include="SchoolBaxicInfo\Student\StudentEdit.aspx" />
+    <Content Include="Login.aspx" />
+    <Content Include="LoginExc.aspx" />
+    <Content Include="LoginYs.aspx" />
+    <Content Include="SchoolBaxicInfo\Department\DepartInfo.aspx" />
+    <Content Include="SchoolBaxicInfo\GradeClassSet\SchClassE.aspx" />
+    <Content Include="SchoolBaxicInfo\GradeClassSet\SchGradeEdit.aspx" />
+    <Content Include="SchoolBaxicInfo\SchChn\ChnAdd.aspx" />
+    <Content Include="SchoolBaxicInfo\SchChn\ChnList.aspx" />
+    <Content Include="SchoolBaxicInfo\SchNews\bootstrap富文本编辑器-最小演示文說明.docx" />
+    <Content Include="SchoolBaxicInfo\SchNews\NewsAdd.aspx" />
+    <Content Include="SchoolBaxicInfo\SchNews\NewsEdit.aspx" />
+    <Content Include="SchoolBaxicInfo\SchNews\NewsList.aspx" />
+    <Content Include="SchoolBaxicInfo\SchNews\NewsShow.aspx" />
+    <Content Include="SchoolBaxicInfo\SchNews\七牛上傳控件-最小演示文件說明.docx" />
+    <Content Include="SchoolBaxicInfo\SchNews\使用SqlBulkCopy进行附件批量插入.docx" />
+    <Content Include="SchoolBaxicInfo\SchNews\列表页面使用的是WebSchChnNewsV视图.txt" />
+    <Content Include="SchoolBaxicInfo\School\SchEdit.aspx" />
+    <Content Include="SchoolBaxicInfo\School\SchInfo.aspx" />
+    <Content Include="SchoolBaxicInfo\School\SchShow.aspx" />
+    <Content Include="SchoolBaxicInfo\SchStructureSet\SchStructureSet.aspx" />
     <Content Include="SchoolBaxicInfo\Student\StudentList.aspx" />
-    <Content Include="SchoolBaxicInfo\Teacher\js\jquery.min.js" />
-    <Content Include="SchoolBaxicInfo\Teacher\js\vue.js" />
-    <Content Include="SchoolBaxicInfo\Teacher\TeacherEdit.aspx" />
-    <Content Include="SchoolBaxicInfo\Teacher\TeacherList.aspx" />
-    <Content Include="SchoolBaxicInfo\Users\js\jquery.min.js" />
-    <Content Include="SchoolBaxicInfo\Users\js\vue.js" />
-    <Content Include="SchoolBaxicInfo\Users\UsersEdit.aspx" />
-    <Content Include="SchoolBaxicInfo\Users\UsersList.aspx" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082848.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082914.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082918.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082921.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082936.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082942.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082948.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082951.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130082954.jpg" />
-    <Content Include="UploadFileDir\Teacher\QQ图片20171130083001.jpg" />
+    <Content Include="SchoolBaxicInfo\Student\StuE.aspx" />
+    <Content Include="SchoolBaxicInfo\Student\StuShow2.aspx" />
+    <Content Include="SchoolBaxicInfo\StuGenUn\StuGenUnList.aspx" />
+    <Content Include="SchoolBaxicInfo\SubLeader\SubLeaderInfo.aspx" />
+    <Content Include="SchoolBaxicInfo\UserFunAuth\UserAuth.aspx" />
+    <Content Include="SchoolBaxicInfo\UserFunAuth\UserFunAuthInfo.aspx" />
+    <Content Include="SchoolBaxicInfo\Users\ShowUser.aspx" />
+    <Content Include="SchoolBaxicInfo\Users\UserInfo.aspx" />
+    <Content Include="jsywebindex.html" />
+    <Content Include="UploadFileDir\Users\20180302010845808570.jpg" />
+    <Content Include="UploadFileDir\Users\20180302011255958521.jpg" />
+    <Content Include="UserApi.aspx" />
+    <Content Include="UserPwdEdit.aspx" />
+    <Content Include="viewImg.aspx" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Com\CookieHelper.cs" />
+    <Compile Include="Com\DataPack.cs" />
+    <Compile Include="Com\Public.cs" />
+    <Compile Include="Com\Session.cs" />
+    <Compile Include="Com\SoureSession.cs" />
+    <Compile Include="ImgCroppAndUpload.aspx.cs">
+      <DependentUpon>ImgCroppAndUpload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ImgCroppAndUpload.aspx.designer.cs">
+      <DependentUpon>ImgCroppAndUpload.aspx</DependentUpon>
+    </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -217,111 +398,127 @@
     <Compile Include="index.aspx.designer.cs">
       <DependentUpon>index.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginExc.aspx.cs">
+      <DependentUpon>LoginExc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginExc.aspx.designer.cs">
+      <DependentUpon>LoginExc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginYs.aspx.cs">
+      <DependentUpon>LoginYs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginYs.aspx.designer.cs">
+      <DependentUpon>LoginYs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PublicPage\Department\Department.aspx.cs">
-      <DependentUpon>Department.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\Department\DepartInfo.aspx.cs">
+      <DependentUpon>DepartInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="PublicPage\Department\Department.aspx.designer.cs">
-      <DependentUpon>Department.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\Department\DepartInfo.aspx.designer.cs">
+      <DependentUpon>DepartInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="PublicPage\Department\Department_h.ashx.cs">
-      <DependentUpon>Department_h.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBaxicInfo\Department\ashx\Depart.ashx.cs">
-      <DependentUpon>Depart.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBaxicInfo\Department\DepartList.aspx.cs">
-      <DependentUpon>DepartList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\GradeClassSet\SchClassE.aspx.cs">
+      <DependentUpon>SchClassE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Department\DepartList.aspx.designer.cs">
-      <DependentUpon>DepartList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\GradeClassSet\SchClassE.aspx.designer.cs">
+      <DependentUpon>SchClassE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Department\DeppartEdit.aspx.cs">
-      <DependentUpon>DeppartEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\GradeClassSet\SchGradeEdit.aspx.cs">
+      <DependentUpon>SchGradeEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Department\DeppartEdit.aspx.designer.cs">
-      <DependentUpon>DeppartEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\GradeClassSet\SchGradeEdit.aspx.designer.cs">
+      <DependentUpon>SchGradeEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\ashx\Grade.ashx.cs">
-      <DependentUpon>Grade.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\Class\ashx\Class.ashx.cs">
-      <DependentUpon>Class.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassEdit.aspx.cs">
-      <DependentUpon>ClassEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchChn\ChnAdd.aspx.cs">
+      <DependentUpon>ChnAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassEdit.aspx.designer.cs">
-      <DependentUpon>ClassEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchChn\ChnAdd.aspx.designer.cs">
+      <DependentUpon>ChnAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassList.aspx.cs">
-      <DependentUpon>ClassList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchChn\ChnList.aspx.cs">
+      <DependentUpon>ChnList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\Class\ClassList.aspx.designer.cs">
-      <DependentUpon>ClassList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchChn\ChnList.aspx.designer.cs">
+      <DependentUpon>ChnList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\GradeEdit.aspx.cs">
-      <DependentUpon>GradeEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsAdd.aspx.cs">
+      <DependentUpon>NewsAdd.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\GradeEdit.aspx.designer.cs">
-      <DependentUpon>GradeEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsAdd.aspx.designer.cs">
+      <DependentUpon>NewsAdd.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\GradeList.aspx.cs">
-      <DependentUpon>GradeList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsEdit.aspx.cs">
+      <DependentUpon>NewsEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Grade\GradeList.aspx.designer.cs">
-      <DependentUpon>GradeList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsEdit.aspx.designer.cs">
+      <DependentUpon>NewsEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Parents\ashx\Parents.ashx.cs">
-      <DependentUpon>Parents.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBaxicInfo\Parents\ParentsEdit.aspx.cs">
-      <DependentUpon>ParentsEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsList.aspx.cs">
+      <DependentUpon>NewsList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Parents\ParentsEdit.aspx.designer.cs">
-      <DependentUpon>ParentsEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsList.aspx.designer.cs">
+      <DependentUpon>NewsList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Parents\ParentsList.aspx.cs">
-      <DependentUpon>ParentsList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsShow.aspx.cs">
+      <DependentUpon>NewsShow.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Parents\ParentsList.aspx.designer.cs">
-      <DependentUpon>ParentsList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\NewsShow.aspx.designer.cs">
+      <DependentUpon>NewsShow.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\School\ashx\SchType.ashx.cs">
-      <DependentUpon>SchType.ashx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SchNews\schnews.cs">
+      <SubType>Code</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\School\SchType.aspx.cs">
-      <DependentUpon>SchType.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\School\SchEdit.aspx.cs">
+      <DependentUpon>SchEdit.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\School\SchType.aspx.designer.cs">
-      <DependentUpon>SchType.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\School\SchEdit.aspx.designer.cs">
+      <DependentUpon>SchEdit.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\School\SchTypeAdd.aspx.cs">
-      <DependentUpon>SchTypeAdd.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\School\SchInfo.aspx.cs">
+      <DependentUpon>SchInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\School\SchTypeAdd.aspx.designer.cs">
-      <DependentUpon>SchTypeAdd.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\School\SchInfo.aspx.designer.cs">
+      <DependentUpon>SchInfo.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Student\ashx\Student.ashx.cs">
-      <DependentUpon>Student.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBaxicInfo\Student\StudentEdit.aspx.cs">
-      <DependentUpon>StudentEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\School\SchShow.aspx.cs">
+      <DependentUpon>SchShow.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Student\StudentEdit.aspx.designer.cs">
-      <DependentUpon>StudentEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\School\SchShow.aspx.designer.cs">
+      <DependentUpon>SchShow.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\SchStructureSet\SchStructureSet.aspx.cs">
+      <DependentUpon>SchStructureSet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\SchStructureSet\SchStructureSet.aspx.designer.cs">
+      <DependentUpon>SchStructureSet.aspx</DependentUpon>
     </Compile>
     <Compile Include="SchoolBaxicInfo\Student\StudentList.aspx.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>
@@ -330,55 +527,160 @@
     <Compile Include="SchoolBaxicInfo\Student\StudentList.aspx.designer.cs">
       <DependentUpon>StudentList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Teacher\ashx\Teacher.ashx.cs">
-      <DependentUpon>Teacher.ashx</DependentUpon>
-    </Compile>
-    <Compile Include="SchoolBaxicInfo\Teacher\TeacherEdit.aspx.cs">
-      <DependentUpon>TeacherEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\Student\StuE.aspx.cs">
+      <DependentUpon>StuE.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Teacher\TeacherEdit.aspx.designer.cs">
-      <DependentUpon>TeacherEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\Student\StuE.aspx.designer.cs">
+      <DependentUpon>StuE.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Teacher\TeacherList.aspx.cs">
-      <DependentUpon>TeacherList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\Student\StuShow2.aspx.cs">
+      <DependentUpon>StuShow2.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Teacher\TeacherList.aspx.designer.cs">
-      <DependentUpon>TeacherList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\Student\StuShow2.aspx.designer.cs">
+      <DependentUpon>StuShow2.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Users\ashx\Users.ashx.cs">
-      <DependentUpon>Users.ashx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\StuGenUn\ashx\StuGenUn.ashx.cs">
+      <DependentUpon>StuGenUn.ashx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Users\UsersEdit.aspx.cs">
-      <DependentUpon>UsersEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\StuGenUn\StuGenUnList.aspx.cs">
+      <DependentUpon>StuGenUnList.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Users\UsersEdit.aspx.designer.cs">
-      <DependentUpon>UsersEdit.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\StuGenUn\StuGenUnList.aspx.designer.cs">
+      <DependentUpon>StuGenUnList.aspx</DependentUpon>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Users\UsersList.aspx.cs">
-      <DependentUpon>UsersList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SubLeader\SubLeaderInfo.aspx.cs">
+      <DependentUpon>SubLeaderInfo.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="SchoolBaxicInfo\Users\UsersList.aspx.designer.cs">
-      <DependentUpon>UsersList.aspx</DependentUpon>
+    <Compile Include="SchoolBaxicInfo\SubLeader\SubLeaderInfo.aspx.designer.cs">
+      <DependentUpon>SubLeaderInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\UserFunAuth\UserAuth.aspx.cs">
+      <DependentUpon>UserAuth.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\UserFunAuth\UserAuth.aspx.designer.cs">
+      <DependentUpon>UserAuth.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\UserFunAuth\UserFunAuthInfo.aspx.cs">
+      <DependentUpon>UserFunAuthInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\UserFunAuth\UserFunAuthInfo.aspx.designer.cs">
+      <DependentUpon>UserFunAuthInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\ShowUser.aspx.cs">
+      <DependentUpon>ShowUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\ShowUser.aspx.designer.cs">
+      <DependentUpon>ShowUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\UserInfo.aspx.cs">
+      <DependentUpon>UserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="SchoolBaxicInfo\Users\UserInfo.aspx.designer.cs">
+      <DependentUpon>UserInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserApi.aspx.cs">
+      <DependentUpon>UserApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserApi.aspx.designer.cs">
+      <DependentUpon>UserApi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPwdEdit.aspx.cs">
+      <DependentUpon>UserPwdEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPwdEdit.aspx.designer.cs">
+      <DependentUpon>UserPwdEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ValidateLogin.cs" />
+    <Compile Include="viewImg.aspx.cs">
+      <DependentUpon>viewImg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewImg.aspx.designer.cs">
+      <DependentUpon>viewImg.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="assets\font\fontawesome-webfont.woff" />
-    <Content Include="SchoolBaxicInfo\School\ashx\SchType.ashx" />
-    <Content Include="SchoolBaxicInfo\Student\ashx\Student.ashx" />
-    <Content Include="SchoolBaxicInfo\Parents\ashx\Parents.ashx" />
-    <Content Include="SchoolBaxicInfo\Grade\ashx\Grade.ashx" />
-    <Content Include="SchoolBaxicInfo\Grade\Class\ashx\Class.ashx" />
-    <Content Include="SchoolBaxicInfo\Department\ashx\Depart.ashx" />
-    <Content Include="SchoolBaxicInfo\Teacher\ashx\Teacher.ashx" />
-    <Content Include="SchoolBaxicInfo\Users\ashx\Users.ashx" />
+    <Content Include="SchoolBaxicInfo\StuGenUn\ashx\StuGenUn.ashx" />
+    <Content Include="Login.ashx" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\check.php" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\air\logging\FileTarget.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\HMAC.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\MD5.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\MD5Stream.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\SHA1.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\SHA224.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\SHA256.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\WSSEUsernameToken.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\errors\IllegalStateError.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\Address.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\Email.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\Phone.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\VCard.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\VCardParser.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\images\BitString.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\images\JPGEncoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\images\PNGEncoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\DynamicURLLoader.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\IURIResolver.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\MimeTypeMap.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\proxies\RFC2817Socket.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\URI.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\URIEncodingBitmap.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Database.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Definition.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Dict.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\DictionaryServer.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\ConnectedEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DatabaseEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DefinitionEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DefinitionHeaderEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DictionaryServerEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DisconnectedEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\ErrorEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\MatchEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\MatchStrategiesEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\NoMatchEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\MatchStrategy.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Response.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\util\CompleteResponseEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\util\SocketHelper.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSON.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONDecoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONEncoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONParseError.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONToken.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONTokenizer.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONTokenType.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\ArrayUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\DateUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\DictionaryUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\IntUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\NumberFormatter.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\StringUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\XMLUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\webapis\events\ServiceEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\webapis\ServiceBase.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\webapis\URLLoaderBase.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\index.php" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\check.php" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\uploadify.php" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.fla" />
     <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.php" />
-    <Content Include="PublicPage\Department\Department_h.ashx" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\lib\qiniu\dist\qiniu.min.map" />
+    <None Include="Properties\PublishProfiles\adminweb.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -401,13 +703,15 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\" />
-    <Folder Include="SchoolBaxicInfo\School\css\" />
-    <Folder Include="SchoolBaxicInfo\School\images\" />
-    <Folder Include="SchoolBaxicInfo\School\js\" />
-    <Folder Include="SchoolBaxicInfo\Student\css\" />
-    <Folder Include="SchoolBaxicInfo\Student\images\" />
-    <Folder Include="UploadFileDir\Users\" />
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\css\_notes\" />
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\_notes\" />
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\uploads\" />
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\_notes\" />
+    <Folder Include="Content\dist\css\" />
+    <Folder Include="Content\dist\fonts\" />
+    <Folder Include="Content\dist\js\" />
+    <Folder Include="Content\images\icon\" />
+    <Folder Include="UploadFileDir\Teacher\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -422,7 +726,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>27461</DevelopmentServerPort>
+          <DevelopmentServerPort>13200</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>http://localhost:3886/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>

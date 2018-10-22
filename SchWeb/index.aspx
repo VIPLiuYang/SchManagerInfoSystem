@@ -1,11 +1,12 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="SchWeb.index" %>
+
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title>控制台 - 金视野系统模板</title>
-    <meta name="keywords" content="金视野,教育,平台" />
-    <meta name="description" content="金视野开发部,模板,2017" />
+<head id="Head1" runat="server">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title><%=utitlename %></title>
+    <meta name="keywords" content="<%=utitlename %>" />
+    <meta name="description" content="<%=utitlename %>" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- basic styles -->
     <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
@@ -19,13 +20,13 @@
 
     <!-- fonts -->
 
-    <!--<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />-->
+    <!-- -->
 
     <!-- ace styles -->
 
     <link rel="stylesheet" href="assets/css/ace.min.css" />
     <link rel="stylesheet" href="assets/css/ace-rtl.min.css" />
-    <link rel="stylesheet" href="assets/css/ace-skins.min.css" />
+    <link rel="stylesheet" href="assets/css/ace-skins.min.css?v=1.231" />
 
     <!--[if lte IE 8]>
 		  <link rel="stylesheet" href="assets/css/ace-ie.min.css" />
@@ -43,8 +44,123 @@
 		<script src="assets/js/html5shiv.js"></script>
 		<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+    <style>
+        /*定义字体*/
+        i {
+            font-family: FontAwesome !important;
+        }
+        /*顶部导航条背景*/
+        .nav_bg {
+            background: #3c9bfe;
+        }
+        .hide {
+            display: none;
+        }
+        /*去掉个人设置所在的li标签的背景边框*/
+        .Set_box {
+            background: none !important;
+            border: none !important;
+        }
+        /*去掉个人设置所在的a标签的背景*/
+        .set_bg {
+            background: none !important;
+            padding: 0px 20px !important;
+        }
+
+        /*去掉个人设置所在的span标签的背景*/
+        .text_bg {
+            background: none !important;
+        }
+        /*个人设置的上下边距*/
+        .text_jianju {
+            top: 0px !important;
+            padding-top: 3px !important;
+        }
+        .page-content {
+            padding:0px;
+        }
+        /*顶部导航栏的字体样式*/
+        .ziti {
+            font-family: 微软雅黑;
+            font-size: 13px;
+        }
+        /*头像大小*/
+        .ace-nav .nav-user-photo {
+            max-width: 30px;
+        }
+        /*个人设置弹出框的最小宽度*/
+        .dropdown-menu {
+            min-width: 128px;
+            left: 15px !important;
+        }
+            /*跟人设置弹出框位置*/
+            .dropdown-menu.dropdown-close {
+                left: 0px;
+            }
+        /*个人设置弹出框的字体颜色*/
+        .text_color {
+            font-family: 微软雅黑;
+            font-size: 12px !important;
+            color: #666666 !important;
+        }
+        /*左上角的大标题智慧XXXXX*/
+        .navtitle {
+            font-family: 微软雅黑;
+            letter-spacing: 1px;
+            font-weight: bold;
+        }
+        
+        /*个人设置弹出框的样式*/
+        .dropdown-menu .divider {
+            margin: 0;
+        }
+        
+        .fixed {
+            position: fixed;
+            top: 45px;
+            left: 0;
+        }
+        
+        /*上传头像所在的li的左边距*/
+        .p-left {
+            padding-left:2px;
+        }
+        
+        .wrap {
+            position: relative;
+        }
+        .notice {
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            font-size: 10px;
+            color: #fff;
+            text-align: center;
+            background-color: #f00;
+            border-radius: 50%;
+            position: absolute;
+            right: -12px;
+            top: -5px;
+        }
+            body.skin-2 .main-content {
+            padding-top:0px;
+        }
+    </style>
+    <style type="text/css">
+        /*#navbar {
+                position: fixed;
+                width:100%;
+            }
+            #sidebar {
+                position: fixed;
+                top: 45px;
+            }
+            #indexmain {
+                margin-top:45px;
+            }*/
+    </style>
 </head>
-<body>
+<body ontouchstart>
     <div class="navbar navbar-default" id="navbar">
         <script type="text/javascript">
             try { ace.settings.check('navbar', 'fixed') } catch (e) { }
@@ -52,10 +168,10 @@
 
         <div class="navbar-container" id="navbar-container">
             <div class="navbar-header pull-left">
-                <a href="#" class="navbar-brand">
-                    <small>
-                        <i class="icon-leaf"></i>
-                        金视野平台管理系统
+                <a href="#" class="navbar-brand ">
+                    <small class="navtitle">
+                        <%=PlatformIco %>
+                        <%=PlatformName %>
                     </small>
                 </a>
                 <!-- /.brand -->
@@ -64,52 +180,57 @@
 
             <div class="navbar-header pull-right" role="navigation">
                 <ul class="nav ace-nav">
-                    <li class="grey">
+                    <li class="grey hide">
                         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
                             <i class="icon-tasks"></i>
                             <span class="badge badge-grey">系统管理</span>
                         </a></li>
-                    <li class="green">
-                        <a data-toggle="dropdown" class="dropdown-toggle" href="#">
-                            <i class="icon-tasks"></i>
-                            <span class="badge badge-grey">个人设置</span>
-                        </a></li>
-
-                    <li class="light-blue">
-                        <a data-toggle="dropdown" href="#" class="dropdown-toggle">
-                            <img class="nav-user-photo" src="assets/avatars/user.jpg" alt="Jason's Photo" />
-                            <span class="user-info">
-                                <small>欢迎光临,</small>
-                                Jason
+                    <li class="light-blue Set_box hidden-480">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle set_bg">
+                            <span class="user-info" style="line-height: 30px; max-width: none;">
+                                <small class="ziti logintitle" style="display: inline;">系统管理员：</small>
+                                <span id="SchMasterstr" class="ziti" style="display: inline;"><%=SchMasterstr %></span>
                             </span>
-
+                        </a>
+                    </li>
+                    <li class="light-blue Set_box hidden-480">
+                        <a data-toggle="dropdown" href="#" class="dropdown-toggle set_bg">
+                            <span class="user-info" style="line-height: 30px; max-width: none;">
+                                <small class="ziti logintitle" style="display: inline;">登录账号：</small>
+                                <span id="UserName" class="ziti" style="display: inline;"><%=username %></span>
+                            </span>
+                        </a>
+                    </li>
+                    <li class="green Set_box ">
+                        <a data-toggle="dropdown" class="dropdown-toggle set_bg" href="#">
+                            <!--<i class="icon-tasks"></i>-->
+                            <img class="nav-user-photo no-margin-right" src="<%=imgurl %>" id="userpicture" alt="Jason's Photo" />
+                            <span class="badge badge-grey text_bg  text_jianju ziti no-padding-right no-padding-left"><%=usertname %></span>
                             <i class="icon-caret-down"></i>
                         </a>
-
-                        <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
-                            <li>
-                                <a href="#">
-                                    <i class="icon-cog"></i>
-                                    设置
+                        <%--  弹出框--%>
+                        <ul class="user-menu  dropdown-menu dropdown-yellow dropdown-caret dropdown-close ">
+                            <li class="p-left" >
+                                <a href="<%=UploadHeadPic%>" target="iframe0" class="text_color">
+                                    <i class="icon-user" style="margin-right:10px;"></i>上传头像
                                 </a>
                             </li>
-
-                            <li>
-                                <a href="#">
-                                    <i class="icon-user"></i>
-                                    个人资料
-                                </a>
-                            </li>
-
                             <li class="divider"></li>
-
                             <li>
-                                <a href="#">
-                                    <i class="icon-off"></i>
-                                    退出
+                                <a href="./UserPwdEdit.aspx" target="iframe0" class="text_color">
+                                    <i class="icon-cog" style="margin-right:8px;"></i>修改密码
                                 </a>
                             </li>
+                            <%=thurl %>
                         </ul>
+                    </li>
+
+                    <%-- 添加退出按钮--%>
+                    <li class="Set_box ">
+                        <a href="javascript:void();" onclick="LoginOut();" class="set_bg ziti">
+                            <i class="icon-off"></i>
+                            退出
+                        </a>
                     </li>
                 </ul>
                 <!-- /.ace-nav -->
@@ -134,7 +255,7 @@
                     try { ace.settings.check('sidebar', 'fixed') } catch (e) { }
                 </script>
 
-                <div class="sidebar-shortcuts" id="sidebar-shortcuts">
+                <div class="sidebar-shortcuts hide" id="sidebar-shortcuts">
                     <div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
                         <button class="btn btn-success">
                             <i class="icon-signal"></i>
@@ -166,122 +287,9 @@
                 <!-- #sidebar-shortcuts -->
 
                 <ul class="nav nav-list">
-                    <li class="active atg">
-                        <a href="jsywebindex.html" target="iframe0">
-                            <i class="icon-dashboard"></i>
-                            <span class="menu-text">首页 </span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-desktop"></i>
-                            <span class="menu-text">单位管理</span>
+                    <%=treestr %>
 
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Student/StudentList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    学生信息管理
-                                </a>
-                            </li>
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/StuGenUn/StuGenUnList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    学生与家长关系
-                                </a>
-                            </li>
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Teacher/TeacherList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    教师信息管理
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Parents/ParentsList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    家长信息管理
-                                </a>
-                            </li>
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Grade/GradeList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    年级信息管理
-                                </a>
-                            </li>
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Grade/Class/ClassList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    班级信息管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-list"></i>
-                            <span class="menu-text">部门管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Department/DepartList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    部门管理
-                                </a>
-                            </li>
-
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Users/UsersList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    人员管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-edit"></i>
-                            <span class="menu-text">角色管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li class="atg">
-                                <a href="/SchoolBaxicInfo/Role/RoleList.aspx" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    角色管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="dropdown-toggle">
-                            <i class="icon-tag"></i>
-                            <span class="menu-text">科目管理 </span>
-
-                            <b class="arrow icon-angle-down"></b>
-                        </a>
-
-                        <ul class="submenu">
-                            <li class="atg">
-                                <a href="profile.html" target="iframe0">
-                                    <i class="icon-double-angle-right"></i>
-                                    科目管理
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    
-                    <li>
+                    <%--                    <li>
                         <a href="#" class="dropdown-toggle">
                             <i class="icon-file-alt"></i>
 
@@ -300,7 +308,7 @@
                                 </a>
                             </li>
                         </ul>
-                    </li>
+                    </li>--%>
                 </ul>
                 <!-- /.nav-list -->
 
@@ -315,30 +323,28 @@
 
             <div class="main-content">
                 <div class="page-content">
-                    <div class="row">
-                        <div class="col-xs-12">
-                            <iframe name="iframe0" id="iframe0" style="width: 100%;" height="100%" scrolling="no" src="jsywebindex.html" onload="reinitIframe()" frameborder="0" dataseamless=""></iframe>
+                        <div class="col-xs-12 no-padding-right no-padding-left" id="indexmain">
+                            <iframe class="content" name="iframe0" id="iframe0" style="width: 100%;" frameborder="no" border="0" marginwidth="0" marginheight="0" src="<%=indexpage %>">" onload="reinitIframe()" frameborder="0" dataseamless=""></iframe>
                             <script type="text/javascript">
                                 function reinitIframe() {
                                     var iframe = document.getElementById("iframe0");
                                     try {
                                         var bHeight = iframe.contentWindow.document.body.scrollHeight;
                                         //var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
-                                        var dHeight = iframe.contentWindow.document.getElementsByClassName('main-container')[0].scrollHeight;
+                                        //var dHeight = iframe.contentWindow.document.getElementsByClassName('main-container')[0].scrollHeight;
+                                        var dHeight = document.getElementsByClassName('main-container')[0].height();
                                         //var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
                                         var height = Math.max(bHeight, dHeight);
                                         iframe.height = height;
                                         //console.log(height);
                                     } catch (ex) { }
                                 }
-                                window.setInterval("reinitIframe()", 1000);
+                                window.setInterval("reinitIframe()", 200);
                                 window.onresize = function () {
                                     reinitIframe();
                                 }
                             </script>
                         </div>
-                        <!-- /.col -->
-                    </div>
                     <!-- /.row -->
                 </div>
                 <!-- /.page-content -->
@@ -346,7 +352,7 @@
             <!-- /.page-content -->
             <!-- /.main-content -->
 
-            <div class="ace-settings-container" id="ace-settings-container">
+            <div class="ace-settings-container hide" id="ace-settings-container">
                 <div class="btn btn-app btn-xs btn-warning ace-settings-btn" id="ace-settings-btn">
                     <i class="icon-cog bigger-150"></i>
                 </div>
@@ -429,9 +435,9 @@
 </script>
 <![endif]-->
 
-    <script type="text/javascript">
+    <%--    <script type="text/javascript">
         if ("ontouchend" in document) document.write("<script src='assets/js/jquery.mobile.custom.min.js'>" + "<" + "script>");
-    </script>
+    </script>--%>
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/typeahead-bs2.min.js"></script>
 
@@ -458,6 +464,10 @@
     <!-- inline scripts related to this page -->
 
     <script type="text/javascript">
+        var systype = "<%=systype%>";
+        //if (systype == "0") {
+        //    $(".logintitle").html("登录账号：");
+        //}
         jQuery(function ($) {
             $('.easy-pie-chart.percentage').each(function () {
                 var $box = $(this).closest('.infobox');
@@ -648,13 +658,82 @@
                 if (this.checked) $(this).closest('li').addClass('selected');
                 else $(this).closest('li').removeClass('selected');
             });
+
         });
         $('.atg').click(function () {
             $('.atg').removeClass("active");
             $(this).addClass("active");
             $("#sidebar").removeClass("display");
         });
+        var $sidebar = $("#sidebar");
+        var offset = $sidebar.offset();
+        $(window).scroll(function () {
+            var scrollTop = $(window).scrollTop();
+            if (offset.top < scrollTop) {
+                $sidebar.addClass("fixed");
+            } else {
+                $sidebar.removeClass("fixed");
+            }
+        });
+
+
     </script>
-    
 </body>
 </html>
+<script type="text/javascript" src="assets/js/jquery.cookie.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+        var skins = '<%=uskin%>';
+        $('#skin-colorpicker').val(skins);
+        $("#skin-colorpicker option").each(function () {
+            if ($(this).val() == skins) {
+                $(this).attr("selected", true);
+            }
+            else {
+                $(this).removeAttr("selected");
+            }
+
+        });
+        $("#skin-colorpicker").change();
+
+        var h = $(window).height();//获取页面的高度
+        document.getElementById("iframe0").style.height = h * 0.94 + "px";//设置iframe根据显示屏自适应高度。iframe高度是根据显示屏高度的94%，防止出现滚动条。
+
+    });
+
+    if ($.cookie("uname") != null) {
+        var uname = $.cookie("uname");
+        $("#UserName").html(uname);
+    }
+    function LoginOut() {
+        $.ajax({
+            url: "Login.ashx",
+            type: "POST",
+            //async:false,
+            data: { Action: "out" },
+            //data:sendData,
+            dataType: "json",
+            //contentType: 'application/json; charset=utf-8',
+            success: function (data, textStatus) {
+                if (data.RspCode == "success") {
+                    //alert("退出登录成功");
+                    window.location.href = data.RspTxt;
+                }
+                else {
+                    alert("退出登录失败");
+                }
+            }
+        })
+    }
+
+    $(".ace-nav").mouseleave(function () {
+        $(".dropdown-menu").parent("li").removeClass("open");
+    });
+
+    function strolltop() {
+        window.scrollTo(0, 0);
+    }
+    function uploadpicture(filenewnamedir) {
+        $("#userpicture").attr("src",filenewnamedir);
+    }
+</script>

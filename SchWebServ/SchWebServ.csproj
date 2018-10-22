@@ -1,0 +1,703 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{813F2B8F-285F-475B-8802-F7D52743814C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>SchWebServ</RootNamespace>
+    <AssemblyName>SchWebServ</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\SchWebAdmin\bin\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\avatars\avatar.png" />
+    <Content Include="assets\avatars\avatar1.png" />
+    <Content Include="assets\avatars\avatar2.png" />
+    <Content Include="assets\avatars\avatar3.png" />
+    <Content Include="assets\avatars\avatar4.png" />
+    <Content Include="assets\avatars\avatar5.png" />
+    <Content Include="assets\avatars\profile-pic.jpg" />
+    <Content Include="assets\avatars\user.jpg" />
+    <Content Include="assets\css\ace-ie.min.css" />
+    <Content Include="assets\css\ace-rtl.min.css" />
+    <Content Include="assets\css\ace-skins.min.css" />
+    <Content Include="assets\css\ace.min.css" />
+    <Content Include="assets\css\bootstrap-dialog.css" />
+    <Content Include="assets\css\bootstrap-editable.css" />
+    <Content Include="assets\css\bootstrap-select.css" />
+    <Content Include="assets\css\bootstrap-tagsinput.css" />
+    <Content Include="assets\css\bootstrap-timepicker.css" />
+    <Content Include="assets\css\bootstrap.min.css" />
+    <Content Include="assets\css\chosen.css" />
+    <Content Include="assets\css\colorbox.css" />
+    <Content Include="assets\css\colorpicker.css" />
+    <Content Include="assets\css\datepicker.css" />
+    <Content Include="assets\css\daterangepicker.css" />
+    <Content Include="assets\css\dropzone.css" />
+    <Content Include="assets\css\font-awesome-ie7.min.css" />
+    <Content Include="assets\css\font-awesome.min.css" />
+    <Content Include="assets\css\fullcalendar.css" />
+    <Content Include="assets\css\Images\loading.gif" />
+    <Content Include="assets\css\img\diy\1_close.png" />
+    <Content Include="assets\css\img\diy\1_open.png" />
+    <Content Include="assets\css\img\diy\2.png" />
+    <Content Include="assets\css\img\diy\3.png" />
+    <Content Include="assets\css\img\diy\4.png" />
+    <Content Include="assets\css\img\diy\5.png" />
+    <Content Include="assets\css\img\diy\6.png" />
+    <Content Include="assets\css\img\diy\7.png" />
+    <Content Include="assets\css\img\diy\8.png" />
+    <Content Include="assets\css\img\diy\9.png" />
+    <Content Include="assets\css\img\line_conn.gif" />
+    <Content Include="assets\css\img\line_conn.png" />
+    <Content Include="assets\css\img\loading.gif" />
+    <Content Include="assets\css\img\metro.gif" />
+    <Content Include="assets\css\img\metro.png" />
+    <Content Include="assets\css\jquery-ui-1.10.3.custom.min.css" />
+    <Content Include="assets\css\jquery-ui-1.10.3.full.min.css" />
+    <Content Include="assets\css\jquery.gritter.css" />
+    <Content Include="assets\css\metro.css" />
+    <Content Include="assets\css\metrodpt.css" />
+    <Content Include="assets\css\select2.css" />
+    <Content Include="assets\css\ui.jqgrid.css" />
+    <Content Include="assets\css\zTreeStyle.css" />
+    <Content Include="assets\CustomFunction\DataVerification.js" />
+    <Content Include="assets\images\gallery\image-1.jpg" />
+    <Content Include="assets\images\gallery\image-2.jpg" />
+    <Content Include="assets\images\gallery\image-3.jpg" />
+    <Content Include="assets\images\gallery\image-4.jpg" />
+    <Content Include="assets\images\gallery\image-5.jpg" />
+    <Content Include="assets\images\gallery\image-6.jpg" />
+    <Content Include="assets\images\gallery\thumb-1.jpg" />
+    <Content Include="assets\images\gallery\thumb-2.jpg" />
+    <Content Include="assets\images\gallery\thumb-3.jpg" />
+    <Content Include="assets\images\gallery\thumb-4.jpg" />
+    <Content Include="assets\images\gallery\thumb-5.jpg" />
+    <Content Include="assets\images\gallery\thumb-6.jpg" />
+    <Content Include="assets\images\loading.gif" />
+    <Content Include="assets\images\保存.png" />
+    <Content Include="assets\images\删除筛选项.png" />
+    <Content Include="assets\js\ace-elements.min.js" />
+    <Content Include="assets\js\ace-extra.min.js" />
+    <Content Include="assets\js\ace.min.js" />
+    <Content Include="assets\js\additional-methods.min.js" />
+    <Content Include="assets\js\ajaxfileupload.js" />
+    <Content Include="assets\js\bootbox.min.js" />
+    <Content Include="assets\js\bootstrap-colorpicker.min.js" />
+    <Content Include="assets\js\bootstrap-dialog.js" />
+    <Content Include="assets\js\bootstrap-paginator.js" />
+    <Content Include="assets\js\bootstrap-select.js" />
+    <Content Include="assets\js\bootstrap-tag.min.js" />
+    <Content Include="assets\js\bootstrap-tagsinput.js" />
+    <Content Include="assets\js\bootstrap-treeview.min.js" />
+    <Content Include="assets\js\bootstrap-wysiwyg.min.js" />
+    <Content Include="assets\js\bootstrap.min.js" />
+    <Content Include="assets\js\chosen.jquery.min.js" />
+    <Content Include="assets\js\date-time\bootstrap-datepicker.min.js" />
+    <Content Include="assets\js\date-time\bootstrap-timepicker.min.js" />
+    <Content Include="assets\js\date-time\daterangepicker.min.js" />
+    <Content Include="assets\js\date-time\moment.min.js" />
+    <Content Include="assets\js\dropzone.min.js" />
+    <Content Include="assets\js\excanvas.min.js" />
+    <Content Include="assets\js\flot\jquery.flot.min.js" />
+    <Content Include="assets\js\flot\jquery.flot.pie.min.js" />
+    <Content Include="assets\js\flot\jquery.flot.resize.min.js" />
+    <Content Include="assets\js\fuelux\data\fuelux.tree-sampledata.js" />
+    <Content Include="assets\js\fuelux\fuelux.spinner.min.js" />
+    <Content Include="assets\js\fuelux\fuelux.tree.min.js" />
+    <Content Include="assets\js\fuelux\fuelux.wizard.min.js" />
+    <Content Include="assets\js\fullcalendar.min.js" />
+    <Content Include="assets\js\html5shiv.js" />
+    <Content Include="assets\js\i18n\defaults-ar_AR.js" />
+    <Content Include="assets\js\i18n\defaults-ar_AR.min.js" />
+    <Content Include="assets\js\i18n\defaults-bg_BG.js" />
+    <Content Include="assets\js\i18n\defaults-bg_BG.min.js" />
+    <Content Include="assets\js\i18n\defaults-cro_CRO.js" />
+    <Content Include="assets\js\i18n\defaults-cro_CRO.min.js" />
+    <Content Include="assets\js\i18n\defaults-cs_CZ.js" />
+    <Content Include="assets\js\i18n\defaults-cs_CZ.min.js" />
+    <Content Include="assets\js\i18n\defaults-da_DK.js" />
+    <Content Include="assets\js\i18n\defaults-da_DK.min.js" />
+    <Content Include="assets\js\i18n\defaults-de_DE.js" />
+    <Content Include="assets\js\i18n\defaults-de_DE.min.js" />
+    <Content Include="assets\js\i18n\defaults-en_US.js" />
+    <Content Include="assets\js\i18n\defaults-en_US.min.js" />
+    <Content Include="assets\js\i18n\defaults-es_CL.js" />
+    <Content Include="assets\js\i18n\defaults-es_CL.min.js" />
+    <Content Include="assets\js\i18n\defaults-es_ES.js" />
+    <Content Include="assets\js\i18n\defaults-es_ES.min.js" />
+    <Content Include="assets\js\i18n\defaults-et_EE.js" />
+    <Content Include="assets\js\i18n\defaults-et_EE.min.js" />
+    <Content Include="assets\js\i18n\defaults-eu.js" />
+    <Content Include="assets\js\i18n\defaults-eu.min.js" />
+    <Content Include="assets\js\i18n\defaults-fa_IR.js" />
+    <Content Include="assets\js\i18n\defaults-fa_IR.min.js" />
+    <Content Include="assets\js\i18n\defaults-fi_FI.js" />
+    <Content Include="assets\js\i18n\defaults-fi_FI.min.js" />
+    <Content Include="assets\js\i18n\defaults-fr_FR.js" />
+    <Content Include="assets\js\i18n\defaults-fr_FR.min.js" />
+    <Content Include="assets\js\i18n\defaults-hu_HU.js" />
+    <Content Include="assets\js\i18n\defaults-hu_HU.min.js" />
+    <Content Include="assets\js\i18n\defaults-id_ID.js" />
+    <Content Include="assets\js\i18n\defaults-id_ID.min.js" />
+    <Content Include="assets\js\i18n\defaults-it_IT.js" />
+    <Content Include="assets\js\i18n\defaults-it_IT.min.js" />
+    <Content Include="assets\js\i18n\defaults-ja_JP.js" />
+    <Content Include="assets\js\i18n\defaults-ja_JP.min.js" />
+    <Content Include="assets\js\i18n\defaults-kh_KM.js" />
+    <Content Include="assets\js\i18n\defaults-kh_KM.min.js" />
+    <Content Include="assets\js\i18n\defaults-ko_KR.js" />
+    <Content Include="assets\js\i18n\defaults-ko_KR.min.js" />
+    <Content Include="assets\js\i18n\defaults-lt_LT.js" />
+    <Content Include="assets\js\i18n\defaults-lt_LT.min.js" />
+    <Content Include="assets\js\i18n\defaults-nb_NO.js" />
+    <Content Include="assets\js\i18n\defaults-nb_NO.min.js" />
+    <Content Include="assets\js\i18n\defaults-nl_NL.js" />
+    <Content Include="assets\js\i18n\defaults-nl_NL.min.js" />
+    <Content Include="assets\js\i18n\defaults-pl_PL.js" />
+    <Content Include="assets\js\i18n\defaults-pl_PL.min.js" />
+    <Content Include="assets\js\i18n\defaults-pt_BR.js" />
+    <Content Include="assets\js\i18n\defaults-pt_BR.min.js" />
+    <Content Include="assets\js\i18n\defaults-pt_PT.js" />
+    <Content Include="assets\js\i18n\defaults-pt_PT.min.js" />
+    <Content Include="assets\js\i18n\defaults-ro_RO.js" />
+    <Content Include="assets\js\i18n\defaults-ro_RO.min.js" />
+    <Content Include="assets\js\i18n\defaults-ru_RU.js" />
+    <Content Include="assets\js\i18n\defaults-ru_RU.min.js" />
+    <Content Include="assets\js\i18n\defaults-sk_SK.js" />
+    <Content Include="assets\js\i18n\defaults-sk_SK.min.js" />
+    <Content Include="assets\js\i18n\defaults-sl_SI.js" />
+    <Content Include="assets\js\i18n\defaults-sl_SI.min.js" />
+    <Content Include="assets\js\i18n\defaults-sv_SE.js" />
+    <Content Include="assets\js\i18n\defaults-sv_SE.min.js" />
+    <Content Include="assets\js\i18n\defaults-tr_TR.js" />
+    <Content Include="assets\js\i18n\defaults-tr_TR.min.js" />
+    <Content Include="assets\js\i18n\defaults-ua_UA.js" />
+    <Content Include="assets\js\i18n\defaults-ua_UA.min.js" />
+    <Content Include="assets\js\i18n\defaults-vi_VN.js" />
+    <Content Include="assets\js\i18n\defaults-vi_VN.min.js" />
+    <Content Include="assets\js\i18n\defaults-zh_CN.js" />
+    <Content Include="assets\js\i18n\defaults-zh_CN.min.js" />
+    <Content Include="assets\js\i18n\defaults-zh_TW.js" />
+    <Content Include="assets\js\i18n\defaults-zh_TW.min.js" />
+    <Content Include="assets\js\jqGrid\i18n\grid.locale-en.js" />
+    <Content Include="assets\js\jqGrid\jquery.jqGrid.min.js" />
+    <Content Include="assets\js\jquery-1.10.2.min.js" />
+    <Content Include="assets\js\jquery-1.8.3.min.js" />
+    <Content Include="assets\js\jquery-2.0.3.min.js" />
+    <Content Include="assets\js\jquery-ui-1.10.3.custom.min.js" />
+    <Content Include="assets\js\jquery-ui-1.10.3.full.min.js" />
+    <Content Include="assets\js\jquery.autosize.min.js" />
+    <Content Include="assets\js\jquery.colorbox-min.js" />
+    <Content Include="assets\js\jquery.cookie.js" />
+    <Content Include="assets\js\jquery.dataTables.bootstrap.js" />
+    <Content Include="assets\js\jquery.dataTables.min.js" />
+    <Content Include="assets\js\jquery.easy-pie-chart.min.js" />
+    <Content Include="assets\js\jquery.gritter.min.js" />
+    <Content Include="assets\js\jquery.hotkeys.min.js" />
+    <Content Include="assets\js\jquery.inputlimiter.1.3.1.min.js" />
+    <Content Include="assets\js\jquery.knob.min.js" />
+    <Content Include="assets\js\jquery.maskedinput.min.js" />
+    <Content Include="assets\js\jquery.mobile.custom.min.js" />
+    <Content Include="assets\js\jquery.nestable.min.js" />
+    <Content Include="assets\js\jquery.slimscroll.min.js" />
+    <Content Include="assets\js\jquery.sparkline.min.js" />
+    <Content Include="assets\js\jquery.ui.touch-punch.min.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\cancel.png" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\cancel.png" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\css\default.css" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\css\uploadify.css" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\expressInstall.swf" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\jquery-1.3.2.min.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\swfobject.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\uploadify.swf" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\expressInstall.swf" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\jquery-1.3.2.min.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\jquery.uploadify.v2.1.0.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\jquery.uploadify.v2.1.0.min.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\swfobject.js" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.allglyphs.swf" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.css" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.swf" />
+    <Content Include="assets\js\jquery.validate.min.js" />
+    <Content Include="assets\js\jquery.ztree.all-3.5.min.js" />
+    <Content Include="assets\js\jquery.ztree.core.js" />
+    <Content Include="assets\js\jsencrypt.min.js" />
+    <Content Include="assets\js\learunui-validator.js" />
+    <Content Include="assets\js\markdown\bootstrap-markdown.min.js" />
+    <Content Include="assets\js\markdown\markdown.min.js" />
+    <Content Include="assets\js\respond.min.js" />
+    <Content Include="assets\js\select2.min.js" />
+    <Content Include="assets\js\typeahead-bs2.min.js" />
+    <Content Include="assets\js\vue.js" />
+    <Content Include="assets\js\x-editable\ace-editable.min.js" />
+    <Content Include="assets\js\x-editable\bootstrap-editable.min.js" />
+    <Content Include="index.aspx" />
+    <Content Include="jsywebindex.html" />
+    <Content Include="Login.aspx" />
+    <Content Include="LoginExc.aspx" />
+    <Content Include="PlcData.aspx" />
+    <Content Include="uploadfile.aspx" />
+    <Content Include="UploadFileDir\img.png" />
+    <Content Include="UserApi.aspx" />
+    <Content Include="UserPwdEdit.aspx" />
+    <Content Include="viewImg.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web\ServBusThd\ServBusThdAdd.aspx" />
+    <Content Include="Web\ServBusThd\ServBusThdEdit.aspx" />
+    <Content Include="Web\ServBusThd\ServBusThdInfo.aspx" />
+    <Content Include="Web\ServBus\js\Uploadico.js" />
+    <Content Include="Web\ServBus\js\UploadicoAdd.js" />
+    <Content Include="Web\ServBus\ServBusAdd.aspx" />
+    <Content Include="Web\ServBus\ServBusEdit.aspx" />
+    <Content Include="Web\ServBus\ServBusInfo.aspx" />
+    <Content Include="Web\ServFunc\js\BusPlatDown.js" />
+    <Content Include="Web\ServFunc\js\BusPlatDownEdit.js" />
+    <Content Include="Web\ServFunc\js\SelectContent.js" />
+    <Content Include="Web\ServFunc\js\SelectContentEdit.js" />
+    <Content Include="Web\ServFunc\ServFuncAdd.aspx" />
+    <Content Include="Web\ServFunc\ServFuncEdit.aspx" />
+    <Content Include="Web\ServFunc\ServFuncInfo.aspx" />
+    <Content Include="Web\ServInfo\ServInfoTabs.aspx" />
+    <Content Include="Web\ServSys\ServSysAdd.aspx" />
+    <Content Include="Web\ServSys\ServSysInfo.aspx" />
+    <Content Include="Web\ServSys\ServTypeAdd.aspx" />
+    <Content Include="Web\ServSys\ServTypeInfo.aspx" />
+    <Content Include="Web\UserOrderInfo\GetUserInfo.aspx" />
+    <Content Include="Web\UserOrderInfo\js\Assignment.js" />
+    <Content Include="Web\UserOrderInfo\js\AssignmentEdit.js" />
+    <Content Include="Web\UserOrderInfo\js\AssignmentShow.js" />
+    <Content Include="Web\UserOrderInfo\js\bootstrap.min.js" />
+    <Content Include="Web\UserOrderInfo\js\ServBusDown.js" />
+    <Content Include="Web\UserOrderInfo\js\ServBusDownEdit.js" />
+    <Content Include="Web\UserOrderInfo\js\ServBusDownShow.js" />
+    <Content Include="Web\UserOrderInfo\js\ServFuncExt.js" />
+    <Content Include="Web\UserOrderInfo\js\ServFuncExtEdit.js" />
+    <Content Include="Web\UserOrderInfo\js\ServFuncExtShow.js" />
+    <Content Include="Web\UserOrderInfo\OperationRecord.aspx" />
+    <Content Include="Web\UserOrderInfo\UserOrderAdd.aspx" />
+    <Content Include="Web\UserOrderInfo\UserOrderDetails.aspx" />
+    <Content Include="Web\UserOrderInfo\UserOrderEdit.aspx" />
+    <Content Include="Web\UserOrderInfo\UserOrderInfo.aspx" />
+    <Content Include="Web\UserOrderInfo\UserOrderList.aspx" />
+    <Content Include="Web\UserOrderInfo\UserOrderRenewals.aspx" />
+    <Content Include="Web\UserOrderInfo\UserOrderSearch.aspx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Com\CookieHelper.cs" />
+    <Compile Include="Com\DataPack.cs" />
+    <Compile Include="Com\Public.cs" />
+    <Compile Include="Com\Session.cs" />
+    <Compile Include="Com\SoureSession.cs" />
+    <Compile Include="index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.ashx.cs">
+      <DependentUpon>Login.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="LoginExc.aspx.cs">
+      <DependentUpon>LoginExc.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LoginExc.aspx.designer.cs">
+      <DependentUpon>LoginExc.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PlcData.aspx.cs">
+      <DependentUpon>PlcData.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PlcData.aspx.designer.cs">
+      <DependentUpon>PlcData.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="uploadfile.aspx.cs">
+      <DependentUpon>uploadfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UpUserImg.ashx.cs">
+      <DependentUpon>UpUserImg.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="UserApi.aspx.cs">
+      <DependentUpon>UserApi.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserApi.aspx.designer.cs">
+      <DependentUpon>UserApi.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserPwdEdit.aspx.cs">
+      <DependentUpon>UserPwdEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserPwdEdit.aspx.designer.cs">
+      <DependentUpon>UserPwdEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="ValidateLogin.cs" />
+    <Compile Include="viewImg.aspx.cs">
+      <DependentUpon>viewImg.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="viewImg.aspx.designer.cs">
+      <DependentUpon>viewImg.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServBusThd\ServBusThdAdd.aspx.cs">
+      <DependentUpon>ServBusThdAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServBusThd\ServBusThdAdd.aspx.designer.cs">
+      <DependentUpon>ServBusThdAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServBusThd\ServBusThdEdit.aspx.cs">
+      <DependentUpon>ServBusThdEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServBusThd\ServBusThdEdit.aspx.designer.cs">
+      <DependentUpon>ServBusThdEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServBusThd\ServBusThdInfo.aspx.cs">
+      <DependentUpon>ServBusThdInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServBusThd\ServBusThdInfo.aspx.designer.cs">
+      <DependentUpon>ServBusThdInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServBus\ServBusAdd.aspx.cs">
+      <DependentUpon>ServBusAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServBus\ServBusAdd.aspx.designer.cs">
+      <DependentUpon>ServBusAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServBus\ServBusEdit.aspx.cs">
+      <DependentUpon>ServBusEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServBus\ServBusEdit.aspx.designer.cs">
+      <DependentUpon>ServBusEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServBus\ServBusInfo.aspx.cs">
+      <DependentUpon>ServBusInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServBus\ServBusInfo.aspx.designer.cs">
+      <DependentUpon>ServBusInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServBus\UploadFile.ashx.cs">
+      <DependentUpon>UploadFile.ashx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServFunc\ServFuncAdd.aspx.cs">
+      <DependentUpon>ServFuncAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServFunc\ServFuncAdd.aspx.designer.cs">
+      <DependentUpon>ServFuncAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServFunc\ServFuncEdit.aspx.cs">
+      <DependentUpon>ServFuncEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServFunc\ServFuncEdit.aspx.designer.cs">
+      <DependentUpon>ServFuncEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServFunc\ServFuncInfo.aspx.cs">
+      <DependentUpon>ServFuncInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServFunc\ServFuncInfo.aspx.designer.cs">
+      <DependentUpon>ServFuncInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServInfo\ServInfoTabs.aspx.cs">
+      <DependentUpon>ServInfoTabs.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServInfo\ServInfoTabs.aspx.designer.cs">
+      <DependentUpon>ServInfoTabs.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServSys\ServSysAdd.aspx.cs">
+      <DependentUpon>ServSysAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServSys\ServSysAdd.aspx.designer.cs">
+      <DependentUpon>ServSysAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServSys\ServSysInfo.aspx.cs">
+      <DependentUpon>ServSysInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServSys\ServSysInfo.aspx.designer.cs">
+      <DependentUpon>ServSysInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServSys\ServTypeAdd.aspx.cs">
+      <DependentUpon>ServTypeAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServSys\ServTypeAdd.aspx.designer.cs">
+      <DependentUpon>ServTypeAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\ServSys\ServTypeInfo.aspx.cs">
+      <DependentUpon>ServTypeInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\ServSys\ServTypeInfo.aspx.designer.cs">
+      <DependentUpon>ServTypeInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\GetUserInfo.aspx.cs">
+      <DependentUpon>GetUserInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\GetUserInfo.aspx.designer.cs">
+      <DependentUpon>GetUserInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\OperationRecord.aspx.cs">
+      <DependentUpon>OperationRecord.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\OperationRecord.aspx.designer.cs">
+      <DependentUpon>OperationRecord.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderAdd.aspx.cs">
+      <DependentUpon>UserOrderAdd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderAdd.aspx.designer.cs">
+      <DependentUpon>UserOrderAdd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderDetails.aspx.cs">
+      <DependentUpon>UserOrderDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderDetails.aspx.designer.cs">
+      <DependentUpon>UserOrderDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderEdit.aspx.cs">
+      <DependentUpon>UserOrderEdit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderEdit.aspx.designer.cs">
+      <DependentUpon>UserOrderEdit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderInfo.aspx.cs">
+      <DependentUpon>UserOrderInfo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderInfo.aspx.designer.cs">
+      <DependentUpon>UserOrderInfo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderList.aspx.cs">
+      <DependentUpon>UserOrderList.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderList.aspx.designer.cs">
+      <DependentUpon>UserOrderList.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderRenewals.aspx.cs">
+      <DependentUpon>UserOrderRenewals.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderRenewals.aspx.designer.cs">
+      <DependentUpon>UserOrderRenewals.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderSearch.aspx.cs">
+      <DependentUpon>UserOrderSearch.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Web\UserOrderInfo\UserOrderSearch.aspx.designer.cs">
+      <DependentUpon>UserOrderSearch.aspx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="assets\font\fontawesome-webfont.woff" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="assets\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\check.php" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\air\logging\FileTarget.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\HMAC.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\MD5.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\MD5Stream.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\SHA1.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\SHA224.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\SHA256.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\crypto\WSSEUsernameToken.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\errors\IllegalStateError.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\Address.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\Email.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\Phone.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\VCard.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\fileformats\vcard\VCardParser.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\images\BitString.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\images\JPGEncoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\images\PNGEncoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\DynamicURLLoader.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\IURIResolver.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\MimeTypeMap.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\proxies\RFC2817Socket.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\URI.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\net\URIEncodingBitmap.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Database.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Definition.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Dict.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\DictionaryServer.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\ConnectedEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DatabaseEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DefinitionEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DefinitionHeaderEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DictionaryServerEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\DisconnectedEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\ErrorEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\MatchEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\MatchStrategiesEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\events\NoMatchEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\MatchStrategy.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\Response.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\util\CompleteResponseEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\protocols\dict\util\SocketHelper.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSON.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONDecoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONEncoder.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONParseError.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONToken.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONTokenizer.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\serialization\json\JSONTokenType.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\ArrayUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\DateUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\DictionaryUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\IntUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\NumberFormatter.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\StringUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\utils\XMLUtil.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\webapis\events\ServiceEvent.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\webapis\ServiceBase.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\com\adobe\webapis\URLLoaderBase.as" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\index.php" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\check.php" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\uploadify.php" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.fla" />
+    <Content Include="assets\js\jquery.uploadify-v2.1.0\uploadify.php" />
+    <Content Include="Login.ashx" />
+    <None Include="Properties\PublishProfiles\userserv.pubxml" />
+    <Content Include="UpUserImg.ashx" />
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <Content Include="Web\ServBus\UploadFile.ashx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\css\_notes\" />
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\scripts\_notes\" />
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\uploads\" />
+    <Folder Include="assets\js\jquery.uploadify-v2.1.0\example\_notes\" />
+    <Folder Include="UploadFileDir\PlatformIco\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bll\Bll.csproj">
+      <Project>{63194e4a-51dc-40fd-8494-b98aa9855508}</Project>
+      <Name>Bll</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{f7e14977-edd8-4ed0-a1a2-6c0e799b782a}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{b3be7f0d-cbd8-4ff4-ac23-88ca99b569f2}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:1539/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

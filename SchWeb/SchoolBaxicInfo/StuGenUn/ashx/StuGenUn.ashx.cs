@@ -1,5 +1,4 @@
 ﻿using Common;
-using SchSystem.Bll;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -17,6 +16,9 @@ namespace SchWeb.SchoolBaxicInfo.StuGenUn.ashx
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
+
+            SchSystem.BLL.SchStuGenUn ssguBll = new SchSystem.BLL.SchStuGenUn();
+
             string Action = context.Request.Form["Action"];
 
 
@@ -28,10 +30,10 @@ namespace SchWeb.SchoolBaxicInfo.StuGenUn.ashx
                 {
                     PageIndex = int.Parse(context.Request.Form["PageIndex"]);
                 }
-                SchStuGenUnBll ssiBll = new SchStuGenUnBll();
+                
                 int RowCount = 0; int PageCount = 0;
                 //数据分页：cols，所查询的列；strWhere，所查询的条件；ordercols，排序列；orderby，降序或升序；PageIndex，当前页数；PageSize，每页条数；RowCount，记录总数；PageCount，总页数
-                DataSet ds = ssiBll.GetListCols("ssgu.*,ssi.StuName,spi.GenName", "", "", "", PageIndex, PageSize, ref RowCount, ref PageCount);
+                DataSet ds = ssguBll.GetListCols("ssgu.*,ssi.StuName,spi.GenName", "", "", "", PageIndex, PageSize, ref RowCount, ref PageCount);
                 //数字分页
                 Paging pa = new Paging(PageSize, RowCount, "StuGenUnList.aspx", PageIndex);
                 string pages = pa.GetPageing();
@@ -40,7 +42,7 @@ namespace SchWeb.SchoolBaxicInfo.StuGenUn.ashx
             else if (Action == "Delete")
             {
                 int StudentId = int.Parse(context.Request.Form["StudentId"]);
-                SchStuGenUnBll ssguBll = new SchStuGenUnBll();
+                
                 bool result = ssguBll.Delete(StudentId);
                 context.Response.Write(result);
             }

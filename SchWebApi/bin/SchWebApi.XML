@@ -1,0 +1,3517 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>SchWebApi</name>
+    </assembly>
+    <members>
+        <member name="M:SchWebApi.Areas.HelpPage.ApiDescriptionExtensions.GetFriendlyId(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Generates an URI-friendly ID for the <see cref="T:System.Web.Http.Description.ApiDescription"/>. E.g. "Get-Values-id_name" instead of "GetValues/{id}?name={name}"
+            </summary>
+            <param name="description">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The ID as a string.</returns>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.HelpPageConfig">
+            <summary>
+            Use this class to customize the Help Page.
+            For example you can set a custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> to supply the documentation
+            or you can provide the samples for the requests/responses.
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.Controllers.HelpController">
+            <summary>
+            The controller that will handle requests for the help page.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetDocumentationProvider(System.Web.Http.HttpConfiguration,System.Web.Http.Description.IDocumentationProvider)">
+            <summary>
+            Sets the documentation provider for help page.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="documentationProvider">The documentation provider.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleObjects(System.Web.Http.HttpConfiguration,System.Collections.Generic.IDictionary{System.Type,System.Object})">
+            <summary>
+            Sets the objects that will be used by the formatters to produce sample requests/responses.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleObjects">The sample objects.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type and action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleRequest(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample request directly for the specified media type and action with parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample request.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String)">
+            <summary>
+            Sets the sample request directly for the specified media type of the action.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleResponse(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.String,System.String,System.String[])">
+            <summary>
+            Sets the sample response directly for the specified media type of the action with specific parameters.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample response.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetSampleForType(System.Web.Http.HttpConfiguration,System.Object,System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Sets the sample directly for all actions with the specified type and media type.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sample">The sample.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The parameter type or return type of an action.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualRequestType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> passed to the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate request samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String)">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetActualResponseType(System.Web.Http.HttpConfiguration,System.Type,System.String,System.String,System.String[])">
+            <summary>
+            Specifies the actual type of <see cref="T:System.Net.Http.ObjectContent`1"/> returned as part of the <see cref="T:System.Net.Http.HttpRequestMessage"/> in an action. 
+            The help page will use this information to produce more accurate response samples.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="type">The type.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration)">
+            <summary>
+            Gets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <returns>The help page sample generator.</returns>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.SetHelpPageSampleGenerator(System.Web.Http.HttpConfiguration,SchWebApi.Areas.HelpPage.HelpPageSampleGenerator)">
+            <summary>
+            Sets the help page sample generator.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="sampleGenerator">The help page sample generator.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageConfigurationExtensions.GetHelpPageApiModel(System.Web.Http.HttpConfiguration,System.String)">
+            <summary>
+            Gets the model that represents an API displayed on the help page. The model is initialized on the first call and cached for subsequent calls.
+            </summary>
+            <param name="config">The <see cref="T:System.Web.Http.HttpConfiguration"/>.</param>
+            <param name="apiDescriptionId">The <see cref="T:System.Web.Http.Description.ApiDescription"/> ID.</param>
+            <returns>
+            An <see cref="T:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel"/>
+            </returns>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel">
+            <summary>
+            The model that represents an API displayed on the help page.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel"/> class.
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription">
+            <summary>
+            Gets or sets the <see cref="P:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel.ApiDescription"/> that describes the API.
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleRequests">
+            <summary>
+            Gets the sample requests associated with the API.
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel.SampleResponses">
+            <summary>
+            Gets the sample responses associated with the API.
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.Models.HelpPageApiModel.ErrorMessages">
+            <summary>
+            Gets the error messages associated with this model.
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator">
+            <summary>
+            This class will generate the samples for the help page.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.#ctor">
+            <summary>
+            Initializes a new instance of the <see cref="T:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator"/> class.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleRequests(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the request body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleResponses(System.Web.Http.Description.ApiDescription)">
+            <summary>
+            Gets the response body samples for a given <see cref="T:System.Web.Http.Description.ApiDescription"/>.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSample(System.Web.Http.Description.ApiDescription,SchWebApi.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Gets the request or response body samples.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The samples keyed by media type.</returns>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetActionSample(System.String,System.String,System.Collections.Generic.IEnumerable{System.String},System.Type,System.Net.Http.Formatting.MediaTypeFormatter,System.Net.Http.Headers.MediaTypeHeaderValue,SchWebApi.Areas.HelpPage.SampleDirection)">
+            <summary>
+            Search for samples that are provided directly through <see cref="P:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples"/>.
+            </summary>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="type">The CLR type.</param>
+            <param name="formatter">The formatter.</param>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or for a response.</param>
+            <returns>The sample that matches the parameters.</returns>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
+            <summary>
+            Gets the sample object that will be serialized by the formatters. 
+            First, it will look at the <see cref="P:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create one using <see cref="T:SchWebApi.Areas.HelpPage.ObjectGenerator"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>The sample object.</returns>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.ResolveType(System.Web.Http.Description.ApiDescription,System.String,System.String,System.Collections.Generic.IEnumerable{System.String},SchWebApi.Areas.HelpPage.SampleDirection,System.Collections.ObjectModel.Collection{System.Net.Http.Formatting.MediaTypeFormatter}@)">
+            <summary>
+            Resolves the type of the action parameter or return value when <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/> is used.
+            </summary>
+            <param name="api">The <see cref="T:System.Web.Http.Description.ApiDescription"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+            <param name="sampleDirection">The value indicating whether the sample is for a request or a response.</param>
+            <param name="formatters">The formatters.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.WriteSampleObjectUsingFormatter(System.Net.Http.Formatting.MediaTypeFormatter,System.Object,System.Type,System.Net.Http.Headers.MediaTypeHeaderValue)">
+            <summary>
+            Writes the sample object using formatter.
+            </summary>
+            <param name="formatter">The formatter.</param>
+            <param name="value">The value.</param>
+            <param name="type">The type.</param>
+            <param name="mediaType">Type of the media.</param>
+            <returns></returns>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.ActualHttpMessageTypes">
+            <summary>
+            Gets CLR types that are used as the content of <see cref="T:System.Net.Http.HttpRequestMessage"/> or <see cref="T:System.Net.Http.HttpResponseMessage"/>.
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.ActionSamples">
+            <summary>
+            Gets the objects that are used directly as samples for certain actions.
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects">
+            <summary>
+            Gets the objects that are serialized as samples by the supported formatters.
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.HelpPageSampleKey">
+            <summary>
+            This is used to identify the place where the sample should be applied.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,System.Type)">
+            <summary>
+            Creates a new <see cref="T:SchWebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type and CLR type.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="type">The CLR type.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(SchWebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:SchWebApi.Areas.HelpPage.HelpPageSampleKey"/> based on <see cref="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="sampleDirection">The <see cref="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.HelpPageSampleKey.#ctor(System.Net.Http.Headers.MediaTypeHeaderValue,SchWebApi.Areas.HelpPage.SampleDirection,System.String,System.String,System.Collections.Generic.IEnumerable{System.String})">
+            <summary>
+            Creates a new <see cref="T:SchWebApi.Areas.HelpPage.HelpPageSampleKey"/> based on media type, <see cref="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>, controller name, action name and parameter names.
+            </summary>
+            <param name="mediaType">The media type.</param>
+            <param name="sampleDirection">The <see cref="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.</param>
+            <param name="controllerName">Name of the controller.</param>
+            <param name="actionName">Name of the action.</param>
+            <param name="parameterNames">The parameter names.</param>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.ControllerName">
+            <summary>
+            Gets the name of the controller.
+            </summary>
+            <value>
+            The name of the controller.
+            </value>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.ActionName">
+            <summary>
+            Gets the name of the action.
+            </summary>
+            <value>
+            The name of the action.
+            </value>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.MediaType">
+            <summary>
+            Gets the media type.
+            </summary>
+            <value>
+            The media type.
+            </value>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.ParameterNames">
+            <summary>
+            Gets the parameter names.
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection">
+            <summary>
+            Gets the <see cref="P:SchWebApi.Areas.HelpPage.HelpPageSampleKey.SampleDirection"/>.
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.ImageSample">
+            <summary>
+            This represents an image sample on the help page. There's a display template named ImageSample associated with this class.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.ImageSample.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SchWebApi.Areas.HelpPage.ImageSample"/> class.
+            </summary>
+            <param name="src">The URL of an image.</param>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.InvalidSample">
+            <summary>
+            This represents an invalid sample on the help page. There's a display template named InvalidSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.ObjectGenerator">
+            <summary>
+            This class will create an object of a given type and populate it with sample data.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.ObjectGenerator.GenerateObject(System.Type)">
+            <summary>
+            Generates an object for a given type. The type needs to be public, have a public default constructor and settable public properties/fields. Currently it supports the following types:
+            Simple types: <see cref="T:System.Int32"/>, <see cref="T:System.String"/>, <see cref="T:System.Enum"/>, <see cref="T:System.DateTime"/>, <see cref="T:System.Uri"/>, etc.
+            Complex types: POCO types.
+            Nullables: <see cref="T:System.Nullable`1"/>.
+            Arrays: arrays of simple types or complex types.
+            Key value pairs: <see cref="T:System.Collections.Generic.KeyValuePair`2"/>
+            Tuples: <see cref="T:System.Tuple`1"/>, <see cref="T:System.Tuple`2"/>, etc
+            Dictionaries: <see cref="T:System.Collections.Generic.IDictionary`2"/> or anything deriving from <see cref="T:System.Collections.Generic.IDictionary`2"/>.
+            Collections: <see cref="T:System.Collections.Generic.IList`1"/>, <see cref="T:System.Collections.Generic.IEnumerable`1"/>, <see cref="T:System.Collections.Generic.ICollection`1"/>, <see cref="T:System.Collections.IList"/>, <see cref="T:System.Collections.IEnumerable"/>, <see cref="T:System.Collections.ICollection"/> or anything deriving from <see cref="T:System.Collections.Generic.ICollection`1"/> or <see cref="T:System.Collections.IList"/>.
+            Queryables: <see cref="T:System.Linq.IQueryable"/>, <see cref="T:System.Linq.IQueryable`1"/>.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>An object of the given type.</returns>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.SampleDirection">
+            <summary>
+            Indicates whether the sample is used for request or response
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.TextSample">
+            <summary>
+            This represents a preformatted text sample on the help page. There's a display template named TextSample associated with this class.
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Areas.HelpPage.XmlDocumentationProvider">
+            <summary>
+            A custom <see cref="T:System.Web.Http.Description.IDocumentationProvider"/> that reads the API documentation from an XML documentation file.
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Areas.HelpPage.XmlDocumentationProvider.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the <see cref="T:SchWebApi.Areas.HelpPage.XmlDocumentationProvider"/> class.
+            </summary>
+            <param name="documentPath">The physical path to XML document.</param>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack">
+            <summary>
+            数据包定义
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.DataRsp`1">
+            <summary>
+            Resp包
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.DataRsp`1.RspCode">
+            <summary>
+            返回状态码
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.DataRsp`1.RspTxt">
+            <summary>
+            返回说明
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.DataRsp`1.RspData">
+            <summary>
+            返回数据包
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserInfo">
+            <summary>
+            用户Data
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.schid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.schname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.areano">
+            <summary>
+            区域代码
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.utid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.uid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.utname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.sex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.imgurl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.dpts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.grds">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.clss">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.subs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.utp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.urolestr">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.urolestrext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.utoken">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.appeditstat">
+            <summary>
+            子系统编辑状态:0不允许编辑或增加,删除;1开启
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.appxxtservstat">
+            <summary>
+            校讯通服务状态:0停用,1正常
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.appxxtname">
+            <summary>
+            校讯通平台名称;
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.appxxtico">
+            <summary>
+            校讯通平台图标;
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.appxxtdouser">
+            <summary>
+            校讯通操作者:0支撑系统,1学校
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.isadmin">
+            <summary>
+            是否为学校管理员:0非;1是;
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.urolestrsoure">
+            <summary>
+            资源平台权限串:对应权限位0,1代表拥有状态;
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserInfo.urolestrxxt">
+            <summary>
+            校讯通权限串:对应权限位0,1代表拥有状态;
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SchInfo">
+            <summary>
+            用户Data
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.schid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.schname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.adminname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.adminimg">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.adminmobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.sourename">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.sourelogo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.sourestat">
+            <summary>
+            资源平台模块屏蔽状态
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.soureappstat">
+            <summary>
+            3,1|4,1|5,0,模块,模块共享状态(1共享,0私有)
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.baseapps">
+            <summary>
+            1,2,3,4基础信息模块
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.xxtapps">
+            <summary>
+            1,2,3,4校讯通模块
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfo.persubmat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.PerSubMat">
+            <summary>
+            所在部门
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.PerSubMat.percode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.PerSubMat.subcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.PerSubMat.matercodes">
+            <summary>
+            一个科目多个教版
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.Depart">
+            <summary>
+            所在部门
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.Depart.dptid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.Depart.dptname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.GradeBoss">
+            <summary>
+            年级主任的年级
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBoss.grdid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBoss.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBoss.grdname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBoss.isfinish">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassSub">
+            <summary>
+            班级任课
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassSub.grdid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassSub.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassSub.subcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassSub.clsid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassSub.isms">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassSub.clsname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassSub.isfinish">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SubBoss">
+            <summary>
+            科任组长
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SubBoss.subcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SubBoss.subname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.GradeList">
+            <summary>
+            学校学段和年级信息
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.GradeList.grds">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.GradeInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeInfo.grdid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeInfo.pcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeInfo.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeInfo.grdname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeInfo.grdyear">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeInfo.isfinish">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassList.clss">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassInfo.grdid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassInfo.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassInfo.clsid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassInfo.clsname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassInfo.isfinish">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SubList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SubList.subs">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SubInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SubInfo.subcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SubInfo.subname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.DepartList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.DepartList.dpts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.DepartInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.DepartInfo.pid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.DepartInfo.dptid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.DepartInfo.dptname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.DepartInfo.orderid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.GradeBossList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.GradeBossList.grdbosss">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.GradeBossInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBossInfo.grdid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBossInfo.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBossInfo.utid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBossInfo.utname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBossInfo.imgurl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.GradeBossInfo.mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SubBossList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SubBossList.subboss">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SubBossInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SubBossInfo.subcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SubBossInfo.utid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SubBossInfo.utname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysTermList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysTermList.systerm">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysTermInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysTermInfo.termcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysTermInfo.termname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SchStucList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchStucList.schstuc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SchStucInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SchStucInfo.clsid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SchStucInfo.stuc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassUserList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassUserList.clssusers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.clsid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.clsname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.utid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.utname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.subcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.subname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.isms">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.imgurl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ClassUserInfo.mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.StuList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.StuList.clssstus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.StuInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.grdname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.clsid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.clsname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.stuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.sex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.stuname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.StuInfo.stuno">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassUserUstuList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassUserUstuList.classuserustus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserUstuInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.schid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.schname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.grdid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.grdname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.clsid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.clsname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.stuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.stuname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.forid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.utid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.ustat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.servname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.utname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserUstuInfo.uimg">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserList.users">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserDeptInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserDeptInfo.udpts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserDeptInfo.utid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserDeptInfo.dptid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserDeptInfo.utname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserDeptInfo.imgurl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserDeptInfo.mobile">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserDeptInfo.sex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.AreaList.areas">
+            <summary>
+            区域或学校列表
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.AreaInfo.code">
+            <summary>
+            代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.AreaInfo.name">
+            <summary>
+            名称
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.RSAKeyValue">
+            <summary>
+            RsaKeys
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.RSAKeyValue.Exponent">
+            <summary>
+            模数
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.RSAKeyValue.Modulus">
+            <summary>
+            指数
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.PostKeysBase">
+            <summary>
+            Post的基础数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.PostKeysBase.uuid">
+            <summary>
+            设备ID
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.PostKeysBase.appid">
+            <summary>
+            应用ID
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.PostKeysBase.sign">
+            <summary>
+            url签名
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ShakeKeys">
+            <summary>
+            握手Keys
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ShakeKeys.shaketype">
+            <summary>
+            握手类型
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.CodeKey">
+            <summary>
+            获取验证码Keys
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.CodeKey.shaketype">
+            <summary>
+            握手类型
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.CodeKey.uid">
+            <summary>
+            账号,公钥加密
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.CodeKey.code">
+            <summary>
+            验证码,公钥加密
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserRegKey">
+            <summary>
+            普通用户注册Keys
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRegKey.shaketype">
+            <summary>
+            握手类型
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRegKey.uid">
+            <summary>
+            账号,公钥加密
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRegKey.code">
+            <summary>
+            验证码,公钥加密
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRegKey.pw">
+            <summary>
+            密码,公钥加密
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRegKey.utn">
+            <summary>
+            昵称,姓名
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRegKey.usex">
+            <summary>
+            性别
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.LoginKeys">
+            <summary>
+            登录Keys
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.LoginKeys.schid">
+            <summary>
+            学校ID
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.LoginKeys.shaketype">
+            <summary>
+            握手类型
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.LoginKeys.uid">
+            <summary>
+            账号,公钥加密
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.LoginKeys.pw">
+            <summary>
+            密码,公钥加密
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.LoginKeys.utp">
+            <summary>
+            用户类型,0校园用户,1注册用户
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SchKeys">
+            <summary>
+            后续取学校部分数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchKeys.isfinish">
+            <summary>
+            isfinish
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.GradeKeys">
+            <summary>
+            后续取年级部分数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.GradeKeys.gradeids">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.GradeKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SubKeys">
+            <summary>
+            后续取科目组长
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SubKeys.subcodes">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SubKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.TermKeys">
+            <summary>
+            学期数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.TermKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassKeys">
+            <summary>
+            后续取班级部分数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassKeys.classids">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassUserUstuKeys">
+            <summary>
+            后续取班级部分数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassUserUstuKeys.classids">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassUserUstuKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SendSmsKeys">
+            <summary>
+            后续取班级部分数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SendSmsKeys.mobiles">
+            <summary>
+            mobiles
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SendSmsKeys.content">
+            <summary>
+            content
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SendSmsKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.DepartKeys">
+            <summary>
+            后续取班级部分数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.DepartKeys.dptids">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.DepartKeys.uidstat">
+            <summary>
+            uidstat -1,全部人员,0,无账号,1有账号
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.DepartKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.TokenKeys">
+            <summary>
+            后续取班级部分数据
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.TokenKeys.utid">
+            <summary>
+            utid
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.TokenKeys.utp">
+            <summary>
+            utid
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.TokenKeys.utname">
+            <summary>
+            utname
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.TokenKeys.schid">
+            <summary>
+            utid
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.TokenKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.TokenUserKey">
+            <summary>
+            续订token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.TokenUserKey.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.AreaKey">
+            <summary>
+            获取区域信息
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.AreaKey.atp">
+            <summary>
+            取数据类型,0省份,1城市,2区县,3学校
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.AreaKey.pcode">
+            <summary>
+            父节点代码
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.AreaKey.utoken">
+            <summary>
+            父节点代码
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.FascKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysFascList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysFascList.sysfasc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysFascInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFascInfo.fasccode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFascInfo.fascname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ArtKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxAuthKeys.shaketype">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxAuthKeys.wxid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxAuthKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxUnKeys.shaketype">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxUnKeys.wxid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxUnKeys.uid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxUnKeys.utp">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxUnKeys.mobile">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxUnKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxMobileUserKeys.wxid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxMobileUserKeys.mobile">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxMobileUserKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysArtList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysArtList.sysarts">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysArtInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysArtInfo.artcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysArtInfo.artname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.MaterKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysMaterList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysMaterList.sysmater">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysMaterInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysMaterInfo.matercode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysMaterInfo.matername">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.PerKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysPerList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysPerList.sysper">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysPerInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysPerInfo.percode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysPerInfo.pername">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.WxMobileUserList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.WxMobileUserList.wxmusers">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.WxMobileUserInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.WxMobileUserInfo.uid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.WxMobileUserInfo.uname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.WxMobileUserInfo.utp">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserStuList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserStuList.stus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserStuInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.schid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.stuid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.schname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.grdname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.clsname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.stuname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.lgname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.isfinish">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.sex">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.forid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.servid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserStuInfo.servstat">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysSubKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysGradeKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysItemKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysBusKeys.bustp">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysBusKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysFuncKeys.fcodes">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysFuncKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserUstuKeys.utid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserUstuKeys.forid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserUstuKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserStuKeys.uid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserStuKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UnUserStuKeys.utid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UnUserStuKeys.forid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UnUserStuKeys.stuid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UnUserStuKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpUserKeys.utid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpUserKeys.type">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpUserKeys.val">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpUserKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpTecKeys.utid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpTecKeys.type">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpTecKeys.val">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpTecKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpStuKeys.stuid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpStuKeys.type">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpStuKeys.val">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UpStuKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserBusKeys.uid">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserBusKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserRefeeKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.uid">
+            <summary>
+            续订用户
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.servid">
+            <summary>
+            续订套餐
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.servm">
+            <summary>
+            续订月数
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.feem">
+            <summary>
+            交费数
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.dnote">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.recutname">
+            <summary>
+            登记用户
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.frmtype">
+            <summary>
+            来自订购类型
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefeeKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserFeeKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.uid">
+            <summary>
+            续订用户
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.servid">
+            <summary>
+            续订套餐
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.servm">
+            <summary>
+            续订月数
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.feem">
+            <summary>
+            交费数
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.dnote">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.recutname">
+            <summary>
+            登记用户
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.frmtype">
+            <summary>
+            来自订购类型
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeKeys.funclist">
+            <summary>
+            该套餐订购的功能列表(json格式化的UserFeeFuncInfo列表)
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserFeeFuncInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeFuncInfo.fcode">
+            <summary>
+            功能代码
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeFuncInfo.itemcode">
+            <summary>
+            栏目代码
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeFuncInfo.itemsons">
+            <summary>
+            栏目所选节点
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserFeeDetailKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeDetailKeys.uid">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeDetailKeys.servid">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserFeeDetailKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserRefuncKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefuncKeys.forid">
+            <summary>
+            续订用户
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefuncKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserRefuncKeys.funclist">
+            <summary>
+            该套餐订购的功能列表(json格式化的UserFeeFuncInfo列表)
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysSubList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysSubList.syssub">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysSubInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysSubInfo.subcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysSubInfo.subname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysGradeList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysGradeList.sysgrd">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysGradeInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysGradeInfo.grdcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysGradeInfo.grdname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysGradeInfo.grdpercode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysItemList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysItemList.sysitem">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysItemInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysItemInfo.itemcode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysItemInfo.itemname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysUtypeList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysUtypeList.sysutype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysUtypeInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysUtypeInfo.utypecode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysUtypeInfo.utypename">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysBusList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysBusList.sysbus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysBusInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.serviceid">
+            <summary>
+            套餐代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.feecode">
+            <summary>
+            费率
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.cnname">
+            <summary>
+            套餐名称
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.fcodes">
+            <summary>
+            包含的功能串:多个用逗号隔开
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.busmonth">
+            <summary>
+            持续月数
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.bustype">
+            <summary>
+            套餐类型:1基本套餐,2CP套餐
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.busnote">
+            <summary>
+            功能描述
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.note">
+            <summary>
+            备注
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysBusInfo.busimg">
+            <summary>
+            套餐图片
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysFuncList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysFuncList.sysfunc">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysFuncInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysFuncInfo.fext">
+            <summary>
+            功能扩展
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncInfo.fid">
+            <summary>
+            功能ID
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncInfo.fcode">
+            <summary>
+            功能代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncInfo.fname">
+            <summary>
+            功能名称
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncInfo.frange">
+            <summary>
+            范围说明
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncInfo.fset">
+            <summary>
+            设置说明
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncInfo.fnote">
+            <summary>
+            功能备注
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncInfo.fdes">
+            <summary>
+            功能描述
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysFuncExtInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncExtInfo.itemcode">
+            <summary>
+            栏目代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncExtInfo.itemname">
+            <summary>
+            栏目代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncExtInfo.itemsons">
+            <summary>
+            栏目子节点串
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysFuncExtInfo.itemsonsc">
+            <summary>
+            子节点选择个数
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ServFeeDetailList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ServFeeDetailList.servdetail">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ServFeeDetailInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ServFeeDetailInfo.servid">
+            <summary>
+            套餐代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ServFeeDetailInfo.rectime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ServFeeDetailInfo.servm">
+            <summary>
+            服务状态
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.ServFeeDetailInfo.feem">
+            <summary>
+            服务状态
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserBusList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserBusList.userbus">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserBusInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.UserBusInfo.busext">
+            <summary>
+            已定制的功能扩展
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.forid">
+            <summary>
+            定制ID
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.uid">
+            <summary>
+            用户账号
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.utname">
+            <summary>
+            用户名称
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.servid">
+            <summary>
+            套餐代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.servtype">
+            <summary>
+            套餐类型
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.cname">
+            <summary>
+            套餐名称
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.fcodes">
+            <summary>
+            包含功能集合
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.stime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.etime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.frmtype">
+            <summary>
+            来自系统或第三方
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusInfo.serstat">
+            <summary>
+            服务状态
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.UserBusExt">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusExt.forid">
+            <summary>
+            定制ID
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusExt.fcode">
+            <summary>
+            功能代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusExt.itemcode">
+            <summary>
+            栏目代码
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.UserBusExt.itemsons">
+            <summary>
+            栏目代码对应集合
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.AppKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.AppKeys.type">
+            <summary>
+            type xxt校讯通,soure资源
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.AppKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.AppList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.AppList.appsoure">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.AppInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.AppInfo.appsourecode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.AppInfo.appsourename">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.blandid">
+            <summary>
+            展牌类型,根据blandtype传送不同的级别ID,班级牌传班级ID,年级牌传年级ID,学校牌传学校ID
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.blandlv">
+            <summary>
+            展牌类型,0,班级牌,1年级牌,2,学校牌
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.chncode">
+            <summary>
+            栏目代码
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.newslv">
+            <summary>
+            获取新闻级别类型,0本级别栏目文章,1向上获取文章类型(如班级,则获取对应年级及学校;如年级则获取年级及学校,学校则仅获取学校),2全获取(如班级,获取对应年级和班级的,年级获取底下班级及以上学校的,学校的,则获取所有的该学校的)
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.newstype">
+            <summary>
+            获取类型newstype 0文章标题列表,1图片(一标题一图片)
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.psize">
+            <summary>
+            type xxt校讯通,soure资源
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.pindex">
+            <summary>
+            type xxt校讯通,soure资源
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.ClassNewsList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.ClassNewsList.newslist">
+            <summary>
+            新闻列表
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.NewsInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.NewsInfo.newsenclist">
+            <summary>
+            新闻列表
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.chncode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.chnid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.newsid">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.topic">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.rectime">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.imgurl">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.content">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsInfo.lv">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.NewsKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.NewsKeys.newsid">
+            <summary>
+            班牌ID
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.NewsKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsEnc.encid">
+            <summary>
+            附件ID
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsEnc.newsid">
+            <summary>
+            对应新闻ID
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsEnc.oldname">
+            <summary>
+            原文件名
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsEnc.saveurl">
+            <summary>
+            原图地址
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.NewsEnc.imgurl">
+            <summary>
+            缩略图地址
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SchInfoKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SchInfoKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysAreaKeys">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysAreaKeys.areano">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysAreaKeys.type">
+            <summary>
+            type
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysAreaKeys.utoken">
+            <summary>
+            token
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysAreaList">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:SchWebApi.Com.DataPack.SysAreaList.sysarea">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:SchWebApi.Com.DataPack.SysAreaInfo">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysAreaInfo.acode">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysAreaInfo.aname">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:SchWebApi.Com.DataPack.SysAreaInfo.atype">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:RedisStudy.HashOperator">
+            <summary>
+            HashOperator类，是操作哈希表类。继承自RedisOperatorBase类
+            </summary>
+        </member>
+        <member name="T:RedisStudy.RedisOperatorBase">
+            <summary>
+            RedisOperatorBase类，是redis操作的基类，继承自IDisposable接口，主要用于释放内存
+            </summary>
+        </member>
+        <member name="M:RedisStudy.RedisOperatorBase.Save">
+            <summary>
+            保存数据DB文件到硬盘
+            </summary>
+        </member>
+        <member name="M:RedisStudy.RedisOperatorBase.SaveAsync">
+            <summary>
+            异步保存数据DB文件到硬盘
+            </summary>
+        </member>
+        <member name="M:RedisStudy.HashOperator.Exist``1(System.String,System.String)">
+            <summary>
+            判断某个数据是否已经被缓存
+            </summary>
+        </member>
+        <member name="M:RedisStudy.HashOperator.Set``1(System.String,System.String,``0)">
+            <summary>
+            存储数据到hash表
+            </summary>
+        </member>
+        <member name="M:RedisStudy.HashOperator.Remove(System.String,System.String)">
+            <summary>
+            移除hash中的某值
+            </summary>
+        </member>
+        <member name="M:RedisStudy.HashOperator.Remove(System.String)">
+            <summary>
+            移除整个hash,传HashId
+            </summary>
+        </member>
+        <member name="M:RedisStudy.HashOperator.Get``1(System.String,System.String)">
+            <summary>
+            从hash表获取数据
+            </summary>
+        </member>
+        <member name="M:RedisStudy.HashOperator.GetAll``1(System.String)">
+            <summary>
+            获取整个hash的数据
+            </summary>
+        </member>
+        <member name="M:RedisStudy.HashOperator.SetExpire(System.String,System.DateTime)">
+            <summary>
+            设置缓存过期
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Com.Public.RemoveHashKey(System.String,System.String)">
+            <summary>
+            移除hash中的某值
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Com.Public.ExistKeyHash(System.String,System.String)">
+            <summary>
+            判断某个数据是否已经被缓存
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Com.Public.Encrypt(System.String)">
+            <summary>
+            加密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.Public.Encrypt(System.String,System.String)">
+            <summary> 
+            加密数据 
+            </summary> 
+            <param name="Text"></param> 
+            <param name="sKey"></param> 
+            <returns></returns> 
+        </member>
+        <member name="M:SchWebApi.Com.Public.Decrypt(System.String)">
+            <summary>
+            解密
+            </summary>
+            <param name="Text"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.Public.Decrypt(System.String,System.String)">
+            <summary> 
+            解密数据 
+            </summary> 
+            <param name="Text"></param> 
+            <param name="sKey"></param> 
+            <returns></returns> 
+        </member>
+        <member name="T:RedisStudy.RedisManager">
+            <summary>
+            RedisManager类主要是创建链接池管理对象的
+            </summary>
+        </member>
+        <member name="F:RedisStudy.RedisManager.RedisPath">
+            <summary>
+            redis配置文件信息
+            </summary>
+        </member>
+        <member name="M:RedisStudy.RedisManager.#cctor">
+            <summary>
+            静态构造方法，初始化链接池管理对象
+            </summary>
+        </member>
+        <member name="M:RedisStudy.RedisManager.CreateManager">
+            <summary>
+            创建链接池管理对象
+            </summary>
+        </member>
+        <member name="M:RedisStudy.RedisManager.GetClient">
+            <summary>
+            客户端缓存操作对象
+            </summary>
+        </member>
+        <member name="T:RSAKeyConvert">
+            <summary>
+            RSA密钥格式转换
+            </summary>
+        </member>
+        <member name="M:RSAKeyConvert.RSAPrivateKeyJava2DotNet(System.String)">
+            <summary>
+            RSA私钥格式转换，java->.net
+            </summary>
+            <param name="privateKey">java生成的RSA私钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:RSAKeyConvert.RSAPrivateKeyDotNet2Java(System.String)">
+            <summary>
+            RSA私钥格式转换，.net->java
+            </summary>
+            <param name="privateKey">.net生成的私钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:RSAKeyConvert.RSAPublicKeyJava2DotNet(System.String)">
+            <summary>
+            RSA公钥格式转换，java->.net
+            </summary>
+            <param name="publicKey">java生成的公钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:RSAKeyConvert.RSAPublicKeyDotNet2Java(System.String)">
+            <summary>
+            RSA公钥格式转换，.net->java
+            </summary>
+            <param name="publicKey">.net生成的公钥</param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.RSADec(System.String,System.String)">
+            <summary>
+            RSA解密
+            </summary>
+            <param name="xmlPrivateKey">私钥</param>
+            <param name="m_strDecryptString">待解密的数据</param>
+            <returns>解密后的结果</returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.RSAEnc(System.String,System.String)">
+            <summary>
+            RSA加密
+            </summary>
+            <param name="xmlPublicKey">公钥</param>
+            <param name="m_strEncryptString">加密后的数据</param>
+            <returns>RSA公钥加密后的数据</returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.RSAKey(System.String,System.String)">
+            <summary>
+            生成公私钥
+            </summary>
+            <param name="PrivateKeyPath"></param>
+            <param name="PublicKeyPath"></param>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.GenerateKeys">
+            <summary>
+            generate private key and public key arr[0] for private key arr[1] for public key
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.GetHash(System.String)">
+            <summary>
+            对原始数据进行MD5加密
+            </summary>
+            <param name="m_strSource">待加密数据</param>
+            <returns>返回机密后的数据</returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.RSAEncrypt(System.String,System.String)">
+            <summary>
+            RSA加密
+            </summary>
+            <param name="xmlPublicKey">公钥</param>
+            <param name="m_strEncryptString">MD5加密后的数据</param>
+            <returns>RSA公钥加密后的数据</returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.RSADecrypt(System.String,System.String)">
+            <summary>
+            RSA解密
+            </summary>
+            <param name="xmlPrivateKey">私钥</param>
+            <param name="m_strDecryptString">待解密的数据</param>
+            <returns>解密后的结果</returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.SignatureFormatter(System.String,System.String)">
+            <summary>
+            对MD5加密后的密文进行签名
+            </summary>
+            <param name="p_strKeyPrivate">私钥</param>
+            <param name="m_strHashbyteSignature">MD5加密后的密文</param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.SignatureDeformatter(System.String,System.String,System.String)">
+            <summary>
+            签名验证
+            </summary>
+            <param name="p_strKeyPublic">公钥</param>
+            <param name="p_strHashbyteDeformatter">待验证的用户名</param>
+            <param name="p_strDeformatterData">注册码</param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.ReadReg(System.String)">
+            <summary>
+            读注册表中指定键的值
+            </summary>
+            <param name="key">键名</param>
+            <returns>返回键值</returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.WriteReg(System.String,System.String)">
+            <summary>
+            创建注册表中指定的键和值
+            </summary>
+            <param name="key">键名</param>
+            <param name="value">键值</param>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.CreatePublicKeyXML(System.String,System.String)">
+            <summary>
+            创建公钥文件
+            </summary>
+            <param name="path"></param>
+            <param name="publickey"></param>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.CreatePrivateKeyXML(System.String,System.String)">
+            <summary>
+            创建私钥文件
+            </summary>
+            <param name="path"></param>
+            <param name="privatekey"></param>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.ReadPublicKey(System.String)">
+            <summary>
+            读取公钥
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.ReadPrivateKey(System.String)">
+            <summary>
+            读取私钥
+            </summary>
+            <param name="path"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.RsaV.InitialReg(System.String)">
+            <summary>
+            初始化注册表，程序运行时调用，在调用之前更新公钥xml
+            </summary>
+            <param name="path">公钥路径</param>
+        </member>
+        <member name="M:SchWebApi.Com.XmlSerializeUtil.Deserialize(System.Type,System.String)">
+            <summary>  
+            反序列化  
+            </summary>  
+            <param name="type">类型</param>  
+            <param name="xml">XML字符串</param>  
+            <returns></returns>  
+        </member>
+        <member name="M:SchWebApi.Com.XmlSerializeUtil.Deserialize(System.Type,System.IO.Stream)">
+            <summary>
+            反序列化
+            </summary>
+            <param name="type"></param>
+            <param name="stream"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Com.XmlSerializeUtil.Serializer(System.Type,System.Object)">
+            <summary>  
+            序列化  
+            </summary>  
+            <param name="type">类型</param>  
+            <param name="obj">对象</param>  
+            <returns></returns>  
+        </member>
+        <member name="T:SchWebApi.Controllers.DataController">
+            <summary>
+            管理平台接口
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.ShakeHand(SchWebApi.Com.DataPack.ShakeKeys)">
+            <summary>
+            加密信息接口
+            </summary>
+            <param name="pokeys">POST的数据</param>
+            <returns>返回包</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.Login(SchWebApi.Com.DataPack.LoginKeys)">
+            <summary>
+            用户登录
+            </summary>
+            <param name="pokeys">登录的信息</param>
+            <returns>登录返回的信息</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.GetCode(SchWebApi.Com.DataPack.CodeKey)">
+            <summary>
+            获取验证码
+            </summary>
+            <param name="pokeys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.ValCode(SchWebApi.Com.DataPack.CodeKey)">
+            <summary>
+            手机验证码验证
+            </summary>
+            <param name="pokeys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UserReg(SchWebApi.Com.DataPack.UserRegKey)">
+            <summary>
+            用户注册
+            </summary>
+            <param name="pokeys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SchGrade(SchWebApi.Com.DataPack.SchKeys)">
+            <summary>
+            获取学校下的年级信息
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SchClass(SchWebApi.Com.DataPack.SchKeys)">
+            <summary>
+            获取学校下班级数据
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SchSub(SchWebApi.Com.DataPack.SchKeys)">
+            <summary>
+            获取学校下科目数据
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SchDepart(SchWebApi.Com.DataPack.SchKeys)">
+            <summary>
+            学校部门
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.GradeBoss(SchWebApi.Com.DataPack.GradeKeys)">
+            <summary>
+            年级主任
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.GradeClass(SchWebApi.Com.DataPack.GradeKeys)">
+            <summary>
+            年级下班级
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.ClassTec(SchWebApi.Com.DataPack.ClassKeys)">
+            <summary>
+            班级下任课老师
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.ClassStu(SchWebApi.Com.DataPack.ClassKeys)">
+            <summary>
+            班级下学生
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.DepartUser(SchWebApi.Com.DataPack.DepartKeys)">
+            <summary>
+            部门下老师
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.TokenReset(SchWebApi.Com.DataPack.TokenKeys)">
+            <summary>
+            令牌续订
+            </summary>
+            <param name="pokeys">uuid,utid,appid</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.TokenUser(SchWebApi.Com.DataPack.TokenUserKey)">
+            <summary>
+            token用户信息
+            </summary>
+            <param name="pokeys">uuid,utid,appid</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.AreaSch(SchWebApi.Com.DataPack.AreaKey)">
+            <summary>
+            获取区域信息
+            </summary>
+            <param name="pokeys">uuid,utid,appid</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SubBoss(SchWebApi.Com.DataPack.SubKeys)">
+            <summary>
+            科目组长
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysTerm(SchWebApi.Com.DataPack.TermKeys)">
+            <summary>
+            学期
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysPer(SchWebApi.Com.DataPack.PerKeys)">
+            <summary>
+            学段
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysFasc(SchWebApi.Com.DataPack.FascKeys)">
+            <summary>
+            分册
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysMater(SchWebApi.Com.DataPack.MaterKeys)">
+            <summary>
+            教版
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysArts(SchWebApi.Com.DataPack.ArtKeys)">
+            <summary>
+            科别
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysSub(SchWebApi.Com.DataPack.SysSubKeys)">
+            <summary>
+            科目
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysGrade(SchWebApi.Com.DataPack.SysGradeKeys)">
+            <summary>
+            系统年级
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysItem(SchWebApi.Com.DataPack.SysItemKeys)">
+            <summary>
+            系统栏目对应表
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysUtype(SchWebApi.Com.DataPack.SysItemKeys)">
+            <summary>
+            系统用户对应表
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysBusFunc(SchWebApi.Com.DataPack.SysFuncKeys)">
+            <summary>
+            套餐功能表
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysBus(SchWebApi.Com.DataPack.SysBusKeys)">
+            <summary>
+            系统套餐表
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.GetUserBusFunc(SchWebApi.Com.DataPack.UserBusKeys)">
+            <summary>
+            获取用户定制套餐及功能表
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UserReFee(SchWebApi.Com.DataPack.UserRefeeKeys)">
+            <summary>
+            用户续订套餐
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UserFee(SchWebApi.Com.DataPack.UserFeeKeys)">
+            <summary>
+            用户定制套餐
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UserFeeDetail(SchWebApi.Com.DataPack.UserFeeDetailKeys)">
+            <summary>
+            用户定制套餐
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UserRefunc(SchWebApi.Com.DataPack.UserRefuncKeys)">
+            <summary>
+            用户更改套餐功能栏目
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UserUstu(SchWebApi.Com.DataPack.UserUstuKeys)">
+            <summary>
+            获取用户关联的学生列表
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.ClassUserUStu(SchWebApi.Com.DataPack.ClassUserUstuKeys)">
+            <summary>
+            班级订购的学生
+            </summary>
+            <param name="pokeys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UserMstu(SchWebApi.Com.DataPack.UserStuKeys)">
+            <summary>
+            获取用户手机关联的学生列表
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UnUserStu(SchWebApi.Com.DataPack.UnUserStuKeys)">
+            <summary>
+            关联注册用户与学生
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UpStuInfo(SchWebApi.Com.DataPack.UpStuKeys)">
+            <summary>
+            更新学生的资料,账号,密码,头像等
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UpUserInfo(SchWebApi.Com.DataPack.UpUserKeys)">
+            <summary>
+            更新注册用户的资料,账号,密码,头像等
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.UpTecInfo(SchWebApi.Com.DataPack.UpTecKeys)">
+            <summary>
+            更新教师用户的资料,账号,密码,头像等
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SendSms(SchWebApi.Com.DataPack.SendSmsKeys)">
+            <summary>
+            短信发送
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysArea(SchWebApi.Com.DataPack.SysAreaKeys)">
+            <summary>
+            系统区域
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SysApp(SchWebApi.Com.DataPack.AppKeys)">
+            <summary>
+            系统模块:xxt校讯通模块,soure资源模块
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SchInfoSoure(SchWebApi.Com.DataPack.SchInfoKeys)">
+            <summary>
+            学校相关信息
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.SchStuC(SchWebApi.Com.DataPack.SchKeys)">
+            <summary>
+            学期
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.WxAuthLogin(SchWebApi.Com.DataPack.WxAuthKeys)">
+            <summary>
+            小程序用户登录接口
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.WxUserUn(SchWebApi.Com.DataPack.WxUnKeys)">
+            <summary>
+            小程序用户关联接口
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.WxMobileUsers(SchWebApi.Com.DataPack.WxMobileUserKeys)">
+            <summary>
+            小程序用户手机关联的各种用户资料
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.ClassNewsList(SchWebApi.Com.DataPack.ClassNewsKeys)">
+            <summary>
+            获取班级栏目新闻,图片
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.ClassNews(SchWebApi.Com.DataPack.NewsKeys)">
+            <summary>
+            获取单条新闻详情
+            </summary>
+            <param name="pokeys">Post的数据</param>
+            <returns>返回值</returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.LoginU(SchWebApi.Com.DataPack.UserFeeKeys)">
+            <summary>
+            
+            </summary>
+            <param name="pokeys"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.DataController.Get">
+            <summary>
+            Get
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SchWebApi.Controllers.HomeController">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Controllers.HomeController.Index">
+            <summary>
+            
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:SchWebApi.Controllers.ValuesController">
+            <summary>
+            值类型
+            </summary>
+        </member>
+        <member name="M:SchWebApi.Controllers.ValuesController.Get">
+            <summary>
+            Get
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.ValuesController.Get(System.Int32)">
+            <summary>
+            Get根据ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:SchWebApi.Controllers.ValuesController.Post(System.String)">
+            <summary>
+            POST
+            </summary>
+            <param name="value"></param>
+        </member>
+        <member name="M:SchWebApi.Controllers.ValuesController.Put(System.Int32,System.String)">
+            <summary>
+            Put
+            </summary>
+            <param name="id"></param>
+            <param name="value"></param>
+        </member>
+        <member name="M:SchWebApi.Controllers.ValuesController.Delete(System.Int32)">
+            <summary>
+            Delete
+            </summary>
+            <param name="id"></param>
+        </member>
+    </members>
+</doc>

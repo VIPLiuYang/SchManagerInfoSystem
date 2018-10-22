@@ -1,5 +1,5 @@
-E:\项目\Model\bin\Debug\Model.dll
-E:\项目\Model\bin\Debug\Model.pdb
-E:\项目\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
-E:\项目\Model\obj\Debug\Model.dll
-E:\项目\Model\obj\Debug\Model.pdb
+F:\项目\SchManagerInfoSystem\Model\bin\Debug\Model.dll
+F:\项目\SchManagerInfoSystem\Model\bin\Debug\Model.pdb
+F:\项目\SchManagerInfoSystem\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+F:\项目\SchManagerInfoSystem\Model\obj\Debug\Model.dll
+F:\项目\SchManagerInfoSystem\Model\obj\Debug\Model.pdb

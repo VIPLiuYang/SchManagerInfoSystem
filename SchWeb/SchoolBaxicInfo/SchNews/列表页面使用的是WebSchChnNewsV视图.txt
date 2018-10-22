@@ -1,0 +1,1 @@
+列表页面使用的是WebSchChnNewsV视图

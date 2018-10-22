@@ -10,27 +10,27 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>学生和家长关系列表</title>
     <!-- basic styles -->
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet" />
-	<link rel="stylesheet" href="/assets/css/font-awesome.min.css" />
+    <link href="../../assets/css/bootstrap.min.css" rel="stylesheet" />
+	<link rel="stylesheet" href="../../assets/css/font-awesome.min.css" />
     <!--[if IE 7]>
-        <link rel="stylesheet" href="/assets/css/font-awesome-ie7.min.css" />
+        <link rel="stylesheet" href="../../assets/css/font-awesome-ie7.min.css" />
 	<![endif]-->
     <!-- page specific plugin styles -->
     <!-- fonts -->
-    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,300" />
+     
     <!-- ace styles -->
-	<link rel="stylesheet" href="/assets/css/ace.min.css" />
-	<link rel="stylesheet" href="/assets/css/ace-rtl.min.css" />
-	<link rel="stylesheet" href="/assets/css/ace-skins.min.css" />
+	<link rel="stylesheet" href="../../assets/css/ace.min.css" />
+	<link rel="stylesheet" href="../../assets/css/ace-rtl.min.css" />
+	<link rel="stylesheet" href="../../assets/css/ace-skins.min.css" />
 	<!--[if lte IE 8]>
-        <link rel="stylesheet" href="/assets/css/ace-ie.min.css" />
+        <link rel="stylesheet" href="../../assets/css/ace-ie.min.css" />
 	<![endif]-->
 	<!-- inline styles related to this page -->
 
     
     <!--[if !IE]> -->
 		<script type="text/javascript">
-		    window.jQuery || document.write("<script src='/assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
+		    window.jQuery || document.write("<script src='../../assets/js/jquery-2.0.3.min.js'>" + "<" + "/script>");
 		</script>
     <!-- <![endif]-->
 
@@ -41,11 +41,11 @@
     <![endif]-->
 
 	<!-- ace settings handler -->
-	<script src="/assets/js/ace-extra.min.js"></script>
+	<script src="../../assets/js/ace-extra.min.js"></script>
 	<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 	<!--[if lt IE 9]>
-        <script src="/assets/js/html5shiv.js"></script>
-		<script src="/assets/js/respond.min.js"></script>
+        <script src="../../assets/js/html5shiv.js"></script>
+		<script src="../../assets/js/respond.min.js"></script>
 	<![endif]-->
     <script>
         function getPar(par) {
@@ -210,16 +210,16 @@
     <!-- basic scripts -->
 
     <script type="text/javascript">
-        if ("ontouchend" in document) document.write("<script src='/assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
+        if ("ontouchend" in document) document.write("<script src='../../assets/js/jquery.mobile.custom.min.js'>" + "<" + "/script>");
     </script>
-    <!--<script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/typeahead-bs2.min.js"></script>-->
+    <!--<script src="../../assets/js/bootstrap.min.js"></script>
+    <script src="../../assets/js/typeahead-bs2.min.js"></script>-->
     <!-- page specific plugin scripts -->
-    <!--<script src="/assets/js/jquery.dataTables.min.js"></script>//JS数字分页
-    <script src="/assets/js/jquery.dataTables.bootstrap.js"></script>-->
+    <!--<script src="../../assets/js/jquery.dataTables.min.js"></script>//JS数字分页
+    <script src="../../assets/js/jquery.dataTables.bootstrap.js"></script>-->
     <!-- ace scripts -->
-    <!--<script src="/assets/js/ace-elements.min.js"></script>
-    <script src="/assets/js/ace.min.js"></script>-->
+    <!--<script src="../../assets/js/ace-elements.min.js"></script>
+    <script src="../../assets/js/ace.min.js"></script>-->
     <!-- inline scripts related to this page -->
     <script type="text/javascript">
         jQuery(function ($) {
@@ -256,7 +256,7 @@
                 success: function (data, textStatus) {
                     if (data == "True") {
                         alert("删除成功啦");
-                        self.location = "/SchoolBaxicInfo/StuGenUn/StuGenUnList.aspx";
+                        self.location = "StuGenUnList.aspx";
                     } else {
                         alert("删除失败了");
                     }

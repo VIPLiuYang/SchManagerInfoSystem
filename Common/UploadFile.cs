@@ -32,7 +32,7 @@ namespace SchManagerInfoSystem.Common
         {
             path = @"UploadFileDir"; //上传路径
             fileType = "jpg|gif|bmp|jpeg|png|rar|doc";
-            sizes = 200; //传文件的大小,默认200KB
+            sizes = (2 * 1024 * 1024); //传文件的大小,默认2M
         }
         #endregion
 
@@ -93,9 +93,10 @@ namespace SchManagerInfoSystem.Common
                         //获得上传文件的大小
                         localFileLength = postedFile.ContentLength;
                         //判断上传文件大小
-                        if (localFileLength >= sizes * 1024)
+                        if (localFileLength >= sizes)
                         {
-                            message("上传的图片不能大于" + sizes + "KB");
+                            //myReturn = "上传的图片不能大于" + sizes + "KB";
+                            myReturn = "0";
                             break;
                         }
                         #endregion
@@ -120,19 +121,20 @@ namespace SchManagerInfoSystem.Common
                         saveFileExtension = localFileExtension;
                         #endregion
                         //得到保存文件的完整路径
-                        saveFilePath = saveFileFolderPath + saveFileName + saveFileExtension;
+                        saveFilePath = saveFileFolderPath+"\\" + saveFileName + saveFileExtension;
                         postedFile.SaveAs(saveFilePath);
-                        myReturn = myReturn + ((myReturn == "" || myReturn == null) ? "" : "|") + path.TrimStart(new char[] { '\\' }) + saveFileName + saveFileExtension;
+                        //myReturn = myReturn + ((myReturn == "" || myReturn == null) ? "" : "|") + path.TrimStart(new char[] { '\\' }) + saveFileName + saveFileExtension;
+                        myReturn = myReturn + ((myReturn == "" || myReturn == null) ? "" : "|") + path+"\\" + saveFileName + saveFileExtension;
                       //以下对文章的内容进行一些加工
-                        System.Web.HttpContext.Current.Response.Write("<script>parent.Article_Content___Frame.FCK.EditorDocument.body.innerHTML+='<img src=" + saveFileName + saveFileExtension + " "+" border=0 />'</SCRIPT>");                       
+                        //System.Web.HttpContext.Current.Response.Write("<script>parent.Article_Content___Frame.FCK.EditorDocument.body.innerHTML+='<img src=" + saveFileName + saveFileExtension + " "+" border=0 />'</SCRIPT>");                       
                     }
                 }
             }
             catch
             {
                 //异常
-                message("出现未知错误！");
-                myReturn = null;
+                //message("出现未知错误！");
+                myReturn = "1";
             }
             return myReturn;
         }
@@ -161,7 +163,7 @@ namespace SchManagerInfoSystem.Common
                 }
                 else
                 {
-                    mySaveFolder = System.Web.HttpContext.Current.Server.MapPath(".") + format;
+                    mySaveFolder = System.Web.HttpContext.Current.Server.MapPath(".") + "\\"+format;
                 }
                 System.IO.DirectoryInfo dir = new System.IO.DirectoryInfo(mySaveFolder);
                 //判断文件夹否存在,不存在则创建

@@ -14,6 +14,7 @@ namespace SchSystem.Model
 		private int _stuid;
 		private int _genid;
 		private string _relation;
+        private string _genname;
 		/// <summary>
 		/// 学生与家长关联表
 		/// </summary>
@@ -46,8 +47,16 @@ namespace SchSystem.Model
 			set{ _relation=value;}
 			get{return _relation;}
 		}
+        public string GenName
+        {
+            set { _genname = value; }
+            get { return _genname; }
+        }
+        
 		#endregion Model
 
-	}
+	
+
+ }
 }
 

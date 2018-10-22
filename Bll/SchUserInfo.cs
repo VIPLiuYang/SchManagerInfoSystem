@@ -1,0 +1,259 @@
+﻿using System;
+using System.Data;
+using System.Collections.Generic;
+using SchManagerInfoSystem.Common;
+using SchSystem.Model;
+namespace SchSystem.BLL
+{
+	/// <summary>
+	/// SchUserInfo
+	/// </summary>
+	public partial class SchUserInfo
+	{
+        private readonly SchSystem.DAL.SchUserInfo dal = new SchSystem.DAL.SchUserInfo();
+        public SchUserInfo()
+		{}
+		#region  BasicMethod
+        public bool UpdatePw(int UserId, string PassWord)
+        {
+            return dal.UpdatePw(UserId, PassWord);
+        }
+        public bool UploadPicture(int UserId, string ImgUrl)
+        {
+            return dal.UploadPicture(UserId, ImgUrl);
+        }
+        public bool ExistsSchUser(string UserName, string PassWord, int SchId)
+        {
+            return dal.ExistsSchUser(UserName, PassWord, SchId);
+        }
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string UserName, string PassWord)
+        {
+            return dal.Exists(UserName, PassWord);
+        }
+        public bool ExistsUser(string UserName)
+        {
+            return dal.ExistsUser(UserName);
+        }
+        public bool UpdateUserName(string UserName, int UserId)
+        {
+            return dal.UpdateUserName(UserName, UserId);
+        }
+        public bool UpdateStat(SchSystem.Model.SchUserInfo model)
+        {
+            return dal.UpdateStat(model);
+        }
+        public bool ExistsUserName(int UserId, string UserName)
+        {
+            return dal.ExistsUserName(UserId, UserName);
+        }
+        public bool ExistsUserCode(int UserId, string UserNo, int SchId)
+        {
+            return dal.ExistsUserCode(UserId, UserNo, SchId);
+        }
+        public bool UpdateUser(SchSystem.Model.SchUserInfo model)
+        {
+            return dal.UpdateUser(model);
+        }
+        public SchSystem.Model.SchUserInfo GetModelByUname(string UserName)
+        {
+            return dal.GetModelByUname(UserName);
+        }
+
+		/// <summary>
+		/// 得到最大ID
+		/// </summary>
+		public int GetMaxId()
+		{
+			return dal.GetMaxId();
+		}
+
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(int UserId)
+        {
+            return dal.Exists(UserId);
+        }
+        /// <summary>
+        /// 是否存在该记录
+        /// </summary>
+        public bool Exists(string strWhere)
+        {
+            return dal.Exists(strWhere);
+        }
+		/// <summary>
+		/// 增加一条数据
+		/// </summary>
+		public int  Add(SchSystem.Model.SchUserInfo model)
+		{
+			return dal.Add(model);
+		}
+        public int AddUser(int schid, string usertname, string username, string password, string createauthor = "")
+        {
+            return dal.AddUser(schid,usertname,username,password,createauthor);
+        }
+		/// <summary>
+		/// 更新一条数据
+		/// </summary>
+		public bool Update(SchSystem.Model.SchUserInfo model)
+		{
+			return dal.Update(model);
+		}
+
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public bool Delete(int UserId)
+		{
+			
+			return dal.Delete(UserId);
+		}
+		/// <summary>
+		/// 删除一条数据
+		/// </summary>
+		public bool DeleteList(string UserIdlist )
+		{
+			return dal.DeleteList(UserIdlist );
+		}
+
+		/// <summary>
+		/// 得到一个对象实体
+		/// </summary>
+		public SchSystem.Model.SchUserInfo GetModel(int UserId)
+		{
+			
+			return dal.GetModel(UserId);
+		}
+        public SchSystem.Model.SchUserInfo GetSupportModel(int SchId, int SysType)
+        {
+            return dal.GetSupportModel(SchId, SysType);
+        }
+        /*
+		/// <summary>
+		/// 得到一个对象实体，从缓存中
+		/// </summary>
+		public SchSystem.Model.SchUserInfo GetModelByCache(int UserId)
+		{
+			
+			string CacheKey = "SchUserInfoModel-" + UserId;
+			object objModel = Maticsoft.Common.DataCache.GetCache(CacheKey);
+			if (objModel == null)
+			{
+				try
+				{
+					objModel = dal.GetModel(UserId);
+					if (objModel != null)
+					{
+						int ModelCache = Maticsoft.Common.ConfigHelper.GetConfigInt("ModelCache");
+						Maticsoft.Common.DataCache.SetCache(CacheKey, objModel, DateTime.Now.AddMinutes(ModelCache), TimeSpan.Zero);
+					}
+				}
+				catch{}
+			}
+			return (SchSystem.Model.SchUserInfo)objModel;
+		}
+        */
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetList(string cols,string strWhere)
+		{
+			return dal.GetList(cols,strWhere);
+		}
+		/// <summary>
+		/// 获得前几行数据
+		/// </summary>
+		public DataSet GetList(int Top,string strWhere,string filedOrder)
+		{
+			return dal.GetList(Top,strWhere,filedOrder);
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public List<SchSystem.Model.SchUserInfo> GetModelList(string strWhere)
+		{
+			DataSet ds = dal.GetList(strWhere);
+			return DataTableToList(ds.Tables[0]);
+		}
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public List<SchSystem.Model.SchUserInfo> DataTableToList(DataTable dt)
+		{
+			List<SchSystem.Model.SchUserInfo> modelList = new List<SchSystem.Model.SchUserInfo>();
+			int rowsCount = dt.Rows.Count;
+			if (rowsCount > 0)
+			{
+				SchSystem.Model.SchUserInfo model;
+				for (int n = 0; n < rowsCount; n++)
+				{
+					model = dal.DataRowToModel(dt.Rows[n]);
+					if (model != null)
+					{
+						modelList.Add(model);
+					}
+				}
+			}
+			return modelList;
+		}
+
+		/// <summary>
+		/// 获得数据列表
+		/// </summary>
+		public DataSet GetAllList()
+		{
+			return GetList("*","Stat=1");
+		}
+
+		/// <summary>
+		/// 分页获取数据列表
+		/// </summary>
+		public int GetRecordCount(string strWhere)
+		{
+			return dal.GetRecordCount(strWhere);
+		}
+
+        /// <summary>
+        /// 数据分页
+        /// </summary>
+        /// <param name="cols">所查询的列</param>
+        /// <param name="strWhere">所查询的条件</param>
+        /// <param name="ordercols">排序列</param>
+        /// <param name="orderby">降序或升序</param>
+        /// <param name="PageIndex">当前页数</param>
+        /// <param name="PageSize">每页条数</param>
+        /// <param name="RowCount">记录总数</param>
+        /// <param name="PageCount">总页数</param>
+        /// <returns></returns>
+        public DataSet GetListCols(string cols, string strWhere, string ordercols, string orderby, int PageIndex, int PageSize, ref int RowCount, ref int PageCount)
+        {
+            return dal.GetListCols(cols, strWhere, ordercols, orderby, PageIndex, PageSize, ref RowCount, ref PageCount);
+        }
+
+
+
+        /// <summary>
+        /// 分页获取数据列表
+        /// </summary>
+        public DataSet GetListByPage(string strWhere, string orderby, int startIndex, int endIndex)
+		{
+			return dal.GetListByPage( strWhere,  orderby,  startIndex,  endIndex);
+		}
+		/// <summary>
+		/// 分页获取数据列表
+		/// </summary>
+		//public DataSet GetList(int PageSize,int PageIndex,string strWhere)
+		//{
+			//return dal.GetList(PageSize,PageIndex,strWhere);
+		//}
+
+		#endregion  BasicMethod
+		#region  ExtensionMethod
+
+		#endregion  ExtensionMethod
+	}
+}
+

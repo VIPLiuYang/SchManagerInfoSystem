@@ -14,7 +14,7 @@ namespace SchSystem.Model
 		private string _loginname;
 		private string _pwd= "123456";
 		private string _genname;
-		private string _mobile;
+        private string _TelNo;
 		private int _sex=2;
 		private string _imgurl;
 		private int _stat=1;
@@ -56,12 +56,12 @@ namespace SchSystem.Model
 			get{return _genname;}
 		}
 		/// <summary>
-		/// 卡地址
+		/// 电话
 		/// </summary>
-		public string Mobile
+        public string TelNo
 		{
-			set{ _mobile=value;}
-			get{return _mobile;}
+            set { _TelNo = value; }
+            get { return _TelNo; }
 		}
 		/// <summary>
 		/// 0:女，1：男,2,未明

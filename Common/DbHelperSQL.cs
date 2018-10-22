@@ -885,11 +885,70 @@ namespace SchManagerInfoSystem.Common
                 }
             }
         }
-
+        /// <summary>
+        /// 批量插入数据记录
+        /// </summary>
+        /// <param name="table">（必选）批量插入的数据记录</param>
+        /// <param name="TableName">（必选）数据表名称</param>
+        /// <param name="ht">(可选）如果DataTable列名称与实际数据表列名称不一致时必须传递；否则，传递null值。数组的键为DataTable的列名称，值为实际数据表的列名称</param>
+        public static string ExecuteSqlBulkCopy(DataTable table, string TableName, Hashtable ht = null)
+        {
+            string ret = "0";
+            using (SqlConnection conn = new SqlConnection(connectionString))
+            {
+                conn.Open();
+                using(SqlBulkCopy ExecuteSqlBulkCopy = new SqlBulkCopy(conn))
+                {
+                    try
+                    {
+                        ExecuteSqlBulkCopy.DestinationTableName = TableName;
+                        if (ht == null)
+                        {
+                            foreach (System.Data.DataColumn k in table.Columns)
+                            {
+                                ExecuteSqlBulkCopy.ColumnMappings.Add(k.ColumnName, k.ColumnName);
+                            }
+                        }
+                        else
+                        {
+                            foreach (string item in ht.Keys)
+                            {
+                                ExecuteSqlBulkCopy.ColumnMappings.Add(item,ht[item].ToString());
+                            }
+                        }
+                        ExecuteSqlBulkCopy.WriteToServer(table);
+                        ret = "1";
+                    }
+                    catch (Exception ex)
+                    {
+                        ret = ex.Message;
+                    }
+                }
+            }
+            return ret;
+        }
         #endregion
 
         #region 存储过程操作
-
+        public static int ChangeOrderByExecute(string storedProcName, IDataParameter[] parameters)
+        {
+            SqlConnection connection = new SqlConnection(connectionString);
+            
+            connection.Open();
+            int RecordsAffected = 0;
+            try
+            {
+                SqlCommand cmd = BuildQueryCommand(connection, storedProcName, parameters);
+                cmd.CommandType = CommandType.StoredProcedure;
+                RecordsAffected = cmd.ExecuteNonQuery();
+            }
+            catch (Exception ex)
+            {
+                string s = ex.Message;
+            }
+            connection.Close();
+            return RecordsAffected;
+        }
         /// <summary>
         /// 执行存储过程，返回SqlDataReader ( 注意：调用该方法后，一定要对SqlDataReader进行Close )
         /// </summary>
